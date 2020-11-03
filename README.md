@@ -1,4 +1,4 @@
-# Next Template
+# yuruppe 様 コーポレートサイト開発用リポジトリ
 
 ## Node Version
 v12.18.4
