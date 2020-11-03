@@ -1,0 +1,42 @@
+{
+  "name": "next-js_template",
+  "version": "0.1.0",
+  "private": true,
+  "author": "Ryota Ito",
+  "scripts": {
+    "dev": "next dev -p 8888",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build && next export -o htdocs/",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore ."
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "dependencies": {
+    "next": "10.0.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "sanitize.css": "^11.0.0",
+    "sass": "^1.26.3"
+  },
+  "devDependencies": {
+    "@types/node": "^13.9.1",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "@typescript-eslint/eslint-plugin": "^2.24.0",
+    "@typescript-eslint/parser": "^2.24.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "postcss-flexbugs-fixes": "^4.2.1",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^1.19.1",
+    "typescript": "^3.8.3"
+  },
+  "browserslist": [
+    "last 2 version",
+    "IE 11"
+  ]
+}
