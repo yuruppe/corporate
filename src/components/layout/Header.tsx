@@ -1,6 +1,10 @@
+import { useState } from 'react'
 import style from '~/styles/components/layout/Header.module.scss'
+import { Menu } from './Menu'
 
 const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
+
   return (
     <header className={style.wrap}>
       <div className={style.logo}>
@@ -8,7 +12,10 @@ const Header: React.FC = () => {
       </div>
       <div className={style.button}>
         <div className={style.top}>
-          <div className={style.hamburger}>
+          <div
+            className={style.hamburger}
+            onClick={(): void => setIsMenuOpen(!isMenuOpen)}
+          >
             <span />
             <span />
             <span />
@@ -17,6 +24,9 @@ const Header: React.FC = () => {
         <div className={style.middle} />
         <div className={style.bottom} />
       </div>
+      <nav className={style.nav}>
+        <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
+      </nav>
     </header>
   )
 }

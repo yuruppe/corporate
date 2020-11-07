@@ -7,7 +7,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Top | yuruppe.inc</title>
+        <title>YURUPPE.inc</title>
       </Head>
 
       <div className={style.main}>
