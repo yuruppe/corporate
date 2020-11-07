@@ -1,4 +1,5 @@
 import { AppContext, useAppReducer } from '~/store/appContext'
+import style from '~/styles/components/layout/Layout.module.scss'
 
 type Props = {
   children: React.ReactNode
@@ -10,7 +11,7 @@ const Layout: React.FC<Props> = ({ children }) => {
   return (
     <>
       <AppContext.Provider value={{ appState, appDispatch }}>
-        {children}
+        <div className={style.wrap}>{children}</div>
       </AppContext.Provider>
     </>
   )

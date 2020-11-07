@@ -1,12 +1,12 @@
 // ==========================================================================
 //
-//   General
+//   Global config
 //
 // ==========================================================================
 $breakPoint-sp: 768;
 $breakPoint-tab: 1080;
 
-$campusWidth-sp: 750;
+$campusWidth-sp: 416;
 $campusWidth-pc: 1280;
 
 $campusHeight-pc: 1080;
@@ -18,9 +18,22 @@ $breakpoints: (
   'pc': 'screen and (min-width: #{$breakPoint-sp})',
 ) !default;
 
-$baseFont: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+$baseFont: 'M PLUS Rounded 1c', "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
 $baseFontSize: 15px;
 $baseLineHeight: 1.5;
+$baseFontWeight: 500;
+
+$weightBold: 700;
+$weightExtraBold: 800;
+$weightBlack: 900;
+
+// ==========================================================================
+//
+//   Project config
+//
+// ==========================================================================
+$paddingSpSide: 32;
+
 
 // ==========================================================================
 //
@@ -29,8 +42,9 @@ $baseLineHeight: 1.5;
 // ==========================================================================
 $colorWhite: #fff;
 $colorBlack: #000000;
-$colorBlue: #78d5d7;
-
+$colorLightBlue: #A5CAD1;
+$colorDarkBlue: #318FA4;
+$colorDefaultGray: #CCCCCC;
 
 // ==========================================================================
 //

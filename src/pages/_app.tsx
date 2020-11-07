@@ -5,6 +5,8 @@ import 'sanitize.css'
 import '../styles/default/global.scss'
 
 import { Layout } from '~/components/layout/Layout'
+import { Header } from '~/components/layout/Header'
+import { Footer } from '~/components/layout/Footer'
 
 class MyApp extends App {
   render(): JSX.Element {
@@ -12,7 +14,11 @@ class MyApp extends App {
 
     return (
       <Layout>
-        <Component {...pageProps} />
+        <Header />
+        <main>
+          <Component {...pageProps} />
+        </main>
+        <Footer />
       </Layout>
     )
   }

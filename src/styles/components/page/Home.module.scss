@@ -1,0 +1,71 @@
+@import '~src/styles/default/components.scss';
+
+.main {
+  position: relative;
+  padding: 0 vwSp($paddingSpSide) vwSp(40);
+}
+.inner {
+  @include borderSquareFrame();
+  padding: vwSp(40) vwSp(48) vwSp(48);
+}
+.title {
+  font-size: vwSp(40);
+  line-height: 1.6;
+  font-weight: $weightBlack;
+  white-space: nowrap;
+}
+.description {
+  padding: vwSp(20) 0 0;
+  font-size: vwSp(12);
+  line-height: 2.7;
+  letter-spacing: 0.32em;
+  font-weight: $weightExtraBold;
+  text-align:justify;
+}
+
+.linkList {
+  padding: vwSp(24) 0 0;
+}
+.linkItem {
+  margin: vwSp(24) 0 0;
+  @include borderCircleButton();
+}
+.linkAnchor {
+  position: relative;
+  display: block;
+  padding: vwSp(24) vwSp(32);
+  text-align: center;
+}
+.linkTitle {
+  position: relative;
+  font-size: vwSp(20);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  font-weight: $weightBlack;
+  &::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+  }
+  &.arrow {
+    &::before {
+      background-image: url('/img/common/arrow.svg');
+      width: vwSp(12);
+      height: vwSp(17);
+      transform: translateY(-50%);
+    }
+  }
+  &.blank {
+    &::before {
+      background-image: url('/img/common/blank.svg');
+      width: vwSp(20);
+      height: vwSp(20);
+      transform: translateY(-60%);
+    }
+  }
+}

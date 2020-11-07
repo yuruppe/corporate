@@ -1,0 +1,9 @@
+@import '~src/styles/default/components.scss';
+
+.wrap {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  background-color: $colorLightBlue;
+  padding: 116px 0 0;
+}

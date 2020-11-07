@@ -9,3 +9,64 @@
     @content;
   }
 }
+
+@mixin borderSquareFrame () {
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  &::before {
+    content: '';
+    position: absolute;
+    top: vwSp(16);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $colorDarkBlue;
+    border-radius: vwSp(24);
+    z-index: -1;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: vwSp(6) solid $colorDarkBlue;
+    background-color: white;
+    border-radius: vwSp(24);
+    z-index: -1;
+  }
+}
+
+@mixin borderCircleButton () {
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  &::before {
+    content: '';
+    position: absolute;
+    top: vwSp(8);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: vwSp(60);
+    border: vwSp(6) solid $colorDarkBlue;
+    background-color: $colorDarkBlue;
+    z-index: -1;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: vwSp(6) solid $colorDarkBlue;
+    border-radius: vwSp(60);
+    background-color: white;
+    z-index: -1;
+  }
+}

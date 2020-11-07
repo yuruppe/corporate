@@ -1,0 +1,19 @@
+@import '~src/styles/default/components.scss';
+
+.wrap {
+  position: relative;
+  width: 100%;
+  padding: vwSp(40) 0 vwSp(80);
+  text-align: center;
+}
+
+// .logo {
+
+// }
+
+.copyright {
+  padding: vwSp(80) 0 0;
+  font-weight: $weightBlack;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
