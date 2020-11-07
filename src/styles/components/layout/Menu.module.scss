@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   z-index: 1;
-  padding: 116px 0 0;
+  padding: vwSp(116) 0 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,6 +30,8 @@
   text-align: center;
 }
 .anchor {
+  position: relative;
+  display: inline-block;
   font-size: vwSp(24);
   line-height: 1;
   font-weight: $weightExtraBold;
@@ -37,6 +39,21 @@
   color: $colorMidBlue;
   &.current {
     color: black;
+  }
+  &.store {
+    padding-right: vwSp(29.49);
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: vwSp(16);
+      height: vwSp(16);
+      background-image: url('/img/common/blank_mid.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      transform: translateY(-60%);
+    }
   }
 }
 
@@ -51,7 +68,24 @@
   }
 }
 .bottomAnchor {
+  position: relative;
+  display: inline-block;
   font-size: vwSp(16);
   line-height: 1;
   letter-spacing: 0.16em;
+  &.sns {
+    padding-right: vwSp(40);
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: vwSp(20);
+      height: vwSp(20);
+      background-image: url('/img/common/instagram.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      transform: translateY(-52%);
+    }
+  }
 }

@@ -3,6 +3,29 @@ import cn from 'classnames'
 import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
 
+// type MainItemProps = {
+//   route: '/' | 'work' | 'blog' | 'member' | 'contact'
+//   setIsOpen: (isOpen: boolean) => void
+//   text: string
+// }
+
+// const MainItem: React.FC<MainItemProps> = ({ route, setIsOpen, text }) => {
+//   const router = useRouter()
+
+//   return (
+//     <Link href={route}>
+//       <a
+//         className={cn(style.anchor, {
+//           [style.current]: router.route === route
+//         })}
+//         onClick={(): void => setIsOpen(false)}
+//       >
+//         {text}
+//       </a>
+//     </Link>
+//   )
+// }
+
 type Props = {
   isOpen: boolean
   setIsOpen: (isOpen: boolean) => void
@@ -53,7 +76,11 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
         </li>
         <li className={style.item}>
           <Link href="/">
-            <a className={cn(style.anchor, { [style.current]: false })}>
+            <a
+              className={cn(style.anchor, style.store, {
+                [style.current]: false
+              })}
+            >
               映像屋さんの服
             </a>
           </Link>
@@ -87,7 +114,7 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
         <li className={style.bottomItem}>
           <Link href="/">
             <a
-              className={style.bottomAnchor}
+              className={cn(style.bottomAnchor, style.sns)}
               onClick={(): void => setIsOpen(false)}
             >
               SNS
