@@ -70,3 +70,52 @@
     z-index: -1;
   }
 }
+
+@mixin borderSquareButton () {
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  &::before {
+    content: '';
+    position: absolute;
+    top: vwSp(8);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: vwSp(24);
+    border: vwSp(6) solid $colorDarkBlue;
+    background-color: $colorDarkBlue;
+    z-index: -1;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: vwSp(6) solid $colorDarkBlue;
+    border-radius: vwSp(24);
+    background-color: white;
+    z-index: -1;
+  }
+}
+
+@mixin titleBottomBorder () {
+  position: relative;
+  text-align: center;
+  padding-bottom: vwSp(24);
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    display: block;
+    transform: translateX(-50%);
+    width: vwSp(72);
+    height: vwSp(4);
+    border-radius: vwSp(30);
+    background-color: $colorDarkBlue;
+  }
+}

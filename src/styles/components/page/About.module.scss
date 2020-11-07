@@ -1,0 +1,97 @@
+@import '~src/styles/default/components.scss';
+
+.main {
+  position: relative;
+  width: 100%;
+  padding: 0 vwSp($paddingSpSide) vwSp(40);
+}
+
+.title {
+  @include titleBottomBorder();
+  img {
+    width: vwSp(142);
+  }
+}
+
+.inner {
+  margin: vwSp(64) 0 0;
+  border-radius: vwSp(16);
+  background-color: white;
+  padding: vwSp(72) vwSp(32) vwSp(80);
+  dt {
+    font-size: vwSp(16);
+    font-weight: $weightExtraBold;
+  }
+  dd {
+    font-size: vwSp(16);
+    line-height: vwSp(24);
+  }
+}
+.logo {
+  text-align: center;
+}
+.topList {
+  padding: vwSp(32) 0 0;
+}
+.topItem {
+  padding: vwSp(40) 0;
+  border-bottom: 1px solid #C4C4C4;
+  dl {
+    display: flex;
+  }
+  dt {
+    width: vwSp(79);
+    flex-shrink: 0;
+  }
+}
+.bottomItem {
+  padding: vwSp(40) 0;
+  border-bottom: 1px solid #C4C4C4;
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  dd {
+    padding: vwSp(40) 0 0;
+    margin-left: vwSp(111 - 32);
+  }
+  li + li {
+    margin: vwSp(16) 0 0;
+  }
+  ol {
+    counter-reset: counter;
+  }
+  ol li {
+    position: relative;
+    &::before {
+      counter-increment: counter;
+      content: counter(counter)'.';
+      position: absolute;
+      top: 0;
+      left: vwSp(-32);
+    }
+  }
+  ul li {
+    position: relative;
+    &::before {
+      content: '・';
+      position: absolute;
+      top: 0;
+      left: vwSp(-32);
+    }
+  }
+}
+
+.button {
+  margin: vwSp(40) 0 0;
+  @include borderSquareButton();
+  span {
+    display: block;
+    padding: vwSp(26) 0;
+    text-align: center;
+    font-size: vwSp(20);
+    line-height: 1;
+    font-weight: $weightBlack;
+    letter-spacing: 0.08em;
+  }
+}

@@ -122,7 +122,7 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           </Link>
         </li>
         <li className={style.bottomItem}>
-          <Link href="/">
+          <Link href="/about">
             <a
               className={style.bottomAnchor}
               onClick={(): void => setIsOpen(false)}
