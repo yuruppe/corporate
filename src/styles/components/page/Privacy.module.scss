@@ -1,0 +1,44 @@
+@import '~src/styles/default/components.scss';
+
+.main {
+  position: relative;
+  width: 100%;
+  padding: 0 vwSp($paddingSpSide) vwSp(40);
+}
+
+.title {
+  @include titleBottomBorder();
+  img {
+    width: vwSp(355);
+  }
+}
+
+.body {
+  position: relative;
+  margin: vwSp(88) 0 0;
+  width: 100%;
+  border-radius: vwSp(16);
+  padding: vwSp(40) vwSp(32) vwSp(53);
+  background-color: white;
+  h2 {
+    font-size: vwSp(20);
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+    padding: vwSp(40) 0 0;
+    font-weight: $weightBlack;
+  }
+  p {
+    font-size: vwSp(16);
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+    padding: vwSp(16) 0 0;
+  }
+  .intro {
+    padding: 0;
+  }
+}
+
+.back {
+  margin: vwSp(40) 0 0;
+  @include borderSquareButton();
+}

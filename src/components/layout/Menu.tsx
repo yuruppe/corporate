@@ -54,7 +54,7 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           <Link href="/">
             <a
               className={cn(style.anchor, {
-                [style.current]: router.route === 'work'
+                [style.current]: router.route === '/work'
               })}
               onClick={(): void => setIsOpen(false)}
             >
@@ -66,7 +66,7 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           <Link href="/">
             <a
               className={cn(style.anchor, {
-                [style.current]: router.route === 'blog'
+                [style.current]: router.route === '/blog'
               })}
               onClick={(): void => setIsOpen(false)}
             >
@@ -89,7 +89,7 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           <Link href="/">
             <a
               className={cn(style.anchor, {
-                [style.current]: router.route === 'member'
+                [style.current]: router.route === '/member'
               })}
               onClick={(): void => setIsOpen(false)}
             >
@@ -101,7 +101,7 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           <Link href="/contact">
             <a
               className={cn(style.anchor, {
-                [style.current]: router.route === 'contact'
+                [style.current]: router.route === '/contact'
               })}
               onClick={(): void => setIsOpen(false)}
             >
@@ -112,14 +112,15 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
       </ul>
       <ul className={style.bottomList}>
         <li className={style.bottomItem}>
-          <Link href="/">
-            <a
-              className={cn(style.bottomAnchor, style.sns)}
-              onClick={(): void => setIsOpen(false)}
-            >
-              SNS
-            </a>
-          </Link>
+          <a
+            href="https://instagram.com/yuruppe.inc?igshid=10cfjlokkxj98"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(style.bottomAnchor, style.sns)}
+            onClick={(): void => setIsOpen(false)}
+          >
+            SNS
+          </a>
         </li>
         <li className={style.bottomItem}>
           <Link href="/about">
@@ -132,7 +133,7 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           </Link>
         </li>
         <li className={style.bottomItem}>
-          <Link href="/">
+          <Link href="/privacy">
             <a
               className={style.bottomAnchor}
               onClick={(): void => setIsOpen(false)}
