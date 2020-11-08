@@ -13,7 +13,7 @@
   }
 }
 
-.inner {
+.body {
   margin: vwSp(64) 0 0;
   border-radius: vwSp(16);
   background-color: white;
@@ -85,13 +85,4 @@
 .button {
   margin: vwSp(40) 0 0;
   @include borderSquareButton();
-  span {
-    display: block;
-    padding: vwSp(26) 0;
-    text-align: center;
-    font-size: vwSp(20);
-    line-height: 1;
-    font-weight: $weightBlack;
-    letter-spacing: 0.08em;
-  }
 }

@@ -12,13 +12,13 @@ const About: NextPage = () => {
         <title>About | YURUPPE.inc</title>
       </Head>
 
-      <div className={style.main}>
-        <div className={style.titleWrap}>
+      <section className={style.main}>
+        <div className={style.head}>
           <h1 className={style.title}>
             <img src="/img/page/aboutTitle.png" alt="会社概要" />
           </h1>
         </div>
-        <div className={style.inner}>
+        <div className={style.body}>
           <div className={style.logo}>
             <img src="/img/common/logo_illust_black.svg" alt="YURUPPE.inc" />
           </div>
@@ -82,7 +82,7 @@ const About: NextPage = () => {
             <span>もどる</span>
           </Link>
         </div>
-      </div>
+      </section>
     </>
   )
 }

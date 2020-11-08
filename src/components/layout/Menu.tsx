@@ -98,7 +98,7 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           </Link>
         </li>
         <li className={style.item}>
-          <Link href="/">
+          <Link href="/contact">
             <a
               className={cn(style.anchor, {
                 [style.current]: router.route === 'contact'

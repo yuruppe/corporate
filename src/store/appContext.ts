@@ -1,29 +1,36 @@
 import { createContext, Dispatch, useReducer } from 'react'
+import { FormTmpData } from '~/types/Form'
 
 type State = {
   count: number
+  formTmpData: FormTmpData
+}
+const initialState: State = {
+  count: 0,
+  formTmpData: undefined
 }
 
-type Action = { type: 'INCREMENT' } | { type: 'DECREMENT' }
+type Action =
+  | { type: 'SET_POST_DATA'; value: FormTmpData }
+  | { type: 'REMOVE_POST_DATA' }
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'INCREMENT':
+    case 'SET_POST_DATA':
       return {
         ...state,
-        count: state.count + 1
+        formTmpData: {
+          ...action.value
+        }
       }
-    case 'DECREMENT':
+    case 'REMOVE_POST_DATA':
       return {
         ...state,
-        count: state.count - 1
+        formTmpData: initialState.formTmpData
       }
     default:
       return state
   }
-}
-const initialState: State = {
-  count: 0
 }
 
 export const AppContext = createContext(

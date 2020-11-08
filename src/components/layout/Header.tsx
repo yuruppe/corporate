@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useState } from 'react'
 import style from '~/styles/components/layout/Header.module.scss'
 import { Menu } from './Menu'
@@ -8,7 +9,9 @@ const Header: React.FC = () => {
   return (
     <header className={style.wrap}>
       <div className={style.logo}>
-        <img src="img/common/logo.svg" alt="yuruppe.inc" />
+        <Link href="/">
+          <img src="/img/common/logo.svg" alt="yuruppe.inc" />
+        </Link>
       </div>
       <div className={style.button}>
         <div className={style.top}>

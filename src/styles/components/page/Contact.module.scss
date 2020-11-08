@@ -1,0 +1,255 @@
+@import '~src/styles/default/components.scss';
+
+.main {
+  position: relative;
+  width: 100%;
+  padding: 0 vwSp($paddingSpSide) vwSp(40);
+}
+
+.title {
+  @include titleBottomBorder();
+  img {
+    width: vwSp(212);
+  }
+}
+
+.body {
+  position: relative;
+  margin: vwSp(88) 0 0;
+  width: 100%;
+  border-radius: vwSp(16);
+  padding: vwSp(40) vwSp(32) vwSp(53);
+  background-color: white;
+}
+.intro {
+  font-size: vwSp(16);
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  &.note {
+    padding: vwSp(24) 0 0;
+    font-weight: $weightExtraBold;
+    color: $colorDarkBlue;
+  }
+}
+
+.form {
+  position: relative;
+  &__item {
+    padding: vwSp(40) 0 0;
+  }
+  &__label {
+    font-weight: $weightExtraBold;
+    font-size: vwSp(16);
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+    padding-bottom: vwSp(4);
+    &::after {
+      content: '*';
+      color: $colorDarkBlue;
+    }
+    &.elective {
+      &::after {
+        display: none;
+      }
+    }
+  }
+  &__input {
+    position: relative;
+    input, textarea {
+      width: 100%;
+      font-family: $baseFont;
+      background-color: white;
+      border-radius: vwSp(16);
+      border: 2px solid $colorDefaultGray;
+      padding: vwSp(16) vwSp(15);
+      transition: .1s all ease-in-out;
+      font-size: vwSp(16);
+      &:focus {
+        outline: none;
+        border: 2px solid black;
+      }
+      &::placeholder {
+        font-size: vwSp(16);
+        font-weight: 500;
+        color: $colorDefaultGray;
+      }
+      &:disabled {
+        cursor: default;
+      }
+      &.detailArea {
+        min-height: vwSp(390);
+      }
+    }
+    &.error {
+      input, textarea {
+        border: 2px solid $colorErrorRed;
+      }
+    }
+  }
+  &__error {
+    padding: vwSp(8) 0 0;
+    font-size: vwSp(16);
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+    color: $colorErrorRed;
+    font-weight: $weightExtraBold;
+  }
+  &__agree {
+    padding: vwSp(40) 0 0;
+    font-size: vwSp(12);
+    font-weight: $weightExtraBold;
+    text-align: center;
+    input {
+      position: absolute;
+      opacity: 0;
+      &:checked {
+        &+a {
+          &::before {
+            opacity: 1;
+          }
+        }
+      }
+    }
+    label {
+      position: relative;
+      display: inline-block;
+      padding-left: vwSp(28);
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: vwSp(22);
+        height: vwSp(22);
+        border: 2px solid $colorDarkBlue;
+        border-radius: vwSp(4);
+        transform: translateY(-50%);
+      }
+    }
+    a {
+      display: inline-block;
+      position: relative;
+      color: $colorDarkBlue;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: vwSp(-21);
+        width: vwSp(11);
+        height: vwSp(6.5);
+        background-image: url('/img/common/check.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        transform: translateY(-50%);
+        opacity: 0;
+        transition: opacity .1s ease-in-out;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: $colorDarkBlue;
+      }
+    }
+    span {
+      &::after {
+        content: '*';
+        color: $colorDarkBlue;
+      }
+    }
+    .form__error {
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+  }
+  &__submit {
+    margin: vwSp(40) 0 0;
+    @include borderSquareButton();
+    text-align: center;
+    opacity: 0.6;
+    pointer-events: none;
+    &.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    input {
+      font-family: $baseFont;
+      padding: vwSp(16);
+      font-size: vwSp(16);
+      line-height: vwSp(24);
+      letter-spacing: 0.1em;
+      font-weight: $weightBlack;
+      color: black;
+    }
+  }
+  &__confirmText {
+    display: inline-block;
+    padding: vwSp(16) 0 0;
+    font-size: vwSp(16);
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+  }
+  &__submitWrap {
+    display: flex;
+    justify-content: space-between;
+    .form__submit {
+      &::before, &::after {
+        border-radius: vwSp(16);
+      }
+      &:first-child {
+        width: vwSp(125);
+      }
+      &:last-child {
+        width: vwSp(159);
+      }
+    }
+  }
+}
+
+.result {
+  position: relative;
+  margin: vwSp(88) 0 0;
+  width: 100%;
+  border-radius: vwSp(16);
+  padding: vwSp(40) vwSp(32);
+  background-color: white;
+  h1 {
+    font-size: vwSp(20);
+    font-weight: $weightBlack;
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+  }
+  p {
+    padding: vwSp(20) 0 0;
+    font-size: vwSp(16);
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+  }
+  a {
+    position: relative;
+    display: inline-block;
+    margin: vwSp(20) 0 0;
+    font-size: vwSp(16);
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+    color: $colorDarkBlue;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $colorDarkBlue;
+    }
+  }
+}
+
+.back {
+  margin: vwSp(40) 0 0;
+  @include borderSquareButton();
+}
