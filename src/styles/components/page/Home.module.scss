@@ -2,7 +2,7 @@
 
 .main {
   position: relative;
-  padding: 0 vwSp($paddingSpSide) vwSp(40);
+  padding: 0 vwSp($paddingSpSide) vwSp(48);
 }
 .inner {
   @include borderSquareFrame();

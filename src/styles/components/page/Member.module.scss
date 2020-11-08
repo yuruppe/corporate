@@ -1,0 +1,91 @@
+@import '~src/styles/default/components.scss';
+
+.main {
+  position: relative;
+  width: 100%;
+  padding: 0 0 vwSp(48);
+}
+
+.title {
+  @include titleBottomBorder();
+  img {
+    width: vwSp(140);
+  }
+}
+
+.cover {
+  margin: vwSp(88) 0 0;
+  img {
+    width: 100%;
+  }
+}
+
+.body {
+  position: relative;
+  border-radius: vwSp(16);
+  background-color: white;
+  padding: vwSp(48) vwSp(32) vwSp(64);
+  margin: vwSp(-15) vwSp($paddingSpSide) 0;
+}
+
+.item {
+  &+& {
+    padding: vwSp(72) 0 0;
+  }
+}
+.itemHead {
+  h2 {
+    font-size: vwSp(32);
+    font-weight: $weightBlack;
+    line-height: 1;
+    letter-spacing: 0.08em;
+  }
+  p {
+    font-size: vwSp(16);
+    line-height: vwSp(24);
+    font-weight: $weightExtraBold;
+    padding: vwSp(8) 0 0;
+  }
+}
+.description {
+  font-size: vwSp(16);
+  line-height: 1.76;
+  padding: vwSp(20) 0 0;
+}
+.sns {
+  padding: vwSp(42) 0 0;
+  display: flex;
+  span {
+    font-size: vwSp(16);
+    line-height: vwSp(24);
+    font-weight: $weightExtraBold;
+  }
+  ul {
+    display: flex;
+    padding-left: vwSp(32);
+  }
+  li + li {
+    margin-left: vwSp(24);
+  }
+  .twitter {
+    width: vwSp(24);
+  }
+  .instagram {
+    width: vwSp(20);
+  }
+  .vimeo {
+    width: vwSp(22.86);
+  }
+  .facebook {
+    width: vwSp(10);
+  }
+}
+
+
+.backWrap {
+  padding: 0 vwSp($paddingSpSide);
+}
+.back {
+  margin: vwSp(40) 0 0;
+  @include borderSquareButton();
+}

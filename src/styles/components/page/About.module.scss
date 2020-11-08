@@ -3,7 +3,7 @@
 .main {
   position: relative;
   width: 100%;
-  padding: 0 vwSp($paddingSpSide) vwSp(40);
+  padding: 0 vwSp($paddingSpSide) vwSp(48);
 }
 
 .title {
@@ -82,7 +82,7 @@
   }
 }
 
-.button {
+.back {
   margin: vwSp(40) 0 0;
   @include borderSquareButton();
 }
