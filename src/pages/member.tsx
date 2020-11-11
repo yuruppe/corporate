@@ -3,7 +3,7 @@ import Head from 'next/head'
 import style from '~/styles/components/page/Member.module.scss'
 import Link from 'next/link'
 import axios from 'axios'
-import { MemberType } from '~/types/Member'
+import { MemberContentID, MemberType } from '~/types/Member'
 import { MemberItem } from '~/components/member/MemberItem'
 
 type Props = {
@@ -57,7 +57,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<{
 
   data.reverse()
 
-  const mainMember = data.find((d) => d.id === 'main')
+  const mainMember = data.find((d) => d.id === MemberContentID.yp)
   const coverURL = mainMember.cover.url
 
   data.map((d) => {

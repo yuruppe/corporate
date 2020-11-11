@@ -2,6 +2,7 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import style from '~/styles/components/page/Home.module.scss'
 import cn from 'classnames'
+import Link from 'next/link'
 
 const Home: NextPage = () => {
   return (
@@ -27,9 +28,13 @@ const Home: NextPage = () => {
 
         <ul className={style.linkList}>
           <li className={style.linkItem}>
-            <a className={style.linkAnchor}>
-              <h2 className={cn(style.linkTitle, style.arrow)}>つくったやつ</h2>
-            </a>
+            <Link href="/works">
+              <a className={style.linkAnchor}>
+                <h2 className={cn(style.linkTitle, style.arrow)}>
+                  つくったやつ
+                </h2>
+              </a>
+            </Link>
           </li>
           <li className={style.linkItem}>
             <a className={style.linkAnchor}>

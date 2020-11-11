@@ -10,3 +10,8 @@ export type MemberType = {
   icon: { url: string }
   cover?: { url: string }
 }
+
+export const MemberContentID = {
+  yp: 'yp__',
+  tete: 'tete'
+}

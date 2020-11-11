@@ -51,10 +51,10 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           </Link>
         </li>
         <li className={style.item}>
-          <Link href="/">
+          <Link href="/works">
             <a
               className={cn(style.anchor, {
-                [style.current]: router.route === '/work'
+                [style.current]: router.route === '/works'
               })}
               onClick={(): void => setIsOpen(false)}
             >
