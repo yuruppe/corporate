@@ -1,0 +1,73 @@
+@import '~src/styles/default/components.scss';
+
+.main {
+  position: relative;
+  width: 100%;
+  padding: 0 vwSp($paddingSpSide) vwSp(48);
+}
+
+.title {
+  @include titleBottomBorder();
+  img {
+    width: vwSp(104);
+  }
+  &::before {
+    background-color: $colorBlogDark;
+  }
+}
+
+.body {
+  position: relative;
+  margin: vwSp(88) 0 0;
+  width: 100%;
+}
+
+.list {
+  position: relative;
+}
+.item {
+  &+& {
+    padding: vwSp(20) 0 0;
+  }
+}
+.itemInner {
+  padding: vwSp(16) vwSp(16) vwSp(24);
+  background-color: white;
+  border-radius: vwSp(16);
+}
+.img {
+  overflow: hidden;
+  border-radius: vwSp(8);
+}
+.tagList {
+  padding: vwSp(20) 0;
+  display: flex;
+}
+.tagItem {
+  padding: vwSp(4) vwSp(12);
+  border-radius: vwSp(40);
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: vwSp(8);
+  span {
+    display: inline-block;
+    color: white;
+    font-size: vwSp(10);
+    font-weight: $weightExtraBold;
+    line-height: 1;
+    letter-spacing: 0.1em;
+  }
+}
+.itemTitle {
+  font-size: vwSp(20);
+  font-weight: $weightExtraBold;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+}
+
+.back {
+  margin: vwSp(40) 0 0;
+  @include borderSquareButton();
+}

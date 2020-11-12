@@ -6,4 +6,7 @@
   min-height: 100%;
   background-color: $colorLightBlue;
   padding: 116px 0 0;
+  &.dark {
+    background-color: $colorBlogBack;
+  }
 }

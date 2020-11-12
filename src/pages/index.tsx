@@ -37,9 +37,11 @@ const Home: NextPage = () => {
             </Link>
           </li>
           <li className={style.linkItem}>
-            <a className={style.linkAnchor}>
-              <h2 className={cn(style.linkTitle, style.arrow)}>ウラ話</h2>
-            </a>
+            <Link href="/blog">
+              <a className={style.linkAnchor}>
+                <h2 className={cn(style.linkTitle, style.arrow)}>ウラ話</h2>
+              </a>
+            </Link>
           </li>
           <li className={style.linkItem}>
             <a className={style.linkAnchor}>

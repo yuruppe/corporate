@@ -11,7 +11,4 @@ export type MemberType = {
   cover?: { url: string }
 }
 
-export const MemberContentID = {
-  yp: 'yp__',
-  tete: 'tete'
-}
+export const CoverImageUserID = 'yp__'

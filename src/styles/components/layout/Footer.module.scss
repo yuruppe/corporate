@@ -7,13 +7,27 @@
   text-align: center;
 }
 
-// .logo {
-
-// }
+.logo {
+  svg {
+    path {
+      fill: #318FA4;
+    }
+  }
+  &.dark {
+    svg {
+      path {
+        fill: white;
+      }
+    }
+  }
+}
 
 .copyright {
   padding: vwSp(80) 0 0;
   font-weight: $weightBlack;
   font-size: 10px;
   letter-spacing: 0.08em;
+  &.dark {
+    color: white;
+  }
 }

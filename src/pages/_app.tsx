@@ -7,19 +7,22 @@ import '../styles/default/global.scss'
 import { Layout } from '~/components/layout/Layout'
 import { Header } from '~/components/layout/Header'
 import { Footer } from '~/components/layout/Footer'
+import { Provider } from '~/components/layout/Provider'
 
 class MyApp extends App {
   render(): JSX.Element {
     const { Component, pageProps }: AppProps = this.props
 
     return (
-      <Layout>
-        <Header />
-        <main>
-          <Component {...pageProps} />
-        </main>
-        <Footer />
-      </Layout>
+      <Provider>
+        <Layout>
+          <Header />
+          <main>
+            <Component {...pageProps} />
+          </main>
+          <Footer />
+        </Layout>
+      </Provider>
     )
   }
 }

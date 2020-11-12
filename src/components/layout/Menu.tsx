@@ -2,6 +2,8 @@ import style from '~/styles/components/layout/Menu.module.scss'
 import cn from 'classnames'
 import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
+import { useContext } from 'react'
+import { AppContext } from '~/store/appContext'
 
 // type MainItemProps = {
 //   route: '/' | 'work' | 'blog' | 'member' | 'contact'
@@ -33,10 +35,11 @@ type Props = {
 
 const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
   const router = useRouter()
+  const { appState } = useContext(AppContext)
 
   return (
     <div className={cn(style.wrap, { [style.active]: isOpen })}>
-      <div className={style.bg} />
+      <div className={cn(style.bg, { [style.dark]: appState.darkMode })} />
       <ul className={style.list}>
         <li className={style.item}>
           <Link href="/">
@@ -63,7 +66,7 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           </Link>
         </li>
         <li className={style.item}>
-          <Link href="/">
+          <Link href="/blog">
             <a
               className={cn(style.anchor, {
                 [style.current]: router.route === '/blog'

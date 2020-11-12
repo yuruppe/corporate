@@ -1,24 +1,20 @@
-import { AppContext, useAppReducer } from '~/store/appContext'
+import { AppContext } from '~/store/appContext'
 import style from '~/styles/components/layout/Layout.module.scss'
-import { ContextDevTool } from 'react-context-devtool'
+import { useContext } from 'react'
+import cn from 'classnames'
 
 type Props = {
   children: React.ReactNode
 }
 
 const Layout: React.FC<Props> = ({ children }) => {
-  const [appState, appDispatch] = useAppReducer()
+  const { appState } = useContext(AppContext)
 
   return (
     <>
-      <AppContext.Provider value={{ appState, appDispatch }}>
-        <ContextDevTool
-          context={AppContext}
-          id="AppContext"
-          displayName="App Context"
-        />
-        <div className={style.wrap}>{children}</div>
-      </AppContext.Provider>
+      <div className={cn(style.wrap, { [style.dark]: appState.darkMode })}>
+        {children}
+      </div>
     </>
   )
 }

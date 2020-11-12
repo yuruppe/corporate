@@ -1,40 +1,51 @@
 import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
-import style from '~/styles/components/page/Works.module.scss'
+import style from '~/styles/components/page/Blog.module.scss'
 import Link from 'next/link'
 import axios from 'axios'
-import { WorksType } from '~/types/Works'
+import { BlogType } from '~/types/Blog'
+import { useContext, useEffect } from 'react'
+import { AppContext } from '~/store/appContext'
 
 type Props = {
-  works: WorksType[]
+  blogs: BlogType[]
 }
 
-const WorksIndex: NextPage<Props> = ({ works }) => {
+const BlogIndex: NextPage<Props> = ({ blogs }) => {
+  const { appDispatch } = useContext(AppContext)
+
+  useEffect(() => {
+    appDispatch({ type: 'SET_DARK_MODE', value: true })
+    return (): void => {
+      appDispatch({ type: 'SET_DARK_MODE', value: false })
+    }
+  }, [])
+
   return (
     <>
       <Head>
-        <title>つくったやつ | YURUPPE.inc</title>
+        <title>ウラ話 | YURUPPE.inc</title>
       </Head>
 
       <section className={style.main}>
         <div className={style.head}>
           <h1 className={style.title}>
-            <img src="/img/page/worksTitle.png" alt="つくったやつ" />
+            <img src="/img/page/blogTitle.png" alt="ウラ話" />
           </h1>
         </div>
         <div className={style.body}>
           <ul className={style.list}>
-            {works.map((work, index) => (
+            {blogs.map((blog, index) => (
               <li className={style.item} key={index}>
-                <Link href={`/works/${work.id}`}>
+                <Link href={`/blog/${blog.id}`}>
                   <div className={style.itemInner}>
                     <div className={style.img}>
-                      <img src={work.thumbnail.url} alt="" />
+                      <img src={blog.thumbnail.url} alt="" />
                     </div>
                     <ul className={style.tagList}>
-                      {Array.isArray(work.tags) ? (
+                      {Array.isArray(blog.tags) ? (
                         <>
-                          {work.tags.map((tag, index) => (
+                          {blog.tags.map((tag, index) => (
                             <li className={style.tagItem} key={index}>
                               <span>{tag}</span>
                             </li>
@@ -42,24 +53,24 @@ const WorksIndex: NextPage<Props> = ({ works }) => {
                         </>
                       ) : (
                         <li className={style.tagItem}>
-                          <span>{work.tags}</span>
+                          <span>{blog.tags}</span>
                         </li>
                       )}
                     </ul>
-                    <h2 className={style.itemTitle}>{work.title}</h2>
+                    <h2 className={style.itemTitle}>{blog.title}</h2>
                   </div>
                 </Link>
               </li>
             ))}
           </ul>
         </div>
-        <div className={style.backWrap}>
+        {/* <div className={style.backWrap}>
           <div className={style.back}>
             <Link href="/">
               <span>もどる</span>
             </Link>
           </div>
-        </div>
+        </div> */}
       </section>
     </>
   )
@@ -71,8 +82,8 @@ export const getStaticProps: GetStaticProps = async (): Promise<{
   const key = {
     headers: { 'X-API-KEY': process.env.X_API_KEY }
   }
-  const res = await axios.get(process.env.END_POINT + 'works/?limit=9999', key)
-  const data: Array<WorksType> = await res.data.contents
+  const res = await axios.get(process.env.END_POINT + 'blog/?limit=9999', key)
+  const data: Array<BlogType> = await res.data.contents
 
   // data.reverse()
 
@@ -82,17 +93,17 @@ export const getStaticProps: GetStaticProps = async (): Promise<{
         d.tags = d.tags.toString().split(',')
       }
     }
-    if (typeof d.detail === 'string') {
-      d.detail = d.detail.split('\n')
-    }
+    // if (typeof d.detail === 'string') {
+    //   d.detail = d.detail.split('\n')
+    // }
     return d
   })
 
   return {
     props: {
-      works: data
+      blogs: data
     }
   }
 }
 
-export default WorksIndex
+export default BlogIndex
