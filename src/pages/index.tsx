@@ -1,10 +1,15 @@
-import { NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import style from '~/styles/components/page/Home.module.scss'
 import cn from 'classnames'
 import Link from 'next/link'
+import axios from 'axios'
 
-const Home: NextPage = () => {
+type Props = {
+  description: any
+}
+
+const Home: NextPage<Props> = ({ description }) => {
   return (
     <>
       <Head>
@@ -14,16 +19,11 @@ const Home: NextPage = () => {
       <div className={style.main}>
         <div className={style.inner}>
           <div className={style.innerBack} />
-          <h1 className={style.title}>
-            観る、学ぶ、
-            <br />
-            遊ぶ、つくる。
-          </h1>
-          <p className={style.description}>
-            YURUPPE.incはつくる文化をつくります。
-            <br />
-            映像の枠の中だけで映像をつくろうとしても、進化はしない。映像以外の分野から自分の好きな「点」を見つけて繋いで「線」にしていくことが大事。繋がってる「点」が多ければ多いほどいい。その「線」が繋がり続ければ「面」になって立体に進化していく。
-          </p>
+          <h1 className={style.title}>YURUPPE inc.</h1>
+          <div
+            className={style.description}
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
         </div>
 
         <ul className={style.linkList}>
@@ -54,6 +54,22 @@ const Home: NextPage = () => {
       </div>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async (): Promise<{
+  props: Props
+}> => {
+  const key = {
+    headers: { 'X-API-KEY': process.env.X_API_KEY }
+  }
+  const res = await axios.get(process.env.END_POINT + 'top/main', key)
+  const data: any = await res.data.description
+
+  return {
+    props: {
+      description: data
+    }
+  }
 }
 
 export default Home

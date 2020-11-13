@@ -9,15 +9,15 @@
   padding: vwSp(40) vwSp(48) vwSp(48);
 }
 .title {
-  font-size: vwSp(40);
+  font-size: vwSp(37);
   line-height: 1.6;
   font-weight: $weightBlack;
   white-space: nowrap;
 }
 .description {
-  padding: vwSp(20) 0 0;
+  padding: vwSp(32) 0 0;
   font-size: vwSp(12);
-  line-height: 2.7;
+  line-height: 1.8;
   letter-spacing: 0.32em;
   font-weight: $weightExtraBold;
   text-align:justify;
