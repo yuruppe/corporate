@@ -9,4 +9,7 @@
   &.dark {
     background-color: $colorBlogBack;
   }
+  @include mq(pc) {
+    padding: 162px 0 0;
+  }
 }

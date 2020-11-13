@@ -12,6 +12,9 @@
   align-items: center;
   pointer-events: none;
   z-index: 100;
+  @include mq(pc) {
+    padding: 55px 91px;
+  }
 }
 
 .logo {
@@ -33,6 +36,9 @@
         fill: white;
       }
     }
+  }
+  @include mq(pc) {
+    width: 189px;
   }
 }
 

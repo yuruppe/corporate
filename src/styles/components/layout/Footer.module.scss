@@ -5,6 +5,13 @@
   width: 100%;
   padding: vwSp(40) 0 vwSp(80);
   text-align: center;
+  @include mq(pc) {
+    padding: 77px 180px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
 }
 
 .logo {
@@ -21,7 +28,29 @@
     }
   }
 }
+.sns {
+  font-size: 18px;
+  a {
+    display: flex;
+    align-items: center;
+  }
+  span {
+    display: inline-block;
+    padding-right: 37px;
+  }
+}
+.other {
+  padding: 52px 0 0;
+  color: $colorTextGray;
+  font-size: 14px;
+  &+& {
+    padding: 16px 0 0;
+  }
+}
 
+.bottom {
+  text-align: right;
+}
 .copyright {
   padding: vwSp(80) 0 0;
   font-weight: $weightBlack;
@@ -29,5 +58,9 @@
   letter-spacing: 0.08em;
   &.dark {
     color: white;
+  }
+  @include mq(pc) {
+    padding: 51px 0 0;
+    font-size: 12px;
   }
 }

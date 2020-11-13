@@ -38,6 +38,16 @@
     border-radius: vwSp(24);
     z-index: -1;
   }
+  @include mq(pc) {
+    &::before {
+      top: 16px;
+      border-radius: 32px;
+    }
+    &::after {
+      border-radius: 32px;
+      border: 6px solid $colorDarkBlue;
+    }
+  }
 }
 
 @mixin borderCircleButton () {
@@ -68,6 +78,17 @@
     border-radius: vwSp(60);
     background-color: white;
     z-index: -1;
+  }
+  @include mq(pc) {
+    &::before {
+      top: 8px;
+      border-radius: 60px;
+      border: 6px solid $colorDarkBlue;
+    }
+    &::after {
+      border: 6px solid $colorDarkBlue;
+      border-radius: 60px;
+    }
   }
 }
 

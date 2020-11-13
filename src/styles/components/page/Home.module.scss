@@ -3,16 +3,28 @@
 .main {
   position: relative;
   padding: 0 vwSp($paddingSpSide) vwSp(48);
+  @include mq(pc) {
+    padding: 0 50px 40px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
 }
 .inner {
   @include borderSquareFrame();
   padding: vwSp(40) vwSp(48) vwSp(48);
+  @include mq(pc) {
+    padding: 100px 180px 97px;
+  }
 }
 .title {
   font-size: vwSp(37);
   line-height: 1.6;
   font-weight: $weightBlack;
   white-space: nowrap;
+  @include mq(pc) {
+    font-size: 40px;
+    line-height: 59px;
+  }
 }
 .description {
   padding: vwSp(32) 0 0;
@@ -20,21 +32,39 @@
   line-height: 1.8;
   letter-spacing: 0.32em;
   font-weight: $weightExtraBold;
-  text-align:justify;
+  text-align: justify;
+  @include mq(pc) {
+    padding: 44px 0 0;
+    font-size: 12px;
+  }
 }
 
 .linkList {
   padding: vwSp(24) 0 0;
+  @include mq(pc) {
+    padding: 40px 0 0;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 .linkItem {
   margin: vwSp(24) 0 0;
   @include borderCircleButton();
+  @include mq(pc) {
+    margin: 0;
+    &+& {
+      margin-left: 15px;
+    }
+  }
 }
 .linkAnchor {
   position: relative;
   display: block;
   padding: vwSp(24) vwSp(32);
   text-align: center;
+  @include mq(pc) {
+    padding: 26px 32px;
+  }
 }
 .linkTitle {
   position: relative;
@@ -66,6 +96,21 @@
       width: vwSp(20);
       height: vwSp(20);
       transform: translateY(-60%);
+    }
+  }
+  @include mq(pc) {
+    font-size: 20px;
+    &.arrow {
+      &::before {
+        width: 12px;
+        height: 17px;
+      }
+    }
+    &.blank {
+      &::before {
+        width: 20px;
+        height: 20px;
+      }
     }
   }
 }
