@@ -32,11 +32,11 @@ const Header: React.FC = () => {
         </Link>
       </div>
       <div className={style.button}>
-        <div className={cn(style.top, { [style.dark]: appState.darkMode })}>
-          <div
-            className={style.hamburger}
-            onClick={(): void => setIsMenuOpen(!isMenuOpen)}
-          >
+        <div
+          className={cn(style.top, { [style.dark]: appState.darkMode })}
+          onClick={(): void => setIsMenuOpen(!isMenuOpen)}
+        >
+          <div className={style.hamburger}>
             <span />
             <span />
             <span />
