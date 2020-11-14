@@ -38,7 +38,9 @@ const ContactError: NextPage = () => {
         </div>
         <div className={style.back}>
           <Link href="/">
-            <span>トップへもどる</span>
+            <a>
+              <span>トップへもどる</span>
+            </a>
           </Link>
         </div>
       </section>

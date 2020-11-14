@@ -49,6 +49,9 @@
   border-radius: 60px;
   z-index: 10;
   pointer-events: auto;
+  @include mq(pc) {
+    cursor: pointer;
+  }
 }
 .top {
   width: 100%;

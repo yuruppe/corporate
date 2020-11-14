@@ -41,8 +41,10 @@
 }
 .other {
   padding: 52px 0 0;
-  color: $colorTextGray;
   font-size: 14px;
+  a {
+    color: $colorTextGray;
+  }
   &+& {
     padding: 16px 0 0;
   }

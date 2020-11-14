@@ -27,27 +27,29 @@ const WorksIndex: NextPage<Props> = ({ works }) => {
             {works.map((work, index) => (
               <li className={style.item} key={index}>
                 <Link href={`/works/${work.id}`}>
-                  <div className={style.itemInner}>
-                    <div className={style.img}>
-                      <img src={work.thumbnail.url} alt="" />
+                  <a>
+                    <div className={style.itemInner}>
+                      <div className={style.img}>
+                        <img src={work.thumbnail.url} alt="" />
+                      </div>
+                      <ul className={style.tagList}>
+                        {Array.isArray(work.tags) ? (
+                          <>
+                            {work.tags.map((tag, index) => (
+                              <li className={style.tagItem} key={index}>
+                                <span>{tag}</span>
+                              </li>
+                            ))}
+                          </>
+                        ) : (
+                          <li className={style.tagItem}>
+                            <span>{work.tags}</span>
+                          </li>
+                        )}
+                      </ul>
+                      <h2 className={style.itemTitle}>{work.title}</h2>
                     </div>
-                    <ul className={style.tagList}>
-                      {Array.isArray(work.tags) ? (
-                        <>
-                          {work.tags.map((tag, index) => (
-                            <li className={style.tagItem} key={index}>
-                              <span>{tag}</span>
-                            </li>
-                          ))}
-                        </>
-                      ) : (
-                        <li className={style.tagItem}>
-                          <span>{work.tags}</span>
-                        </li>
-                      )}
-                    </ul>
-                    <h2 className={style.itemTitle}>{work.title}</h2>
-                  </div>
+                  </a>
                 </Link>
               </li>
             ))}
@@ -56,7 +58,9 @@ const WorksIndex: NextPage<Props> = ({ works }) => {
         <div className={style.backWrap}>
           <div className={style.back}>
             <Link href="/">
-              <span>もどる</span>
+              <a>
+                <span>もどる</span>
+              </a>
             </Link>
           </div>
         </div>

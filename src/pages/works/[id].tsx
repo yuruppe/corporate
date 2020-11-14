@@ -104,7 +104,9 @@ const WorksDetail: NextPage<Props> = ({ work }) => {
         <div className={style.backWrap}>
           <div className={style.back}>
             <Link href="/works">
-              <span>もどる</span>
+              <a>
+                <span>もどる</span>
+              </a>
             </Link>
           </div>
         </div>

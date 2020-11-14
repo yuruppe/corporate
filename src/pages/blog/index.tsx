@@ -38,27 +38,29 @@ const BlogIndex: NextPage<Props> = ({ blogs }) => {
             {blogs.map((blog, index) => (
               <li className={style.item} key={index}>
                 <Link href={`/blog/${blog.id}`}>
-                  <div className={style.itemInner}>
-                    <div className={style.img}>
-                      <img src={blog.thumbnail.url} alt="" />
+                  <a>
+                    <div className={style.itemInner}>
+                      <div className={style.img}>
+                        <img src={blog.thumbnail.url} alt="" />
+                      </div>
+                      <ul className={style.tagList}>
+                        {Array.isArray(blog.tags) ? (
+                          <>
+                            {blog.tags.map((tag, index) => (
+                              <li className={style.tagItem} key={index}>
+                                <span>{tag}</span>
+                              </li>
+                            ))}
+                          </>
+                        ) : (
+                          <li className={style.tagItem}>
+                            <span>{blog.tags}</span>
+                          </li>
+                        )}
+                      </ul>
+                      <h2 className={style.itemTitle}>{blog.title}</h2>
                     </div>
-                    <ul className={style.tagList}>
-                      {Array.isArray(blog.tags) ? (
-                        <>
-                          {blog.tags.map((tag, index) => (
-                            <li className={style.tagItem} key={index}>
-                              <span>{tag}</span>
-                            </li>
-                          ))}
-                        </>
-                      ) : (
-                        <li className={style.tagItem}>
-                          <span>{blog.tags}</span>
-                        </li>
-                      )}
-                    </ul>
-                    <h2 className={style.itemTitle}>{blog.title}</h2>
-                  </div>
+                  </a>
                 </Link>
               </li>
             ))}

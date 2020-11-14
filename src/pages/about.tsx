@@ -79,7 +79,9 @@ const About: NextPage = () => {
         </div>
         <div className={style.back}>
           <Link href="/">
-            <span>もどる</span>
+            <a>
+              <span>もどる</span>
+            </a>
           </Link>
         </div>
       </section>

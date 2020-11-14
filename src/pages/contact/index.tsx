@@ -180,7 +180,9 @@ const Contact: NextPage = () => {
                   name="agree"
                   ref={register({ required: true })}
                 />
-                <Link href="/privacy">プライバシーポリシー</Link>
+                <Link href="/privacy">
+                  <a>プライバシーポリシー</a>
+                </Link>
                 <span>に同意しました</span>
                 {errors.agree && (
                   <p className={cn([style.form__error, style.agreeError])}>

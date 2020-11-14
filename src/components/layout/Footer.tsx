@@ -18,12 +18,16 @@ const Footer: React.FC = () => {
         </div>
         <div className={style.other}>
           <Link href="/about">
-            <span>会社情報</span>
+            <a>
+              <span>会社情報</span>
+            </a>
           </Link>
         </div>
         <div className={style.other}>
           <Link href="/privacy">
-            <span>プライバシーポリシー</span>
+            <a>
+              <span>プライバシーポリシー</span>
+            </a>
           </Link>
         </div>
       </div>

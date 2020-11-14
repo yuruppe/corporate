@@ -37,7 +37,9 @@ const Member: NextPage<Props> = ({ members, coverURL }) => {
         <div className={style.backWrap}>
           <div className={style.back}>
             <Link href="/">
-              <span>もどる</span>
+              <a>
+                <span>もどる</span>
+              </a>
             </Link>
           </div>
         </div>
