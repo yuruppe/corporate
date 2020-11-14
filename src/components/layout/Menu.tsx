@@ -40,6 +40,28 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
   return (
     <div className={cn(style.wrap, { [style.active]: isOpen })}>
       <div className={cn(style.bg, { [style.dark]: appState.darkMode })} />
+      <div
+        className={style.waveWrap}
+        dangerouslySetInnerHTML={{
+          __html: `<svg
+          class=${style.waves}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 24 150 28"
+          preserveAspectRatio="none"
+          shapeRendering="auto"
+        >
+          <defs>
+            <path
+              id="menu-wave"
+              d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+            />
+          </defs>
+          <g class=${style.parallax}>
+            <use xlink:href="#menu-wave" x="48" y="0"/>
+          </g>
+        </svg>`
+        }}
+      />
       <ul className={style.list}>
         <li className={style.item}>
           <Link href="/">
