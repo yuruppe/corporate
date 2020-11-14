@@ -4,9 +4,7 @@
   position: relative;
   padding: 0 vwSp($paddingSpSide) vwSp(48);
   @include mq(pc) {
-    padding: 0 50px 40px;
-    max-width: 1080px;
-    margin: 0 auto;
+    @include mainPcStyle();
   }
 }
 .inner {

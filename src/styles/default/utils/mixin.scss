@@ -130,6 +130,22 @@
     font-weight: $weightBlack;
     letter-spacing: 0.08em;
   }
+  @include mq(pc) {
+    margin: 0 auto;
+    &::before {
+      top: 8px;
+      border-radius: 24px;
+      border: 6px solid $colorDarkBlue;
+    }
+    &::after {
+      border: 6px solid $colorDarkBlue;
+      border-radius: 24px;
+    }
+    span {
+      padding: 26px 0;
+      font-size: 20px;
+    }
+  }
 }
 
 @mixin titleBottomBorder () {
@@ -148,4 +164,18 @@
     border-radius: 30px;
     background-color: $colorDarkBlue;
   }
+  @include mq(pc) {
+    padding-bottom: 20px;
+    &::before {
+      width: 72px;
+      height: 4px;
+      border-radius: 30px;
+    }
+  }
+}
+
+@mixin mainPcStyle () {
+  padding: 0 50px 40px;
+  max-width: 1080px;
+  margin: 0 auto;
 }

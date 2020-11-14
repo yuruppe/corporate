@@ -14,7 +14,7 @@ const ContactComplete: NextPage = () => {
   useEffectOnce(() => {
     window.scrollTo(0, 0)
     if (!appState.formTmpData) {
-      router.push('/contact')
+      // router.push('/contact')
     } else {
       appDispatch({ type: 'REMOVE_POST_DATA' })
     }

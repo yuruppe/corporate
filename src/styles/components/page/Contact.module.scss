@@ -4,12 +4,20 @@
   position: relative;
   width: 100%;
   padding: 0 vwSp($paddingSpSide) vwSp(48);
+  @include mq(pc) {
+    @include mainPcStyle();
+  }
 }
 
 .title {
   @include titleBottomBorder();
   img {
     width: vwSp(212);
+  }
+  @include mq(pc) {
+    img {
+      width: 212px;
+    }
   }
 }
 
@@ -20,6 +28,11 @@
   border-radius: vwSp(16);
   padding: vwSp(40) vwSp(32) vwSp(53);
   background-color: white;
+  @include mq(pc) {
+    margin: 80px 0 0;
+    border-radius: 16px;
+    padding: 92px 88px 92px;
+  }
 }
 .intro {
   font-size: vwSp(16);
@@ -29,6 +42,12 @@
     padding: vwSp(24) 0 0;
     font-weight: $weightExtraBold;
     color: $colorDarkBlue;
+  }
+  @include mq(pc) {
+    font-size: 16px;
+    &.note {
+      padding: 32px 0 0;
+    }
   }
 }
 
@@ -177,6 +196,8 @@
       pointer-events: auto;
     }
     input {
+      width: 100%;
+      cursor: pointer;
       font-family: $baseFont;
       padding: vwSp(16);
       font-size: vwSp(16);
@@ -205,6 +226,90 @@
       }
       &:last-child {
         width: vwSp(159);
+      }
+    }
+  }
+  @include mq(pc) {
+    padding: 16px 0 0;
+    &__item {
+      padding: 52px 0 0;
+      display: flex;
+      justify-content: space-between;
+    }
+    &__label {
+      font-size: 16px;
+      padding-bottom: 0;
+      padding-top: 18px;
+    }
+    &__input {
+      width: 450px;
+      input, textarea {
+        border-radius: 16px;
+        border: 2px solid $colorDefaultGray;
+        padding: 16px;
+        font-size: 16px;
+        &::placeholder {
+          font-size: 16px;
+        }
+        &.detailArea {
+          min-height: 390px;
+        }
+      }
+    }
+    &__error {
+      padding: 8px 0 0;
+      font-size: 16px;
+    }
+    &__agree {
+      padding: 80px 0 0;
+      font-size: 12px;
+      label {
+        padding-left: 28px;
+        &::before {
+          width: 22px;
+          height: 22px;
+          border: 2px solid $colorDarkBlue;
+          border-radius: 4px;
+          transform: translateY(-50%);
+        }
+        cursor: pointer;
+      }
+      a {
+        &::before {
+          left: -22px;
+          width: 11px;
+          height: 6.5px;
+        }
+      }
+    }
+    &__submit {
+      width: 352px;
+      margin: 40px auto 0;
+      input {
+        padding: 16px;
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+    &__confirmText {
+      padding: 16px 0 0;
+      font-size: 16px;
+    }
+    &__submitWrap {
+      display: flex;
+      justify-content: center;
+      .form__submit {
+        margin: 80px 0 0;
+        &::before, &::after {
+          border-radius: 16px;
+        }
+        &:first-child {
+          width: 171px;
+        }
+        &:last-child {
+          width: 271px;
+          margin-left: 8px;
+        }
       }
     }
   }
@@ -247,9 +352,29 @@
       background-color: $colorDarkBlue;
     }
   }
+  @include mq(pc) {
+    margin: 88px 0 0;
+    border-radius: 16px;
+    padding: 92px 88px 92px;
+    h1 {
+      font-size: 20px;
+    }
+    p {
+      padding: 20px 0 0;
+      font-size: 16px;
+    }
+    a {
+      margin: 20px 0 0;
+      font-size: 16px;
+    }
+  }
 }
 
 .back {
   margin: vwSp(40) 0 0;
   @include borderSquareButton();
+  @include mq(pc) {
+    width: 352px;
+    margin: 40px auto 0;
+  }
 }

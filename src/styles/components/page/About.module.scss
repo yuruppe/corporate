@@ -4,12 +4,20 @@
   position: relative;
   width: 100%;
   padding: 0 vwSp($paddingSpSide) vwSp(48);
+  @include mq(pc) {
+    @include mainPcStyle();
+  }
 }
 
 .title {
   @include titleBottomBorder();
   img {
     width: vwSp(142);
+  }
+  @include mq(pc) {
+    img {
+      width: 140px;
+    }
   }
 }
 
@@ -26,12 +34,45 @@
     font-size: vwSp(16);
     line-height: vwSp(24);
   }
+  @include mq(pc) {
+    margin: 88px 0 0;
+    border-radius: 16px;
+    padding: 92px;
+    dt {
+      font-size: 16px;
+      font-weight: $weightExtraBold;
+    }
+    dd {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
 }
 .logo {
   text-align: center;
+  img {
+    width: vwSp(120);
+  }
+  @include mq(pc) {
+    img {
+      width: 196px;
+    }
+  }
+}
+.bodyInner {
+  @include mq(pc) {
+    display: flex;
+    justify-content: space-between;
+    padding: 52px 0 0;
+  }
+
 }
 .topList {
   padding: vwSp(32) 0 0;
+  @include mq(pc) {
+    padding: 0;
+    flex-shrink: 0;
+  }
 }
 .topItem {
   padding: vwSp(40) 0;
@@ -42,6 +83,21 @@
   dt {
     width: vwSp(79);
     flex-shrink: 0;
+  }
+  @include mq(pc) {
+    padding: 0;
+    border: none;
+    &+& {
+      padding: 81px 0 0;
+    }
+    dt {
+      width: 79px;
+    }
+  }
+}
+.bottomList {
+  @include mq(pc) {
+    width: 360px;
   }
 }
 .bottomItem {
@@ -80,9 +136,41 @@
       left: vwSp(-32);
     }
   }
+  @include mq(pc) {
+    padding: 0;
+    border-bottom: none;
+    &+& {
+      padding: 72px 0 0;
+    }
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    dd {
+      padding: 40px 0 0;
+      margin-left: 32px;
+    }
+    li + li {
+      margin: 16px 0 0;
+    }
+    ol li {
+      &::before {
+        left: -32px;
+      }
+    }
+    ul li {
+      &::before {
+        left: -32px;
+      }
+    }
+  }
 }
 
 .back {
   margin: vwSp(40) 0 0;
   @include borderSquareButton();
+  @include mq(pc) {
+    width: 352px;
+    margin: 40px auto 0;
+  }
 }
