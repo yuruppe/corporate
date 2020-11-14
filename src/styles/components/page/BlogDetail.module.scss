@@ -4,6 +4,9 @@
   position: relative;
   width: 100%;
   padding: 0 0 vwSp(48);
+  @include mq(pc) {
+    @include mainPcStyle();
+  }
 }
 
 .title {
@@ -14,6 +17,11 @@
   &::before {
     background-color: $colorBlogDark;
   }
+  @include mq(pc) {
+    img {
+      width: 104px;
+    }
+  }
 }
 
 .cover {
@@ -21,8 +29,8 @@
   img {
     width: 100%;
   }
-  &.movie {
-    height: vwSp(236);
+  @include mq(pc) {
+    margin: 80px 0 0;
   }
 }
 
@@ -31,12 +39,20 @@
   width: 100%;
   margin-top: vwSp(-16);
   padding: 0 vwSp($paddingSpSide) 0;
+  @include mq(pc) {
+    margin-top: -16px;
+    padding: 0 36px 0;
+  }
 }
 
 .heading {
   padding: vwSp(32);
   background-color: white;
   border-radius: vwSp(16);
+  @include mq(pc) {
+    padding: 40px 90px;
+    border-radius: 16px;
+  }
 }
 .tagList {
   display: flex;
@@ -57,6 +73,14 @@
     line-height: 1;
     letter-spacing: 0.1em;
   }
+  @include mq(pc) {
+    padding: 4px 12px;
+    border-radius: 40px;
+    margin-right: 8px;
+    span {
+      font-size: 10px;
+    }
+  }
 }
 .blogTitle {
   padding: vwSp(16) 0 0;
@@ -64,6 +88,10 @@
   font-weight: $weightExtraBold;
   line-height: 1.6;
   letter-spacing: 0.08em;
+  @include mq(pc) {
+    padding: 16px 0 0;
+    font-size: 20px;
+  }
 }
 
 .desc {
@@ -71,6 +99,10 @@
   background-color: white;
   border-radius: vwSp(16);
   margin: vwSp(20) 0 0;
+  @include mq(pc) {
+    padding: 40px 54px;
+    border-radius: 16px;
+  }
 }
 
 .desc__member {
@@ -80,6 +112,9 @@
 .desc__memberImg {
   width: vwSp(32);
   flex-shrink: 0;
+  @include mq(pc) {
+    width: 32px;
+  }
 }
 .desc__memberText {
   display: flex;
@@ -91,6 +126,12 @@
     letter-spacing: 0.1em;
     &:first-child {
       font-weight: $weightExtraBold;
+    }
+  }
+  @include mq(pc) {
+    margin-left: 24px;
+    span {
+      font-size: 10px;
     }
   }
 }
@@ -142,12 +183,25 @@
       }
     }
   }
+  @include mq(pc) {
+    padding: 40px 0 0;
+    h1, h2, h3, h4, h5, h6 {
+      font-size: 18px;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
 }
 
 
 .backWrap {
   margin: vwSp(40) 0 0;
   padding: 0 vwSp($paddingSpSide) 0;
+  @include mq(pc) {
+    margin: 0;
+    padding: 0;
+  }
 }
 .back {
   @include borderSquareButton();
@@ -157,5 +211,9 @@
   }
   &::after {
     border-color: $colorBlogDark;
+  }
+  @include mq(pc) {
+    width: 352px;
+    margin: 40px auto 0;
   }
 }

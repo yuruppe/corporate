@@ -4,12 +4,20 @@
   position: relative;
   width: 100%;
   padding: 0 0 vwSp(48);
+  @include mq(pc) {
+    @include mainPcStyle();
+  }
 }
 
 .title {
   @include titleBottomBorder();
   img {
     width: vwSp(212);
+  }
+  @include mq(pc) {
+    img {
+      width: 212px;
+    }
   }
 }
 
@@ -21,18 +29,31 @@
   &.movie {
     height: vwSp(236);
   }
+  @include mq(pc) {
+    margin: 80px 0 0;
+    &.movie {
+      height: 508px;
+    }
+  }
 }
 
 .body {
   position: relative;
   width: 100%;
   padding: vwSp(24) vwSp($paddingSpSide) 0;
+  @include mq(pc) {
+    padding: 28px 0 0;
+  }
 }
 
 .heading {
   padding: vwSp(32) vwSp(32) vwSp(36);
   background-color: white;
   border-radius: vwSp(16);
+  @include mq(pc) {
+    padding: 40px 90px;
+    border-radius: 16px;
+  }
 }
 .tagList {
   display: flex;
@@ -53,6 +74,14 @@
     line-height: 1;
     letter-spacing: 0.1em;
   }
+  @include mq(pc) {
+    padding: 4px 12px;
+    border-radius: 40px;
+    margin-right: 8px;
+    span {
+      font-size: 10px;
+    }
+  }
 }
 .workTitle {
   padding: vwSp(16) 0 0;
@@ -60,6 +89,10 @@
   font-weight: $weightExtraBold;
   line-height: 1.6;
   letter-spacing: 0.08em;
+  @include mq(pc) {
+    padding: 16px 0 0;
+    font-size: 20px;
+  }
 }
 
 .desc {
@@ -67,6 +100,11 @@
   background-color: white;
   border-radius: vwSp(16);
   margin: vwSp(20) 0 0;
+  @include mq(pc) {
+    padding: 40px 90px;
+    border-radius: 16px;
+    margin: 20px 0 0;
+  }
 }
 
 .desc__title {
@@ -75,15 +113,25 @@
   font-weight: $weightBlack;
   letter-spacing: 0.1em;
   padding: 0 0 vwSp(24);
+  @include mq(pc) {
+    font-size: 24px;
+    padding: 0 0 16px;
+  }
 }
 .desc__text {
   font-size: vwSp(16);
   line-height: 1.6;
   letter-spacing: 0.08em;
   font-weight: $weightExtraBold;
+  @include mq(pc) {
+    font-size: 16px;
+  }
 }
 .desc__link {
   padding: vwSp(48) 0 0;
+  @include mq(pc) {
+    padding: 52px 0 0;
+  }
 }
 .desc__anchor {
   position: relative;
@@ -100,6 +148,9 @@
     height: 1px;
     background-color: $colorDarkBlue;
   }
+  @include mq(pc) {
+    font-size: 16px;
+  }
 }
 
 .credit {
@@ -107,6 +158,11 @@
   background-color: white;
   border-radius: vwSp(16);
   margin: vwSp(20) 0 0;
+  @include mq(pc) {
+    padding: 40px 90px;
+    margin: 20px 0 0;
+    border-radius: 16px;
+  }
 }
 .credit__title {
   font-size: vwSp(24);
@@ -114,10 +170,19 @@
   font-weight: $weightBlack;
   letter-spacing: 0.08em;
   padding: 0 0 vwSp(24);
+  @include mq(pc) {
+    font-size: 24px;
+    padding: 0 0 16px;
+  }
 }
 .credit__item {
   &+& {
     padding: vwSp(18) 0 0;
+  }
+  @include mq(pc) {
+    &+& {
+      padding: 18px 0 0;
+    }
   }
 }
 .credit__role {
@@ -125,17 +190,31 @@
   line-height: 1.6;
   font-weight: $weightExtraBold;
   letter-spacing: 0.08em;
+  @include mq(pc) {
+    font-size: 16px;
+  }
 }
 .credit__name {
   font-size: vwSp(16);
   line-height: 1.6;
   letter-spacing: 0.08em;
+  @include mq(pc) {
+    font-size: 16px;
+  }
 }
 
 .backWrap {
   margin: vwSp(40) 0 0;
   padding: 0 vwSp($paddingSpSide) 0;
+  @include mq(pc) {
+    margin: 0;
+    padding: 0;
+  }
 }
 .back {
   @include borderSquareButton();
+  @include mq(pc) {
+    width: 352px;
+    margin: 40px auto 0;
+  }
 }

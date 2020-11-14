@@ -4,6 +4,9 @@
   position: relative;
   width: 100%;
   padding: 0 0 vwSp(48);
+  @include mq(pc) {
+    @include mainPcStyle();
+  }
 }
 
 .title {
@@ -11,26 +14,65 @@
   img {
     width: vwSp(140);
   }
+  @include mq(pc) {
+    img {
+      width: 140px;
+    }
+  }
 }
 
+.inner {
+  @include mq(pc) {
+    display: flex;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 499px;
+    margin: 80px 0 0;
+    background-color: white;
+  }
+}
 .cover {
   margin: vwSp(88) 0 0;
   img {
     width: 100%;
   }
+  @include mq(pc) {
+    margin: 0;
+    flex-shrink: 0;
+    width: 361px;
+  }
 }
 
+.bodyWrap {
+  @include mq(pc) {
+    padding: 52px 32px 52px 90px;
+    margin: 0;
+    border-radius: 0;
+  }
+}
 .body {
   position: relative;
   border-radius: vwSp(16);
   background-color: white;
   padding: vwSp(48) vwSp(32) vwSp(64);
   margin: vwSp(-15) vwSp($paddingSpSide) 0;
+  @include mq(pc) {
+    height: 100%;
+    padding: 0 52px 0 0;
+    margin: 0;
+    border-radius: 0;
+    overflow-y: scroll;
+  }
 }
 
 .item {
   &+& {
     padding: vwSp(72) 0 0;
+  }
+  @include mq(pc) {
+    &+& {
+      padding: 62px 0 0;
+    }
   }
 }
 .itemHead {
@@ -46,11 +88,25 @@
     font-weight: $weightExtraBold;
     padding: vwSp(8) 0 0;
   }
+  @include mq(pc) {
+    h2 {
+      font-size: 32px;
+    }
+    p {
+      font-size: 16px;
+      padding: 8px 0 0;
+      line-height: 1.6;
+    }
+  }
 }
 .description {
   font-size: vwSp(16);
   line-height: 1.76;
   padding: vwSp(20) 0 0;
+  @include mq(pc) {
+    font-size: 16px;
+    padding: 20px 0 0;
+  }
 }
 .sns {
   padding: vwSp(42) 0 0;
@@ -79,13 +135,45 @@
   .facebook {
     width: vwSp(10);
   }
+  @include mq(pc) {
+    padding: 50px 0 0;
+    span {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    ul {
+      padding-left: 60px;
+    }
+    li + li {
+      margin-left: 24px;
+    }
+    .twitter {
+      width: 24px;
+    }
+    .instagram {
+      width: 20px;
+    }
+    .vimeo {
+      width: 22.86px;
+    }
+    .facebook {
+      width: 10px;
+    }
+  }
 }
 
 
 .backWrap {
   padding: 0 vwSp($paddingSpSide);
+  @include mq(pc) {
+    padding: 0;
+  }
 }
 .back {
   margin: vwSp(40) 0 0;
   @include borderSquareButton();
+  @include mq(pc) {
+    width: 352px;
+    margin: 40px auto 0;
+  }
 }

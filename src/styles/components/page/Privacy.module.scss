@@ -4,12 +4,20 @@
   position: relative;
   width: 100%;
   padding: 0 vwSp($paddingSpSide) vwSp(48);
+  @include mq(pc) {
+    @include mainPcStyle();
+  }
 }
 
 .title {
   @include titleBottomBorder();
   img {
     width: vwSp(355);
+  }
+  @include mq(pc) {
+    img {
+      width: 355px;
+    }
   }
 }
 
@@ -36,9 +44,26 @@
   .intro {
     padding: 0;
   }
+  @include mq(pc) {
+    margin: 80px 0 0;
+    border-radius: 16px;
+    padding: 92px 90px;
+    h2 {
+      font-size: 16px;
+      padding: 40px 0 0;
+    }
+    p {
+      font-size: 16px;
+      padding: 16px 0 0;
+    }
+  }
 }
 
 .back {
   margin: vwSp(40) 0 0;
   @include borderSquareButton();
+  @include mq(pc) {
+    width: 352px;
+    margin: 40px auto 0;
+  }
 }

@@ -86,7 +86,7 @@ const BlogDetail: NextPage<Props> = ({ blog, authorData }) => {
           <div className={style.back}>
             <Link href="/blog">
               <a>
-                <span>もどる</span>
+                <span>一覧にもどる</span>
               </a>
             </Link>
           </div>

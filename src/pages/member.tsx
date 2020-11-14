@@ -24,15 +24,19 @@ const Member: NextPage<Props> = ({ members, coverURL }) => {
             <img src="/img/page/memberTitle.png" alt="メンバー" />
           </h1>
         </div>
-        <div className={style.cover}>
-          <img src={coverURL} alt="" />
-        </div>
-        <div className={style.body}>
-          <ul className={style.list}>
-            {members.map((member) => (
-              <MemberItem member={member} key={member.id} />
-            ))}
-          </ul>
+        <div className={style.inner}>
+          <div className={style.cover}>
+            <img src={coverURL} alt="" />
+          </div>
+          <div className={style.bodyWrap}>
+            <div className={style.body}>
+              <ul className={style.list}>
+                {members.map((member) => (
+                  <MemberItem member={member} key={member.id} />
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
         <div className={style.backWrap}>
           <div className={style.back}>

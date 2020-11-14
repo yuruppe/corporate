@@ -55,7 +55,7 @@ const WorksIndex: NextPage<Props> = ({ works }) => {
             ))}
           </ul>
         </div>
-        <div className={style.backWrap}>
+        {/* <div className={style.backWrap}>
           <div className={style.back}>
             <Link href="/">
               <a>
@@ -63,7 +63,7 @@ const WorksIndex: NextPage<Props> = ({ works }) => {
               </a>
             </Link>
           </div>
-        </div>
+        </div> */}
       </section>
     </>
   )

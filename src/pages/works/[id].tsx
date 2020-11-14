@@ -77,19 +77,21 @@ const WorksDetail: NextPage<Props> = ({ work }) => {
             ) : (
               <p className={style.desc__text}>{work.detail}</p>
             )}
-            <div className={style.desc__link}>
-              {work.links.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.link_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={style.desc__anchor}
-                >
-                  {link.link_name}
-                </a>
-              ))}
-            </div>
+            {work.links.length > 0 ? (
+              <div className={style.desc__link}>
+                {work.links.map((link, index) => (
+                  <a
+                    key={index}
+                    href={link.link_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={style.desc__anchor}
+                  >
+                    {link.link_name}
+                  </a>
+                ))}
+              </div>
+            ) : null}
           </div>
           <div className={style.credit}>
             <h2 className={style.credit__title}>つくった人たち</h2>
@@ -105,7 +107,7 @@ const WorksDetail: NextPage<Props> = ({ work }) => {
           <div className={style.back}>
             <Link href="/works">
               <a>
-                <span>もどる</span>
+                <span>一覧にもどる</span>
               </a>
             </Link>
           </div>
