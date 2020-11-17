@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import style from '~/styles/components/page/Member.module.scss'
@@ -5,7 +6,7 @@ import Link from 'next/link'
 import axios from 'axios'
 import { CoverImageUserID, MemberType } from '~/types/Member'
 import { MemberItem } from '~/components/member/MemberItem'
-import Image from 'next/image'
+import { Picture } from '~/components/common/Picture'
 
 type Props = {
   members: MemberType[]
@@ -22,12 +23,16 @@ const Member: NextPage<Props> = ({ members, coverURL }) => {
       <section className={style.main}>
         <div className={style.head}>
           <h1 className={style.title}>
-            <Image src="/img/page/memberTitle.png" alt="メンバー" unsized />
+            <Picture
+              webp={require('@public/img/page/memberTitle.png?webp')}
+              img={require('@public/img/page/memberTitle.png')}
+              alt="メンバー"
+            />
           </h1>
         </div>
         <div className={style.inner}>
           <div className={style.cover}>
-            <Image src={coverURL} alt="" unsized />
+            <Picture webp={`${coverURL}?fm=webp`} img={coverURL} />
           </div>
           <div className={style.bodyWrap}>
             <div className={style.body}>

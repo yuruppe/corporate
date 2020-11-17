@@ -21,6 +21,7 @@ const Header: React.FC = () => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <title>YURUPPE.inc</title>
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"

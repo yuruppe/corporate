@@ -11,7 +11,11 @@ const Footer: React.FC = () => {
     <footer className={style.wrap}>
       <div className={style.top}>
         <div className={style.sns}>
-          <a href="" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://instagram.com/yuruppe.inc?igshid=10cfjlokkxj98"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span>SNS</span>
             <img src="/img/common/instagram.svg" alt="instagram" />
           </a>

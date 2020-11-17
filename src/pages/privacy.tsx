@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import style from '~/styles/components/page/Privacy.module.scss'
-import Image from 'next/image'
+import { Picture } from '~/components/common/Picture'
 
 const Home: NextPage = () => {
   return (
@@ -14,10 +14,10 @@ const Home: NextPage = () => {
       <div className={style.main}>
         <div className={style.head}>
           <h1 className={style.title}>
-            <Image
-              src="/img/page/privacyTitle.png"
+            <Picture
+              webp={require('@public//img/page/privacyTitle.png?webp')}
+              img={require('@public/img/page/privacyTitle.png')}
               alt="プライバシーポリシー"
-              unsized
             />
           </h1>
         </div>

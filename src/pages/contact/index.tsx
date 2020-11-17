@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { useContext } from 'react'
 import { AppContext } from '~/store/appContext'
 import { useEffectOnce } from '~/hooks/useEffectOnce'
-import Image from 'next/image'
+import { Picture } from '~/components/common/Picture'
 
 const Contact: NextPage = () => {
   const router = useRouter()
@@ -48,10 +48,10 @@ const Contact: NextPage = () => {
       <section className={style.main}>
         <div className={style.head}>
           <h1 className={style.title}>
-            <Image
-              src="/img/page/contactTitle.png"
+            <Picture
+              webp={require('@public/img/page/contactTitle.png?webp')}
+              img={require('@public/img/page/contactTitle.png')}
               alt="お問い合わせ"
-              unsized
             />
           </h1>
         </div>

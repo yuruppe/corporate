@@ -9,7 +9,7 @@ import { BlogType } from '~/types/Blog'
 import { MemberType } from '~/types/Member'
 import { useContext, useEffect } from 'react'
 import { AppContext } from '~/store/appContext'
-import Image from 'next/image'
+import { Picture } from '~/components/common/Picture'
 
 type Props = {
   blog: BlogType
@@ -37,11 +37,18 @@ const BlogDetail: NextPage<Props> = ({ blog, authorData }) => {
       <section className={style.main}>
         <div className={style.head}>
           <h2 className={style.title}>
-            <Image src="/img/page/blogTitle.png" alt="ウラ話" unsized />
+            <Picture
+              webp={require('@public/img/page/blogTitle.png?webp')}
+              img={require('@public/img/page/blogTitle.png')}
+              alt="ウラ話"
+            />
           </h2>
         </div>
         <div className={style.cover}>
-          <Image src={blog.thumbnail.url} alt="" unsized />
+          <Picture
+            webp={`${blog.thumbnail.url}?fm=webp`}
+            img={blog.thumbnail.url}
+          />
         </div>
         <div className={style.body}>
           <div className={style.heading}>
@@ -65,7 +72,10 @@ const BlogDetail: NextPage<Props> = ({ blog, authorData }) => {
           <div className={style.desc}>
             <div className={style.desc__member}>
               <div className={style.desc__memberImg}>
-                <Image src={authorData.icon.url} alt="" unsized />
+                <Picture
+                  webp={`${authorData.icon.url}?webp`}
+                  img={authorData.icon.url}
+                />
               </div>
               <div className={style.desc__memberText}>
                 <span>{authorData.name}</span>
