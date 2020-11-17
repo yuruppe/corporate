@@ -29,6 +29,7 @@ class CustomDocument extends Document implements CustomDocumentInterface {
           <meta name="twitter:image" content={`${this.url}/ogp.png`} />
           <link rel="icon" href="/favicon.ico" />
           <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+          <script src="/vendor/picturefill.min.js" async />
         </Head>
         <body>
           <Main />
