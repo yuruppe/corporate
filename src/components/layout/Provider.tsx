@@ -1,6 +1,26 @@
 import { AppContext, useAppReducer } from '~/store/appContext'
 import { ContextDevTool } from 'react-context-devtool'
 
+import style from '~/styles/components/layout/Layout.module.scss'
+import { useContext } from 'react'
+import cn from 'classnames'
+
+type LayoutProps = {
+  children: React.ReactNode
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const { appState } = useContext(AppContext)
+
+  return (
+    <>
+      <div className={cn(style.wrap, { [style.dark]: appState.darkMode })}>
+        {children}
+      </div>
+    </>
+  )
+}
+
 type Props = {
   children: React.ReactNode
 }
@@ -18,7 +38,7 @@ const Provider: React.FC<Props> = ({ children }) => {
             displayName="App Context"
           />
         ) : null}
-        {children}
+        <Layout>{children}</Layout>
       </AppContext.Provider>
     </>
   )
