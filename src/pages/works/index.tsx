@@ -4,6 +4,7 @@ import style from '~/styles/components/page/Works.module.scss'
 import Link from 'next/link'
 import axios from 'axios'
 import { WorksType } from '~/types/Works'
+import Image from 'next/image'
 
 type Props = {
   works: WorksType[]
@@ -19,7 +20,7 @@ const WorksIndex: NextPage<Props> = ({ works }) => {
       <section className={style.main}>
         <div className={style.head}>
           <h1 className={style.title}>
-            <img src="/img/page/worksTitle.png" alt="つくったやつ" />
+            <Image src="/img/page/worksTitle.png" alt="つくったやつ" unsized />
           </h1>
         </div>
         <div className={style.body}>
@@ -30,7 +31,7 @@ const WorksIndex: NextPage<Props> = ({ works }) => {
                   <a>
                     <div className={style.itemInner}>
                       <div className={style.img}>
-                        <img src={work.thumbnail.url} alt="" />
+                        <Image src={work.thumbnail.url} alt="" unsized />
                       </div>
                       <ul className={style.tagList}>
                         {Array.isArray(work.tags) ? (

@@ -7,6 +7,7 @@ import ErrorPage from 'next/error'
 import ReactPlayer from 'react-player'
 import { WorksType } from '~/types/Works'
 import style from '~/styles/components/page/WorksDetail.module.scss'
+import Image from 'next/image'
 
 type Props = {
   work: WorksType
@@ -25,7 +26,7 @@ const WorksDetail: NextPage<Props> = ({ work }) => {
       <section className={style.main}>
         <div className={style.head}>
           <h2 className={style.title}>
-            <img src="/img/page/worksTitle.png" alt="つくったやつ" />
+            <Image src="/img/page/worksTitle.png" alt="つくったやつ" unsized />
           </h2>
         </div>
         <div className={cn(style.cover, { [style.movie]: work.movie })}>
@@ -41,7 +42,7 @@ const WorksDetail: NextPage<Props> = ({ work }) => {
             </>
           ) : (
             <>
-              <img src={work.thumbnail.url} alt="" />
+              <Image src={work.thumbnail.url} alt="" unsized />
             </>
           )}
         </div>

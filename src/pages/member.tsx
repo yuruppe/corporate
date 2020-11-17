@@ -5,6 +5,7 @@ import Link from 'next/link'
 import axios from 'axios'
 import { CoverImageUserID, MemberType } from '~/types/Member'
 import { MemberItem } from '~/components/member/MemberItem'
+import Image from 'next/image'
 
 type Props = {
   members: MemberType[]
@@ -21,12 +22,12 @@ const Member: NextPage<Props> = ({ members, coverURL }) => {
       <section className={style.main}>
         <div className={style.head}>
           <h1 className={style.title}>
-            <img src="/img/page/memberTitle.png" alt="メンバー" />
+            <Image src="/img/page/memberTitle.png" alt="メンバー" unsized />
           </h1>
         </div>
         <div className={style.inner}>
           <div className={style.cover}>
-            <img src={coverURL} alt="" />
+            <Image src={coverURL} alt="" unsized />
           </div>
           <div className={style.bodyWrap}>
             <div className={style.body}>

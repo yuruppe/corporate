@@ -9,6 +9,9 @@ const nextConfig = {
     config.resolve.alias['~'] = resolve(__dirname, 'src')
     return config
   },
+  images: {
+    domains: ['images.microcms-assets.io'],
+  },
 }
 
 module.exports = nextConfig

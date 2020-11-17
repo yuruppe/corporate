@@ -2,6 +2,7 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import style from '~/styles/components/page/Privacy.module.scss'
+import Image from 'next/image'
 
 const Home: NextPage = () => {
   return (
@@ -13,7 +14,11 @@ const Home: NextPage = () => {
       <div className={style.main}>
         <div className={style.head}>
           <h1 className={style.title}>
-            <img src="/img/page/privacyTitle.png" alt="プライバシーポリシー" />
+            <Image
+              src="/img/page/privacyTitle.png"
+              alt="プライバシーポリシー"
+              unsized
+            />
           </h1>
         </div>
         <div className={style.body}>

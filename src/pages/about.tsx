@@ -2,6 +2,7 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import style from '~/styles/components/page/About.module.scss'
 import Link from 'next/link'
+import Image from 'next/image'
 
 // import cn from 'classnames'
 
@@ -15,7 +16,7 @@ const About: NextPage = () => {
       <section className={style.main}>
         <div className={style.head}>
           <h1 className={style.title}>
-            <img src="/img/page/aboutTitle.png" alt="会社概要" />
+            <Image src="/img/page/aboutTitle.png" alt="会社概要" unsized />
           </h1>
         </div>
         <div className={style.body}>

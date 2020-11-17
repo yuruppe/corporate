@@ -6,6 +6,7 @@ import axios from 'axios'
 import { BlogType } from '~/types/Blog'
 import { useContext, useEffect } from 'react'
 import { AppContext } from '~/store/appContext'
+import Image from 'next/image'
 
 type Props = {
   blogs: BlogType[]
@@ -30,7 +31,7 @@ const BlogIndex: NextPage<Props> = ({ blogs }) => {
       <section className={style.main}>
         <div className={style.head}>
           <h1 className={style.title}>
-            <img src="/img/page/blogTitle.png" alt="ウラ話" />
+            <Image src="/img/page/blogTitle.png" alt="ウラ話" unsized />
           </h1>
         </div>
         <div className={style.body}>
@@ -41,7 +42,7 @@ const BlogIndex: NextPage<Props> = ({ blogs }) => {
                   <a>
                     <div className={style.itemInner}>
                       <div className={style.img}>
-                        <img src={blog.thumbnail.url} alt="" />
+                        <Image src={blog.thumbnail.url} alt="" unsized />
                       </div>
                       <ul className={style.tagList}>
                         {Array.isArray(blog.tags) ? (

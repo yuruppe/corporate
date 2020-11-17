@@ -9,6 +9,7 @@ import { BlogType } from '~/types/Blog'
 import { MemberType } from '~/types/Member'
 import { useContext, useEffect } from 'react'
 import { AppContext } from '~/store/appContext'
+import Image from 'next/image'
 
 type Props = {
   blog: BlogType
@@ -36,11 +37,11 @@ const BlogDetail: NextPage<Props> = ({ blog, authorData }) => {
       <section className={style.main}>
         <div className={style.head}>
           <h2 className={style.title}>
-            <img src="/img/page/blogTitle.png" alt="ウラ話" />
+            <Image src="/img/page/blogTitle.png" alt="ウラ話" unsized />
           </h2>
         </div>
         <div className={style.cover}>
-          <img src={blog.thumbnail.url} alt="" />
+          <Image src={blog.thumbnail.url} alt="" unsized />
         </div>
         <div className={style.body}>
           <div className={style.heading}>
@@ -64,7 +65,7 @@ const BlogDetail: NextPage<Props> = ({ blog, authorData }) => {
           <div className={style.desc}>
             <div className={style.desc__member}>
               <div className={style.desc__memberImg}>
-                <img src={authorData.icon.url} alt="" />
+                <Image src={authorData.icon.url} alt="" unsized />
               </div>
               <div className={style.desc__memberText}>
                 <span>{authorData.name}</span>

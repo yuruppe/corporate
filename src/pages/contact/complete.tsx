@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useContext } from 'react'
 import { AppContext } from '~/store/appContext'
 import { useEffectOnce } from '~/hooks/useEffectOnce'
+import Image from 'next/image'
 
 const ContactComplete: NextPage = () => {
   const router = useRouter()
@@ -29,7 +30,11 @@ const ContactComplete: NextPage = () => {
       <section className={style.main}>
         <div className={style.head}>
           <h2 className={style.title}>
-            <img src="/img/page/contactTitle.png" alt="お問い合わせ" />
+            <Image
+              src="/img/page/contactTitle.png"
+              alt="お問い合わせ"
+              unsized
+            />
           </h2>
         </div>
         <div className={style.result}>
