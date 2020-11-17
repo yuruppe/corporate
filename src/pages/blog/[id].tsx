@@ -1,7 +1,7 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import cn from 'classnames'
+// import cn from 'classnames'
 import axios from 'axios'
 import ErrorPage from 'next/error'
 import style from '~/styles/components/page/BlogDetail.module.scss'
@@ -98,12 +98,12 @@ const BlogDetail: NextPage<Props> = ({ blog, authorData }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const key = {
-    headers: { 'X-API-KEY': process.env.X_API_KEY }
+    headers: { 'X-API-KEY': process.env.X_API_KEY },
   }
   const res = await axios.get(process.env.END_POINT + 'blog/?limit=9999', key)
   const data: Array<BlogType> = await res.data.contents
   const paths = data.map((item) => ({
-    params: { id: item.id.toString() }
+    params: { id: item.id.toString() },
   }))
 
   return { paths, fallback: true }
@@ -112,10 +112,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({
   params,
   preview,
-  previewData
+  previewData,
 }) => {
   const key = {
-    headers: { 'X-API-KEY': process.env.X_API_KEY }
+    headers: { 'X-API-KEY': process.env.X_API_KEY },
   }
   const res = await axios.get(process.env.END_POINT + 'blog/?limit=9999', key)
   const data: Array<BlogType> = await res.data.contents
@@ -135,7 +135,7 @@ export const getStaticProps: GetStaticProps = async ({
 
   const memberRes = await axios.get(
     process.env.END_POINT + `member/${content.author[0]}`,
-    key
+    key,
   )
   const authorData: MemberType = await memberRes.data
 
@@ -152,8 +152,8 @@ export const getStaticProps: GetStaticProps = async ({
   return {
     props: {
       blog: content,
-      authorData
-    }
+      authorData,
+    },
   }
 }
 

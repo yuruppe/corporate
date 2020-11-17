@@ -60,15 +60,15 @@ export const getStaticProps: GetStaticProps = async (): Promise<{
   props: Props
 }> => {
   const key = {
-    headers: { 'X-API-KEY': process.env.X_API_KEY }
+    headers: { 'X-API-KEY': process.env.X_API_KEY },
   }
   const res = await axios.get(process.env.END_POINT + 'top/main', key)
   const data: any = await res.data.description
 
   return {
     props: {
-      description: data
-    }
+      description: data,
+    },
   }
 }
 

@@ -119,12 +119,12 @@ const WorksDetail: NextPage<Props> = ({ work }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const key = {
-    headers: { 'X-API-KEY': process.env.X_API_KEY }
+    headers: { 'X-API-KEY': process.env.X_API_KEY },
   }
   const res = await axios.get(process.env.END_POINT + 'works/?limit=9999', key)
   const data: Array<WorksType> = await res.data.contents
   const paths = data.map((item) => ({
-    params: { id: item.id.toString() }
+    params: { id: item.id.toString() },
   }))
 
   return { paths, fallback: true }
@@ -133,10 +133,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({
   params,
   preview,
-  previewData
+  previewData,
 }) => {
   const key = {
-    headers: { 'X-API-KEY': process.env.X_API_KEY }
+    headers: { 'X-API-KEY': process.env.X_API_KEY },
   }
   const res = await axios.get(process.env.END_POINT + 'works/?limit=9999', key)
   const data: Array<WorksType> = await res.data.contents
@@ -166,8 +166,8 @@ export const getStaticProps: GetStaticProps = async ({
   }
   return {
     props: {
-      work: content
-    }
+      work: content,
+    },
   }
 }
 

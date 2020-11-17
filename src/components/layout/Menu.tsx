@@ -59,7 +59,7 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           <g class=${style.parallax}>
             <use xlink:href="#menu-wave" x="48" y="0"/>
           </g>
-        </svg>`
+        </svg>`,
         }}
       />
       <ul className={style.list}>
@@ -67,7 +67,7 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           <Link href="/">
             <a
               className={cn(style.anchor, {
-                [style.current]: router.route === '/'
+                [style.current]: router.route === '/',
               })}
               onClick={(): void => setIsOpen(false)}
             >
@@ -79,7 +79,7 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           <Link href="/works">
             <a
               className={cn(style.anchor, {
-                [style.current]: router.route === '/works'
+                [style.current]: router.route === '/works',
               })}
               onClick={(): void => setIsOpen(false)}
             >
@@ -91,7 +91,7 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           <Link href="/blog">
             <a
               className={cn(style.anchor, {
-                [style.current]: router.route === '/blog'
+                [style.current]: router.route === '/blog',
               })}
               onClick={(): void => setIsOpen(false)}
             >
@@ -103,7 +103,7 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           <Link href="/">
             <a
               className={cn(style.anchor, style.store, {
-                [style.current]: false
+                [style.current]: false,
               })}
             >
               映像屋さんの服
@@ -114,7 +114,7 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           <Link href="/member">
             <a
               className={cn(style.anchor, {
-                [style.current]: router.route === '/member'
+                [style.current]: router.route === '/member',
               })}
               onClick={(): void => setIsOpen(false)}
             >
@@ -126,7 +126,7 @@ const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           <Link href="/contact">
             <a
               className={cn(style.anchor, {
-                [style.current]: router.route === '/contact'
+                [style.current]: router.route === '/contact',
               })}
               onClick={(): void => setIsOpen(false)}
             >

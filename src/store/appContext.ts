@@ -9,7 +9,7 @@ type State = {
 const initialState: State = {
   count: 0,
   formTmpData: undefined,
-  darkMode: false
+  darkMode: false,
 }
 
 type Action =
@@ -23,18 +23,18 @@ const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         formTmpData: {
-          ...action.value
-        }
+          ...action.value,
+        },
       }
     case 'REMOVE_POST_DATA':
       return {
         ...state,
-        formTmpData: initialState.formTmpData
+        formTmpData: initialState.formTmpData,
       }
     case 'SET_DARK_MODE':
       return {
         ...state,
-        darkMode: action.value
+        darkMode: action.value,
       }
     default:
       return state
@@ -45,7 +45,7 @@ export const AppContext = createContext(
   {} as {
     appState: State
     appDispatch: Dispatch<Action>
-  }
+  },
 )
 
 export const useAppReducer = (): [State, Dispatch<Action>] =>

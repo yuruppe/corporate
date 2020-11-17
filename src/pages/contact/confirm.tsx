@@ -30,15 +30,15 @@ const ContactConfirm: NextPage<Props> = ({ endPoint, xWriteApiKey }) => {
       mail,
       tel,
       detail,
-      date
+      date,
     }
 
     axios
       .post(endPoint + 'contact', formTmpData, {
         headers: {
           'Content-Type': 'application/json',
-          'X-WRITE-API-KEY': xWriteApiKey
-        }
+          'X-WRITE-API-KEY': xWriteApiKey,
+        },
       })
       .then(() => {
         router.push('/contact/complete')
@@ -168,8 +168,8 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       endPoint: process.env.END_POINT,
-      xWriteApiKey: process.env.X_WRITE_API_KEY
-    }
+      xWriteApiKey: process.env.X_WRITE_API_KEY,
+    },
   }
 }
 

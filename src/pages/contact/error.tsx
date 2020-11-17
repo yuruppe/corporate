@@ -14,7 +14,7 @@ const ContactError: NextPage = () => {
   useEffectOnce(() => {
     window.scrollTo(0, 0)
     if (!appState.formTmpData) {
-      // router.push('/contact')
+      router.push('/contact')
     }
   })
 

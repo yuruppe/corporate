@@ -15,7 +15,7 @@ const Contact: NextPage = () => {
   const { register, handleSubmit, errors, formState, setValue } = useForm<
     FormTmpData
   >({
-    mode: 'onChange'
+    mode: 'onChange',
   })
   const { isValid } = formState
   const { appState, appDispatch } = useContext(AppContext)
@@ -24,7 +24,7 @@ const Contact: NextPage = () => {
     if (appState.formTmpData) {
       setValue('name', appState.formTmpData.name, { shouldValidate: true })
       setValue('company', appState.formTmpData.company, {
-        shouldValidate: true
+        shouldValidate: true,
       })
       setValue('mail', appState.formTmpData.mail, { shouldValidate: true })
       setValue('tel', appState.formTmpData.tel)
@@ -66,7 +66,7 @@ const Contact: NextPage = () => {
               </dt>
               <dd
                 className={cn(style.form__input, {
-                  [style.error]: errors.company
+                  [style.error]: errors.company,
                 })}
               >
                 <input
@@ -91,8 +91,8 @@ const Contact: NextPage = () => {
                 className={cn([
                   style.form__input,
                   {
-                    [style.error]: errors.name
-                  }
+                    [style.error]: errors.name,
+                  },
                 ])}
               >
                 <input
@@ -116,7 +116,7 @@ const Contact: NextPage = () => {
               <dd
                 className={cn([
                   style.form__input,
-                  { [style.error]: errors.mail }
+                  { [style.error]: errors.mail },
                 ])}
               >
                 <input
@@ -125,7 +125,7 @@ const Contact: NextPage = () => {
                   name="mail"
                   ref={register({
                     required: true,
-                    pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+                    pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                   })}
                   placeholder="例)xxx@xxx.co.jp"
                 />
@@ -157,7 +157,7 @@ const Contact: NextPage = () => {
               </dt>
               <dd
                 className={cn(style.form__input, {
-                  [style.error]: errors.detail
+                  [style.error]: errors.detail,
                 })}
               >
                 <textarea
