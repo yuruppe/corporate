@@ -35,7 +35,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps): JSX.Element => {
                 opacity: 0,
                 transition: {
                   duration: 0.3,
-                  delay: 1.0,
+                  // delay: 2.0,
                   ease: 'easeInOut',
                 },
               },
