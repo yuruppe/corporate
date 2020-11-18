@@ -7,42 +7,16 @@ import '../styles/default/global.scss'
 import { Header } from '~/components/layout/Header'
 import { Footer } from '~/components/layout/Footer'
 import { Provider } from '~/components/layout/Provider'
-import { AnimatePresence, motion } from 'framer-motion'
+import { PageWrap } from '~/components/layout/PageWrap'
 
-const MyApp = ({ Component, pageProps, router }: AppProps): JSX.Element => {
+const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <Provider>
       <Header />
-      <main>
-        <AnimatePresence exitBeforeEnter>
-          <motion.div
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            variants={{
-              initial: {
-                opacity: 0,
-              },
-              animate: {
-                opacity: 1,
-                transition: {
-                  duration: 0.3,
-                },
-              },
-              exit: {
-                opacity: 0,
-                transition: {
-                  duration: 0.3,
-                },
-              },
-            }}
-            key={router.route}
-          >
-            <Component {...pageProps} />
-          </motion.div>
-        </AnimatePresence>
-      </main>
-      <Footer />
+      <PageWrap>
+        <Component {...pageProps} />
+        <Footer />
+      </PageWrap>
     </Provider>
   )
 }

@@ -5,6 +5,8 @@ import Link from 'next/link'
 import axios from 'axios'
 import { WorksType } from '~/types/Works'
 import { Picture } from '~/components/common/Picture'
+import { PageInner } from '~/components/layout/PageInner'
+import { CustomLink } from '~/components/common/CustomLink'
 
 type Props = {
   works: WorksType[]
@@ -17,22 +19,22 @@ const WorksIndex: NextPage<Props> = ({ works }) => {
         <title>つくったやつ | YURUPPE.inc</title>
       </Head>
 
-      <section className={style.main}>
-        <div className={style.head}>
-          <h1 className={style.title}>
-            <Picture
-              webp={require('@public/img/page/worksTitle.png?webp')}
-              img={require('@public/img/page/worksTitle.png')}
-              alt="つくったやつ"
-            />
-          </h1>
-        </div>
-        <div className={style.body}>
-          <ul className={style.list}>
-            {works.map((work, index) => (
-              <li className={style.item} key={index}>
-                <Link href={`/works/${work.id}`}>
-                  <a>
+      <PageInner>
+        <div className={style.main}>
+          <div className={style.head}>
+            <h1 className={style.title}>
+              <Picture
+                webp={require('@public/img/page/worksTitle.png?webp')}
+                img={require('@public/img/page/worksTitle.png')}
+                alt="つくったやつ"
+              />
+            </h1>
+          </div>
+          <div className={style.body}>
+            <ul className={style.list}>
+              {works.map((work, index) => (
+                <li className={style.item} key={index}>
+                  <CustomLink href={`/works/${work.id}`}>
                     <div className={style.itemInner}>
                       <div className={style.img}>
                         <Picture
@@ -57,22 +59,13 @@ const WorksIndex: NextPage<Props> = ({ works }) => {
                       </ul>
                       <h2 className={style.itemTitle}>{work.title}</h2>
                     </div>
-                  </a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        {/* <div className={style.backWrap}>
-          <div className={style.back}>
-            <Link href="/">
-              <a>
-                <span>もどる</span>
-              </a>
-            </Link>
+                  </CustomLink>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div> */}
-      </section>
+        </div>
+      </PageInner>
     </>
   )
 }

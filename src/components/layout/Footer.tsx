@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { AppContext } from '~/store/appContext'
 import style from '~/styles/components/layout/Footer.module.scss'
 import cn from 'classnames'
-import Link from 'next/link'
+import { CustomLink } from '../common/CustomLink'
 
 const Footer: React.FC = () => {
   const { appState } = useContext(AppContext)
@@ -21,18 +21,14 @@ const Footer: React.FC = () => {
           </a>
         </div>
         <div className={style.other}>
-          <Link href="/about">
-            <a>
-              <span>会社情報</span>
-            </a>
-          </Link>
+          <CustomLink href="/about">
+            <span>会社情報</span>
+          </CustomLink>
         </div>
         <div className={style.other}>
-          <Link href="/privacy">
-            <a>
-              <span>プライバシーポリシー</span>
-            </a>
-          </Link>
+          <CustomLink href="/privacy">
+            <span>プライバシーポリシー</span>
+          </CustomLink>
         </div>
       </div>
       <div className={style.bottom}>

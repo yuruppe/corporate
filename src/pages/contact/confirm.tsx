@@ -9,6 +9,7 @@ import { useEffectOnce } from '~/hooks/useEffectOnce'
 import axios from 'axios'
 import { FormPostData } from '~/types/Form'
 import { Picture } from '~/components/common/Picture'
+import { PageInner } from '~/components/layout/PageInner'
 
 type Props = {
   endPoint: string
@@ -55,7 +56,6 @@ const ContactConfirm: NextPage<Props> = ({ endPoint, xWriteApiKey }) => {
   }
 
   useEffectOnce(() => {
-    window.scrollTo(0, 0)
     if (!appState.formTmpData) {
       router.push('/contact')
     }
@@ -71,100 +71,102 @@ const ContactConfirm: NextPage<Props> = ({ endPoint, xWriteApiKey }) => {
         <title>確認 | お問い合わせ | YURUPPE.inc</title>
       </Head>
 
-      <section className={style.main}>
-        <div className={style.head}>
-          <h1 className={style.title}>
-            <Picture
-              webp={require('@public/img/page/contactTitle.png?webp')}
-              img={require('@public/img/page/contactTitle.png')}
-              alt="お問い合わせ"
-            />
-          </h1>
-        </div>
-        <div className={style.body}>
-          <p className={style.intro}>
-            入力内容をご確認の上「送信する」ボタンを押してください。
-            <br />
-            内容に不備がある場合は、「戻る」ボタンを押して修正してください。
-          </p>
-          <dl className={style.form__item}>
-            <dt className={style.form__label}>
-              <label htmlFor="company">企業名</label>
-            </dt>
-            <dd className={style.form__input}>
-              <span className={style.form__confirmText}>
-                {appState.formTmpData.company}
-              </span>
-            </dd>
-          </dl>
-          <dl className={style.form__item}>
-            <dt className={style.form__label}>
-              <label className={style.labelRequire} htmlFor="name">
-                ご担当者名
-              </label>
-            </dt>
-            <dd className={style.form__input}>
-              <span className={style.form__confirmText}>
-                {appState.formTmpData.name}
-              </span>
-            </dd>
-          </dl>
-          <dl className={style.form__item}>
-            <dt className={style.form__label}>
-              <label className={style.labelRequire} htmlFor="mail">
-                E-MAIL
-              </label>
-            </dt>
-            <dd className={style.form__input}>
-              <span className={style.form__confirmText}>
-                {appState.formTmpData.mail}
-              </span>
-            </dd>
-          </dl>
-          <dl className={style.form__item}>
-            <dt className={cn(style.form__label, style.elective)}>
-              <label htmlFor="tel">TEL</label>
-            </dt>
-            <dd className={style.form__input}>
-              <span className={style.form__confirmText}>
-                {appState.formTmpData.tel === ''
-                  ? '-'
-                  : appState.formTmpData.tel}
-              </span>
-            </dd>
-          </dl>
-          <dl className={style.form__item}>
-            <dt className={style.form__label}>
-              <label htmlFor="detail">お問い合わせ内容</label>
-            </dt>
-            <dd className={style.form__input}>
-              <span className={style.form__confirmText}>
-                {appState.formTmpData.detail}
-              </span>
-            </dd>
-          </dl>
-          <dl className={style.form__item}>
-            <dt className={style.form__label}>
-              <label htmlFor="agree">プライバシーポリシー</label>
-            </dt>
-            <dd className={style.form__input}>
-              <span className={style.form__confirmText}>同意しました</span>
-            </dd>
-          </dl>
-          <div className={style.form__submitWrap}>
-            <div className={cn(style.form__submit, style.active)}>
-              <div className={style.form__submitInner}>
-                <input type="submit" value="訂正する" onClick={onBack} />
+      <PageInner>
+        <div className={style.main}>
+          <div className={style.head}>
+            <h1 className={style.title}>
+              <Picture
+                webp={require('@public/img/page/contactTitle.png?webp')}
+                img={require('@public/img/page/contactTitle.png')}
+                alt="お問い合わせ"
+              />
+            </h1>
+          </div>
+          <div className={style.body}>
+            <p className={style.intro}>
+              入力内容をご確認の上「送信する」ボタンを押してください。
+              <br />
+              内容に不備がある場合は、「戻る」ボタンを押して修正してください。
+            </p>
+            <dl className={style.form__item}>
+              <dt className={style.form__label}>
+                <label htmlFor="company">企業名</label>
+              </dt>
+              <dd className={style.form__input}>
+                <span className={style.form__confirmText}>
+                  {appState.formTmpData.company}
+                </span>
+              </dd>
+            </dl>
+            <dl className={style.form__item}>
+              <dt className={style.form__label}>
+                <label className={style.labelRequire} htmlFor="name">
+                  ご担当者名
+                </label>
+              </dt>
+              <dd className={style.form__input}>
+                <span className={style.form__confirmText}>
+                  {appState.formTmpData.name}
+                </span>
+              </dd>
+            </dl>
+            <dl className={style.form__item}>
+              <dt className={style.form__label}>
+                <label className={style.labelRequire} htmlFor="mail">
+                  E-MAIL
+                </label>
+              </dt>
+              <dd className={style.form__input}>
+                <span className={style.form__confirmText}>
+                  {appState.formTmpData.mail}
+                </span>
+              </dd>
+            </dl>
+            <dl className={style.form__item}>
+              <dt className={cn(style.form__label, style.elective)}>
+                <label htmlFor="tel">TEL</label>
+              </dt>
+              <dd className={style.form__input}>
+                <span className={style.form__confirmText}>
+                  {appState.formTmpData.tel === ''
+                    ? '-'
+                    : appState.formTmpData.tel}
+                </span>
+              </dd>
+            </dl>
+            <dl className={style.form__item}>
+              <dt className={style.form__label}>
+                <label htmlFor="detail">お問い合わせ内容</label>
+              </dt>
+              <dd className={style.form__input}>
+                <span className={style.form__confirmText}>
+                  {appState.formTmpData.detail}
+                </span>
+              </dd>
+            </dl>
+            <dl className={style.form__item}>
+              <dt className={style.form__label}>
+                <label htmlFor="agree">プライバシーポリシー</label>
+              </dt>
+              <dd className={style.form__input}>
+                <span className={style.form__confirmText}>同意しました</span>
+              </dd>
+            </dl>
+            <div className={style.form__submitWrap}>
+              <div className={cn(style.form__submit, style.active)}>
+                <div className={style.form__submitInner}>
+                  <input type="submit" value="訂正する" onClick={onBack} />
+                </div>
               </div>
-            </div>
-            <div className={cn(style.form__submit, style.active)}>
-              <div className={style.form__submitInner}>
-                <input type="submit" value="送信する" onClick={onSubmit} />
+              <div className={cn(style.form__submit, style.active)}>
+                <div className={style.form__submitInner}>
+                  <input type="submit" value="送信する" onClick={onSubmit} />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </PageInner>
     </>
   )
 }
