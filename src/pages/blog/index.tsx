@@ -1,7 +1,6 @@
 import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import style from '~/styles/components/page/Blog.module.scss'
-import Link from 'next/link'
 import axios from 'axios'
 import { BlogType } from '~/types/Blog'
 import { useContext, useEffect } from 'react'

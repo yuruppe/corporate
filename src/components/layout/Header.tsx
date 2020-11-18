@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import style from '~/styles/components/layout/Header.module.scss'
 import { Menu } from './Menu'
 import cn from 'classnames'
@@ -6,7 +6,6 @@ import { AppContext } from '~/store/appContext'
 import { CustomLink } from '../common/CustomLink'
 
 const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
   const { appState, appDispatch } = useContext(AppContext)
 
   return (

@@ -1,7 +1,6 @@
 import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import style from '~/styles/components/page/Works.module.scss'
-import Link from 'next/link'
 import axios from 'axios'
 import { WorksType } from '~/types/Works'
 import { Picture } from '~/components/common/Picture'

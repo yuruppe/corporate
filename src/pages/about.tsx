@@ -1,7 +1,6 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
 import style from '~/styles/components/page/About.module.scss'
-import Link from 'next/link'
 import { Picture } from '~/components/common/Picture'
 import { PageInner } from '~/components/layout/PageInner'
 import { CustomLink } from '~/components/common/CustomLink'

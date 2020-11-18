@@ -11,6 +11,7 @@ import { useEffectOnce } from '~/hooks/useEffectOnce'
 import { Picture } from '~/components/common/Picture'
 import { PageInner } from '~/components/layout/PageInner'
 import { CustomLink } from '~/components/common/CustomLink'
+import { routingStart } from '~/utils/routing'
 
 const Contact: NextPage = () => {
   const router = useRouter()
@@ -37,7 +38,11 @@ const Contact: NextPage = () => {
 
   const onSubmit = (data: FormTmpData): void => {
     appDispatch({ type: 'SET_POST_DATA', value: data })
-    router.push('/contact/confirm')
+    routingStart(() => {
+      window.scrollTo(0, 0)
+      appDispatch({ type: 'SET_IS_LOADING', value: true })
+      router.push('/contact/confirm')
+    })
   }
 
   return (

@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import { scroller } from 'react-scroll'
-import gsap from 'gsap'
 import { useContext } from 'react'
 import { AppContext } from '~/store/appContext'
+import { routingStart } from '~/utils/routing'
 
 // import cn from 'classnames'
 
@@ -26,9 +26,8 @@ const CustomLink: React.FC<Props> = ({
     e.preventDefault()
     if (appState.isLoading) return
 
-    if (onClick) {
-      onClick()
-    }
+    if (onClick) onClick()
+
     if (router.pathname === href) {
       scroller.scrollTo('__next', {
         duration: 1000,
@@ -39,20 +38,10 @@ const CustomLink: React.FC<Props> = ({
       return
     }
 
-    // loading : true
-
-    // loading anim start
-    // callback :
-    // scroll to 0
-    // router push
-    // - end
-    gsap.to('#page_wrap', {
-      opacity: 0,
-      onComplete: () => {
-        window.scrollTo(0, 0)
-        appDispatch({ type: 'SET_IS_LOADING', value: true })
-        router.push(href)
-      },
+    routingStart(() => {
+      window.scrollTo(0, 0)
+      appDispatch({ type: 'SET_IS_LOADING', value: true })
+      router.push(href)
     })
   }
 

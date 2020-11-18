@@ -10,6 +10,7 @@ import axios from 'axios'
 import { FormPostData } from '~/types/Form'
 import { Picture } from '~/components/common/Picture'
 import { PageInner } from '~/components/layout/PageInner'
+import { routingStart } from '~/utils/routing'
 
 type Props = {
   endPoint: string
@@ -18,7 +19,7 @@ type Props = {
 
 const ContactConfirm: NextPage<Props> = ({ endPoint, xWriteApiKey }) => {
   const router = useRouter()
-  const { appState } = useContext(AppContext)
+  const { appState, appDispatch } = useContext(AppContext)
 
   const onSubmit = (): void => {
     const { name, company, mail, tel, detail } = appState.formTmpData
@@ -43,11 +44,20 @@ const ContactConfirm: NextPage<Props> = ({ endPoint, xWriteApiKey }) => {
         },
       })
       .then(() => {
-        router.push('/contact/complete')
+        routingStart(() => {
+          window.scrollTo(0, 0)
+          appDispatch({ type: 'SET_IS_LOADING', value: true })
+          router.push('/contact/complete')
+        })
       })
       .catch((err) => {
         console.error(err)
-        router.push('/contact/error')
+
+        routingStart(() => {
+          window.scrollTo(0, 0)
+          appDispatch({ type: 'SET_IS_LOADING', value: true })
+          router.push('/contact/error')
+        })
       })
   }
 

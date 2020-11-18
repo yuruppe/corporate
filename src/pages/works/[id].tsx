@@ -1,6 +1,5 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 import cn from 'classnames'
 import axios from 'axios'
 import ErrorPage from 'next/error'

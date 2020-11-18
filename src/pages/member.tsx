@@ -2,7 +2,6 @@
 import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import style from '~/styles/components/page/Member.module.scss'
-import Link from 'next/link'
 import axios from 'axios'
 import { CoverImageUserID, MemberType } from '~/types/Member'
 import { MemberItem } from '~/components/member/MemberItem'

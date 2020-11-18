@@ -1,6 +1,5 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 import style from '~/styles/components/page/Privacy.module.scss'
 import { Picture } from '~/components/common/Picture'
 import { PageInner } from '~/components/layout/PageInner'
