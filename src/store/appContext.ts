@@ -70,6 +70,7 @@ const reducer = (state: State, action: Action): State => {
         menu: {
           ...state.menu,
           isOpen: false,
+          isAnim: true,
         },
       }
     case 'MENU_ANIM_ENDED':

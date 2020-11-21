@@ -48,6 +48,15 @@
     height: $waveHeight + 1px;
     background-color: white;
   }
+  &::after {
+    content: '';
+    position: absolute;
+    top: -900px;
+    left: 0;
+    width: 100%;
+    height: 900px;
+    background-color: white;
+  }
 }
 .waves {
   position:relative;
@@ -149,6 +158,7 @@
 }
 
 .bottomList {
+  position: relative;
   padding-left: vwSp(64);
   padding-bottom: vwSp(69);
   @include mq(pc) {

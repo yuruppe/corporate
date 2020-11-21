@@ -38,11 +38,13 @@ const CustomLink: React.FC<Props> = ({
       return
     }
 
-    routingStart(() => {
-      window.scrollTo(0, 0)
-      appDispatch({ type: 'SET_IS_LOADING', value: true })
-      router.push(href)
-    })
+    router.push(href)
+
+    // routingStart(() => {
+    //   window.scrollTo(0, 0)
+    //   appDispatch({ type: 'SET_IS_LOADING', value: true })
+    //   router.push(href)
+    // })
   }
 
   return (

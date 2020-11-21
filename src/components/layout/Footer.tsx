@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className={style.wrap}>
-      <div className={style.top}>
+      <div className={cn(style.top, 'pc-only')}>
         <div className={style.sns}>
           <a
             href="https://instagram.com/yuruppe.inc?igshid=10cfjlokkxj98"

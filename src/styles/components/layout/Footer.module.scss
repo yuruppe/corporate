@@ -51,7 +51,10 @@
 }
 
 .bottom {
-  text-align: right;
+  text-align: center;
+  @include mq(pc) {
+    text-align: right;
+  }
 }
 .copyright {
   padding: vwSp(80) 0 0;

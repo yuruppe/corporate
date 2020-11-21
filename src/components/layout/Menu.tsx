@@ -1,7 +1,7 @@
 import style from '~/styles/components/layout/Menu.module.scss'
 import cn from 'classnames'
 import { useRouter } from 'next/dist/client/router'
-import Link from 'next/link'
+import gsap from 'gsap'
 import { useContext, useEffect } from 'react'
 import { AppContext } from '~/store/appContext'
 import { CustomLink } from '../common/CustomLink'
@@ -35,20 +35,76 @@ const Menu: React.FC = () => {
   const { appState, appDispatch } = useContext(AppContext)
 
   const handleClick = (): void => {
-    console.log(appState.menu.isAnim)
     if (!appState.menu.isAnim) {
       appDispatch({ type: 'CLOSE_MENU' })
     }
   }
 
+  const open = (): void => {
+    const main = 'main'
+    gsap
+      .timeline({
+        onComplete: () => {
+          appDispatch({ type: 'MENU_ANIM_ENDED' })
+        },
+      })
+      .addLabel(main)
+      .to(
+        `.${style.waveWrap}`,
+        {
+          y: '0%',
+          ease: 'circ.out',
+        },
+        main,
+      )
+      .to(
+        `.${style.wrap}`,
+        {
+          // opacity: 1,
+          visibility: 'visible',
+        },
+        main,
+      )
+  }
+  const close = (): void => {
+    const main = 'main'
+    gsap
+      .timeline({
+        onComplete: () => {
+          appDispatch({ type: 'MENU_ANIM_ENDED' })
+          gsap.set(`.${style.wrap}`, {
+            visibility: 'hidden',
+          })
+        },
+      })
+      .addLabel(main)
+      .to(
+        `.${style.waveWrap}`,
+        {
+          y: '-100%',
+          ease: 'circ.out',
+        },
+        main,
+      )
+      .to(
+        `.${style.wrap}`,
+        {
+          // opacity: 0,
+        },
+        main,
+      )
+  }
+
   useEffect(() => {
-    if (appState.menu.isAnim) {
-      appDispatch({ type: 'MENU_ANIM_ENDED' })
+    if (appState.menu.isOpen) {
+      open()
+    } else {
+      close()
     }
-  }, [appState.menu.isAnim])
+  }, [appState.menu.isOpen])
 
   return (
-    <div className={cn(style.wrap, { [style.active]: appState.menu.isOpen })}>
+    <div className={style.wrap}>
       <div className={cn(style.bg, { [style.dark]: appState.darkMode })} />
       <div
         className={style.waveWrap}
@@ -114,18 +170,14 @@ const Menu: React.FC = () => {
           </a>
         </li>
         <li className={style.bottomItem}>
-          <Link href="/about">
-            <a className={style.bottomAnchor} onClick={handleClick}>
-              会社情報
-            </a>
-          </Link>
+          <CustomLink href="/about" onClick={handleClick}>
+            <span>会社情報</span>
+          </CustomLink>
         </li>
         <li className={style.bottomItem}>
-          <Link href="/privacy">
-            <a className={style.bottomAnchor} onClick={handleClick}>
-              プライバシーポリシー
-            </a>
-          </Link>
+          <CustomLink href="/privacy" onClick={handleClick}>
+            <span>プライバシーポリシー</span>
+          </CustomLink>
         </li>
       </ul>
     </div>
