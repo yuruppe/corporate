@@ -2,40 +2,41 @@ import { css } from '@emotion/react'
 import { CustomLink } from '../common/CustomLink'
 import { Picture } from '../common/Picture'
 import style from '~/styles'
-import { WorksType } from '~/types/Works'
+import { BlogType } from '~/types/Blog'
 
 type Props = {
-  works: WorksType[]
+  blogs: BlogType[]
 }
 
-const WorksIndexInner: React.FC<Props> = ({ works }) => {
+const BlogIndexInner: React.FC<Props> = ({ blogs }) => {
   return (
     <div css={main}>
       <div>
         <h1 css={title}>
           <Picture
-            webp={require('@public/img/page/worksTitle.png?webp')}
-            img={require('@public/img/page/worksTitle.png')}
-            alt="つくったやつ"
+            webp={require('@public/img/page/blogTitle.png?webp')}
+            img={require('@public/img/page/blogTitle.png')}
+            alt="ウラ話"
           />
         </h1>
       </div>
       <div css={body}>
         <ul css={list}>
-          {works.map((work, index) => (
+          {blogs.map((blog, index) => (
             <li css={item} key={index}>
-              <CustomLink href={`/works/${work.id}`}>
+              <CustomLink href={`/blog/${blog.id}`}>
                 <div css={itemInner}>
                   <div css={img}>
                     <Picture
-                      webp={`${work.thumbnail.url}?fm=webp`}
-                      img={work.thumbnail.url}
+                      webp={`${blog.thumbnail.url}?fm=webp`}
+                      img={blog.thumbnail.url}
+                      alt=""
                     />
                   </div>
                   <ul css={tagList}>
-                    {Array.isArray(work.tags) ? (
+                    {Array.isArray(blog.tags) ? (
                       <>
-                        {work.tags.map((tag, index) => (
+                        {blog.tags.map((tag, index) => (
                           <li css={tagItem} key={index}>
                             <span>{tag}</span>
                           </li>
@@ -43,11 +44,11 @@ const WorksIndexInner: React.FC<Props> = ({ works }) => {
                       </>
                     ) : (
                       <li css={tagItem}>
-                        <span>{work.tags}</span>
+                        <span>{blog.tags}</span>
                       </li>
                     )}
                   </ul>
-                  <h2 css={itemTitle}>{work.title}</h2>
+                  <h2 css={itemTitle}>{blog.title}</h2>
                 </div>
               </CustomLink>
             </li>
@@ -70,11 +71,14 @@ const main = css`
 const title = css`
   ${style.mixin.titleBottomBorder()}
   img {
-    width: ${style.vwSp(212)};
+    width: ${style.vwSp(104)};
+  }
+  &::before {
+    background-color: ${style.colors.blogDark};
   }
   ${style.pc(css`
     img {
-      width: 212px;
+      width: 104px;
     }
   `)}
 `
@@ -87,6 +91,7 @@ const body = css`
     margin: 80px 0 0;
   `)}
 `
+
 const list = css`
   position: relative;
   ${style.pc(css`
@@ -112,7 +117,7 @@ const item = css`
   `)}
 `
 const itemInner = css`
-  padding: ${style.vwSp(16)} ${style.vwSp(16)} ${style.vwSp(32)};
+  padding: ${style.vwSp(16)} ${style.vwSp(16)} ${style.vwSp(24)};
   background-color: white;
   border-radius: ${style.vwSp(16)};
   ${style.pc(css`
@@ -168,9 +173,5 @@ const itemTitle = css`
     font-size: 20px;
   `)}
 `
-// const back = css`
-//   margin: ${style.vwSp(40)} 0 0;
-//   ${style.mixin.borderSquareButton()}
-// `
 
-export { WorksIndexInner }
+export { BlogIndexInner }

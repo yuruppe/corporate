@@ -1,13 +1,11 @@
 import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
-import style from '~/styles/components/page/Blog.module.scss'
 import axios from 'axios'
 import { BlogType } from '~/types/Blog'
 import { useContext, useEffect } from 'react'
 import { AppContext } from '~/store/appContext'
-import { Picture } from '~/components/common/Picture'
 import { PageInner } from '~/components/layout/PageInner'
-import { CustomLink } from '~/components/common/CustomLink'
+import { BlogIndexInner } from '~/components/blog/BlogIndexInner'
 
 type Props = {
   blogs: BlogType[]
@@ -30,52 +28,7 @@ const BlogIndex: NextPage<Props> = ({ blogs }) => {
       </Head>
 
       <PageInner>
-        <div className={style.main}>
-          <div className={style.head}>
-            <h1 className={style.title}>
-              <Picture
-                webp={require('@public/img/page/blogTitle.png?webp')}
-                img={require('@public/img/page/blogTitle.png')}
-                alt="ウラ話"
-              />
-            </h1>
-          </div>
-          <div className={style.body}>
-            <ul className={style.list}>
-              {blogs.map((blog, index) => (
-                <li className={style.item} key={index}>
-                  <CustomLink href={`/blog/${blog.id}`}>
-                    <div className={style.itemInner}>
-                      <div className={style.img}>
-                        <Picture
-                          webp={`${blog.thumbnail.url}?fm=webp`}
-                          img={blog.thumbnail.url}
-                          alt=""
-                        />
-                      </div>
-                      <ul className={style.tagList}>
-                        {Array.isArray(blog.tags) ? (
-                          <>
-                            {blog.tags.map((tag, index) => (
-                              <li className={style.tagItem} key={index}>
-                                <span>{tag}</span>
-                              </li>
-                            ))}
-                          </>
-                        ) : (
-                          <li className={style.tagItem}>
-                            <span>{blog.tags}</span>
-                          </li>
-                        )}
-                      </ul>
-                      <h2 className={style.itemTitle}>{blog.title}</h2>
-                    </div>
-                  </CustomLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <BlogIndexInner blogs={blogs} />
       </PageInner>
     </>
   )

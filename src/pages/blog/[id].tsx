@@ -1,16 +1,13 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
-// import cn from 'classnames'
 import axios from 'axios'
 import ErrorPage from 'next/error'
-import style from '~/styles/components/page/BlogDetail.module.scss'
 import { BlogType } from '~/types/Blog'
 import { MemberType } from '~/types/Member'
 import { useContext, useEffect } from 'react'
 import { AppContext } from '~/store/appContext'
-import { Picture } from '~/components/common/Picture'
 import { PageInner } from '~/components/layout/PageInner'
-import { CustomLink } from '~/components/common/CustomLink'
+import { BlogDetailInner } from '~/components/blog/BlogDetailInner'
 
 type Props = {
   blog: BlogType
@@ -36,73 +33,7 @@ const BlogDetail: NextPage<Props> = ({ blog, authorData }) => {
         <title>{`${blog.title} | ウラ話 | YURUPPE.inc`}</title>
       </Head>
       <PageInner>
-        <div className={style.main}>
-          <div className={style.head}>
-            <h2 className={style.title}>
-              <Picture
-                webp={require('@public/img/page/blogTitle.png?webp')}
-                img={require('@public/img/page/blogTitle.png')}
-                alt="ウラ話"
-              />
-            </h2>
-          </div>
-          <div className={style.cover}>
-            <Picture
-              webp={`${blog.thumbnail.url}?fm=webp`}
-              img={blog.thumbnail.url}
-            />
-          </div>
-          <div className={style.body}>
-            <div className={style.heading}>
-              <ul className={style.tagList}>
-                {Array.isArray(blog.tags) ? (
-                  <>
-                    {blog.tags.map((tag, index) => (
-                      <li className={style.tagItem} key={index}>
-                        <span>{tag}</span>
-                      </li>
-                    ))}
-                  </>
-                ) : (
-                  <li className={style.tagItem}>
-                    <span>{blog.tags}</span>
-                  </li>
-                )}
-              </ul>
-              <h1 className={style.blogTitle}>{blog.title}</h1>
-            </div>
-            <div className={style.desc}>
-              <div className={style.desc__member}>
-                <div className={style.desc__memberImg}>
-                  <Picture
-                    webp={`${authorData.icon.url}?webp`}
-                    img={authorData.icon.url}
-                  />
-                </div>
-                <div className={style.desc__memberText}>
-                  <span>{authorData.name}</span>
-                  <span>
-                    {blog.date
-                      .split('T')[0]
-                      .replace('-', '/')
-                      .replace('-', '/')}
-                  </span>
-                </div>
-              </div>
-              <div
-                className={style.content}
-                dangerouslySetInnerHTML={{ __html: blog.detail }}
-              ></div>
-            </div>
-          </div>
-          <div className={style.backWrap}>
-            <div className={style.back}>
-              <CustomLink href="/blog">
-                <span>一覧にもどる</span>
-              </CustomLink>
-            </div>
-          </div>
-        </div>
+        <BlogDetailInner blog={blog} authorData={authorData} />
       </PageInner>
     </>
   )
