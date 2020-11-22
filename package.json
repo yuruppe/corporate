@@ -15,6 +15,7 @@
     "node": "12.x"
   },
   "dependencies": {
+    "@emotion/react": "^11.1.1",
     "@types/classnames": "^2.2.11",
     "axios": "^0.21.0",
     "classnames": "^2.2.6",
@@ -38,6 +39,7 @@
     "webp-loader": "^0.6.0"
   },
   "devDependencies": {
+    "@emotion/babel-plugin": "^11.0.0",
     "@types/eslint": "^6.8.1",
     "@types/eslint-plugin-prettier": "^3.1.0",
     "@types/imagemin-mozjpeg": "^8.0.0",

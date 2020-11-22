@@ -37,22 +37,14 @@ body {
   height: 100%;
 }
 
-main {
-  min-height: 30vh;
-}
-
 a {
   text-decoration: none;
-  color: black;
+  color: inherit;
 }
 
 img {
   max-width: 100%;
   height: auto;
-}
-
-ul, li {
-  list-style: none;
 }
 
 button{
