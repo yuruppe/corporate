@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import index from './index'
 
 const reset = css`
   html,
@@ -124,10 +125,21 @@ const reset = css`
     border-collapse: collapse;
     border-spacing: 0;
   }
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+  }
+  ::before,
+  ::after {
+    text-decoration: inherit; /* 1 */
+    vertical-align: inherit; /* 2 */
+  }
 `
 
 const globalStyles = css`
   ${reset}
+
   html {
     font-family: 'M PLUS Rounded 1c', 'Helvetica Neue', Arial,
       'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
@@ -194,6 +206,16 @@ const globalStyles = css`
     outline: none;
     background: transparent;
   }
+  ${index.pc(css`
+    .sp-only {
+      display: none !important;
+    }
+  `)}
+  ${index.sp(css`
+    .pc-only {
+      display: none !important;
+    }
+  `)}
 `
 
 export { globalStyles }

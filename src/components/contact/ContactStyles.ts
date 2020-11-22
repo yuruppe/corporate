@@ -164,10 +164,8 @@ const formAgree = css`
     position: absolute;
     opacity: 0;
     &:checked {
-      & + a {
-        &::before {
-          opacity: 1;
-        }
+      & + .check {
+        opacity: 1;
       }
     }
   }
@@ -175,7 +173,7 @@ const formAgree = css`
     position: relative;
     display: inline-block;
     padding-left: ${style.vwSp(28)};
-    &::before {
+    &::after {
       content: '';
       position: absolute;
       top: 50%;
@@ -186,25 +184,27 @@ const formAgree = css`
       border-radius: ${style.vwSp(4)};
       transform: translateY(-50%);
     }
+    &::before {
+    }
+  }
+  .check {
+    position: absolute;
+    top: 50%;
+    left: ${style.vwSp(6.3)};
+    width: ${style.vwSp(11)};
+    height: ${style.vwSp(6.5)};
+    background-image: url('/img/common/check.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateY(-46%);
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
   }
   a {
     display: inline-block;
     position: relative;
     color: ${style.colors.darkBlue};
-    &::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: ${style.vwSp(-21)};
-      width: ${style.vwSp(11)};
-      height: ${style.vwSp(6.5)};
-      background-image: url('/img/common/check.svg');
-      background-size: contain;
-      background-repeat: no-repeat;
-      transform: translateY(-50%);
-      opacity: 0;
-      transition: opacity 0.1s ease-in-out;
-    }
+
     &::after {
       content: '';
       position: absolute;

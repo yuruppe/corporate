@@ -178,7 +178,10 @@ const ContactInner: React.FC = () => {
                 name="agree"
                 ref={register({ required: true })}
               />
-              <CustomLink href="/privacy">プライバシーポリシー</CustomLink>
+              <div className="check" />
+              <CustomLink href="/privacy">
+                <small>プライバシーポリシー</small>
+              </CustomLink>
               <span>に同意しました</span>
               {errors.agree && (
                 <p css={ContactStyles.formError} className="agreeError">
