@@ -168,9 +168,9 @@ const itemTitle = css`
     font-size: 20px;
   `)}
 `
-const back = css`
-  margin: ${style.vwSp(40)} 0 0;
-  ${style.mixin.borderSquareButton()}
-`
+// const back = css`
+//   margin: ${style.vwSp(40)} 0 0;
+//   ${style.mixin.borderSquareButton()}
+// `
 
 export { WorksIndexInner }

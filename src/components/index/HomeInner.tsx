@@ -1,9 +1,6 @@
 import { css } from '@emotion/react'
-import { CustomLink } from '../common/CustomLink'
-import cn from 'classnames'
-// import style from '~/styles/components/page/Home.module.scss'
 import style from '~/styles'
-import Link from 'next/link'
+import { CustomLink } from '../common/CustomLink'
 
 type Props = {
   description: any
@@ -19,22 +16,22 @@ const HomeInner: React.FC<Props> = ({ description }) => {
 
       <ul css={linkList}>
         <li css={linkItem}>
-          <Link href="/works">
-            <a css={linkAnchor}>
+          <CustomLink href="/works">
+            <div css={linkAnchor}>
               <h2 css={linkTitle} className="arrow">
                 つくったやつ
               </h2>
-            </a>
-          </Link>
+            </div>
+          </CustomLink>
         </li>
         <li css={linkItem}>
-          <Link href="/blog">
-            <a css={linkAnchor}>
+          <CustomLink href="/blog">
+            <div css={linkAnchor}>
               <h2 css={linkTitle} className="arrow">
                 ウラ話
               </h2>
-            </a>
-          </Link>
+            </div>
+          </CustomLink>
         </li>
         <li css={linkItem}>
           <a css={linkAnchor}>
