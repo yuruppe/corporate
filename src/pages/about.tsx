@@ -1,6 +1,5 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
-import { PageInner } from '~/components/layout/PageInner'
 import { AboutInner } from '~/components/about/AboutInner'
 
 const About: NextPage = () => {
@@ -10,9 +9,9 @@ const About: NextPage = () => {
         <title>About | YURUPPE.inc</title>
       </Head>
 
-      <PageInner>
+      <main>
         <AboutInner />
-      </PageInner>
+      </main>
     </>
   )
 }

@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import axios from 'axios'
 import { CoverImageUserID, MemberType } from '~/types/Member'
-import { PageInner } from '~/components/layout/PageInner'
 import { MemberInner } from '~/components/member/MemberInner'
 
 type Props = {
@@ -18,9 +16,9 @@ const Member: NextPage<Props> = ({ members, coverURL }) => {
         <title>Member | YURUPPE.inc</title>
       </Head>
 
-      <PageInner>
+      <main>
         <MemberInner members={members} coverURL={coverURL} />
-      </PageInner>
+      </main>
     </>
   )
 }

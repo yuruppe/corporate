@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import { AppContext } from '~/store/appContext'
 import { useEffectOnce } from '~/hooks/useEffectOnce'
-import { PageInner } from '~/components/layout/PageInner'
 import { ContactErrorInner } from '~/components/contact/ContactErrorInner'
 
 const ContactError: NextPage = () => {
@@ -23,9 +22,9 @@ const ContactError: NextPage = () => {
         <title>エラー | お問い合わせ | YURUPPE.inc</title>
       </Head>
 
-      <PageInner>
+      <main>
         <ContactErrorInner />
-      </PageInner>
+      </main>
     </>
   )
 }

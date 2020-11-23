@@ -2,7 +2,6 @@ import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import axios from 'axios'
 import { WorksType } from '~/types/Works'
-import { PageInner } from '~/components/layout/PageInner'
 import { WorksIndexInner } from '~/components/works/WorksIndexInner'
 
 type Props = {
@@ -16,9 +15,9 @@ const WorksIndex: NextPage<Props> = ({ works }) => {
         <title>つくったやつ | YURUPPE.inc</title>
       </Head>
 
-      <PageInner>
+      <main>
         <WorksIndexInner works={works} />
-      </PageInner>
+      </main>
     </>
   )
 }

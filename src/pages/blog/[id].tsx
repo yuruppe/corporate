@@ -6,7 +6,6 @@ import { BlogType } from '~/types/Blog'
 import { MemberType } from '~/types/Member'
 import { useContext, useEffect } from 'react'
 import { AppContext } from '~/store/appContext'
-import { PageInner } from '~/components/layout/PageInner'
 import { BlogDetailInner } from '~/components/blog/BlogDetailInner'
 
 type Props = {
@@ -32,9 +31,9 @@ const BlogDetail: NextPage<Props> = ({ blog, authorData }) => {
       <Head>
         <title>{`${blog.title} | ウラ話 | YURUPPE.inc`}</title>
       </Head>
-      <PageInner>
+      <main>
         <BlogDetailInner blog={blog} authorData={authorData} />
-      </PageInner>
+      </main>
     </>
   )
 }

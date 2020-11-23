@@ -6,6 +6,7 @@ type State = {
   formTmpData: FormTmpData
   darkMode: boolean
   isLoading: boolean
+  launch: boolean
   menu: {
     isOpen: boolean
     isAnim: boolean
@@ -16,6 +17,7 @@ const initialState: State = {
   formTmpData: undefined,
   darkMode: false,
   isLoading: true,
+  launch: false,
   menu: {
     isOpen: false,
     isAnim: false,
@@ -30,6 +32,7 @@ type Action =
   | { type: 'OPEN_MENU' }
   | { type: 'CLOSE_MENU' }
   | { type: 'MENU_ANIM_ENDED' }
+  | { type: 'SET_LAUNCH' }
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
@@ -80,6 +83,11 @@ const reducer = (state: State, action: Action): State => {
           ...state.menu,
           isAnim: false,
         },
+      }
+    case 'SET_LAUNCH':
+      return {
+        ...state,
+        launch: true,
       }
     default:
       return state

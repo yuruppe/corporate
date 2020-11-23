@@ -2,9 +2,6 @@ import { useRouter } from 'next/router'
 import { scroller } from 'react-scroll'
 import { useContext } from 'react'
 import { AppContext } from '~/store/appContext'
-import { routingStart } from '~/utils/routing'
-
-// import cn from 'classnames'
 
 type Props = {
   linkClassName?: string
@@ -20,7 +17,7 @@ const CustomLink: React.FC<Props> = ({
   onClick,
 }) => {
   const router = useRouter()
-  const { appState, appDispatch } = useContext(AppContext)
+  const { appState } = useContext(AppContext)
 
   const handleClick = (e: React.MouseEvent<HTMLElement>): void => {
     e.preventDefault()
@@ -39,12 +36,6 @@ const CustomLink: React.FC<Props> = ({
     }
 
     router.push(href)
-
-    // routingStart(() => {
-    //   window.scrollTo(0, 0)
-    //   appDispatch({ type: 'SET_IS_LOADING', value: true })
-    //   router.push(href)
-    // })
   }
 
   return (

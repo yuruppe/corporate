@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import { AppContext } from '~/store/appContext'
 import { useEffectOnce } from '~/hooks/useEffectOnce'
-import { PageInner } from '~/components/layout/PageInner'
 import { ContactCompleteInner } from '~/components/contact/ContactCompleteInner'
 
 const ContactComplete: NextPage = () => {
@@ -25,9 +24,9 @@ const ContactComplete: NextPage = () => {
         <title>完了 | お問い合わせ | YURUPPE.inc</title>
       </Head>
 
-      <PageInner>
+      <main>
         <ContactCompleteInner />
-      </PageInner>
+      </main>
     </>
   )
 }

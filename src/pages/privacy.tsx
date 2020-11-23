@@ -1,6 +1,5 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
-import { PageInner } from '~/components/layout/PageInner'
 import { PrivacyInner } from '~/components/privacy/PrivacyInner'
 
 const Home: NextPage = () => {
@@ -10,9 +9,9 @@ const Home: NextPage = () => {
         <title>プライバシーポリシー | YURUPPE.inc</title>
       </Head>
 
-      <PageInner>
+      <main>
         <PrivacyInner />
-      </PageInner>
+      </main>
     </>
   )
 }

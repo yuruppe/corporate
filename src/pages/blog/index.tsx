@@ -4,7 +4,6 @@ import axios from 'axios'
 import { BlogType } from '~/types/Blog'
 import { useContext, useEffect } from 'react'
 import { AppContext } from '~/store/appContext'
-import { PageInner } from '~/components/layout/PageInner'
 import { BlogIndexInner } from '~/components/blog/BlogIndexInner'
 
 type Props = {
@@ -27,9 +26,9 @@ const BlogIndex: NextPage<Props> = ({ blogs }) => {
         <title>ウラ話 | YURUPPE.inc</title>
       </Head>
 
-      <PageInner>
+      <main>
         <BlogIndexInner blogs={blogs} />
-      </PageInner>
+      </main>
     </>
   )
 }

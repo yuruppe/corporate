@@ -3,7 +3,6 @@ import Head from 'next/head'
 import axios from 'axios'
 import ErrorPage from 'next/error'
 import { WorksType } from '~/types/Works'
-import { PageInner } from '~/components/layout/PageInner'
 import { WorksDetailInner } from '~/components/works/WorksDetailInner'
 
 type Props = {
@@ -20,9 +19,9 @@ const WorksDetail: NextPage<Props> = ({ work }) => {
       <Head>
         <title>{`${work.title} | つくったやつ | YURUPPE.inc`}</title>
       </Head>
-      <PageInner>
+      <main>
         <WorksDetailInner work={work} />
-      </PageInner>
+      </main>
     </>
   )
 }

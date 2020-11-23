@@ -1,7 +1,6 @@
 import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import axios from 'axios'
-import { PageInner } from '~/components/layout/PageInner'
 import { HomeInner } from '~/components/index/HomeInner'
 
 type Props = {
@@ -15,9 +14,9 @@ const Home: NextPage<Props> = ({ description }) => {
         <title>YURUPPE.inc</title>
       </Head>
 
-      <PageInner>
+      <main>
         <HomeInner description={description} />
-      </PageInner>
+      </main>
     </>
   )
 }

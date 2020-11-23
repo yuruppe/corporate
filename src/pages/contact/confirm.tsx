@@ -1,6 +1,5 @@
 import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
-import { PageInner } from '~/components/layout/PageInner'
 import { ContactConfirmInner } from '~/components/contact/ContactConfirmInner'
 
 type Props = {
@@ -15,9 +14,9 @@ const ContactConfirm: NextPage<Props> = ({ endPoint, xWriteApiKey }) => {
         <title>確認 | お問い合わせ | YURUPPE.inc</title>
       </Head>
 
-      <PageInner>
+      <main>
         <ContactConfirmInner endPoint={endPoint} xWriteApiKey={xWriteApiKey} />
-      </PageInner>
+      </main>
     </>
   )
 }
