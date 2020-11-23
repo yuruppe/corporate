@@ -1,5 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/router'
+import { useContext } from 'react'
+import { useEffectOnce } from '~/hooks/useEffectOnce'
+import { AppContext } from '~/store/appContext'
 
 type Props = {
   children: React.ReactNode
@@ -7,10 +10,24 @@ type Props = {
 
 const ContentWrap: React.FC<Props> = ({ children }) => {
   const router = useRouter()
+  const { appDispatch } = useContext(AppContext)
+
+  useEffectOnce(() => {
+    router.events.on('routeChangeStart', () => {
+      console.log('routeChangeStart')
+      appDispatch({ type: 'SET_IS_LOADING', value: true })
+    })
+  })
+
+  const onComplete = (): void => {
+    // 遷移終了時
+    window.scrollTo(0, 0)
+    appDispatch({ type: 'SET_IS_LOADING', value: false })
+  }
 
   return (
     <div id="page_wrap">
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence exitBeforeEnter onExitComplete={onComplete}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

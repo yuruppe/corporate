@@ -4,35 +4,27 @@ import { AppContext } from '~/store/appContext'
 import gsap from 'gsap'
 import style from '~/styles'
 import cn from 'classnames'
-import { useRouter } from 'next/router'
 
 const Loading: React.FC = () => {
-  const router = useRouter()
   const { appState, appDispatch } = useContext(AppContext)
-
   useEffect(() => {
     if (!appState.launch) {
       // on launch process
       launchAnim(() => {
+        window.scrollTo(0, 0)
         appDispatch({ type: 'SET_LAUNCH' })
         appDispatch({ type: 'SET_IS_LOADING', value: false })
       })
       return
     }
     if (appState.isLoading) {
-      // routeing start
-      routeAnim(() => {
-        appDispatch({ type: 'SET_IS_LOADING', value: false })
-      })
+      // Loading start
+      routeingStartAnim()
+    } else {
+      // Loading end
+      routingEndAnim()
     }
   }, [appState.isLoading])
-
-  useEffect(() => {
-    if (appState.launch) {
-      // 画面遷移時
-      appDispatch({ type: 'SET_IS_LOADING', value: true })
-    }
-  }, [router.route])
 
   return (
     <div css={loadOverlay}>
@@ -78,21 +70,20 @@ const launchAnim = (cb: () => void): void => {
   })
 }
 
-const routeAnim = (cb: () => void): void => {
+const routeingStartAnim = (): void => {
   gsap.to(target, {
     y: '0%',
     duration: 0.5,
     ease: 'expo.out',
-    onComplete: () => {
-      window.scrollTo(0, 0)
-      gsap.to(target, {
-        y: '100%',
-        duration: 0.5,
-        delay: 1.0,
-        ease: 'expo.out',
-        onComplete: cb,
-      })
-    },
+  })
+}
+
+const routingEndAnim = (): void => {
+  gsap.to(target, {
+    y: '100%',
+    duration: 0.5,
+    delay: 0.5,
+    ease: 'expo.out',
   })
 }
 

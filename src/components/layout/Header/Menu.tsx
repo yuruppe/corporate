@@ -257,7 +257,7 @@ const waveWrap = css`
     position: relative;
     width: 100%;
     height: 15vh;
-    margin-bottom: -7px; /*Fix for safari gap*/
+    margin-bottom: -7px;
     min-height: 100px;
     max-height: 150px;
     transform: rotate(180deg);
