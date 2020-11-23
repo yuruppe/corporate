@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form'
 import { useEffectOnce } from '~/hooks/useEffectOnce'
 import { AppContext } from '~/store/appContext'
 import { FormTmpData } from '~/types/Form'
-import { routingStart } from '~/utils/routing'
 import { CustomLink } from '../common/CustomLink'
 import { Picture } from '../common/Picture'
 import cn from 'classnames'
@@ -34,13 +33,11 @@ const ContactInner: React.FC = () => {
   })
 
   const onSubmit = (data: FormTmpData): void => {
+    if (!isValid) return
     appDispatch({ type: 'SET_POST_DATA', value: data })
-    routingStart(() => {
-      window.scrollTo(0, 0)
-      appDispatch({ type: 'SET_IS_LOADING', value: true })
-      router.push('/contact/confirm')
-    })
+    router.push('/contact/confirm')
   }
+
   return (
     <div css={ContactStyles.main}>
       <div>

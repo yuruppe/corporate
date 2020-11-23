@@ -229,9 +229,14 @@ const formAgree = css`
   ${style.pc(css`
     padding: 80px 0 0;
     font-size: 12px;
+    .check {
+      left: 6px;
+      width: 11px;
+      height: 6.5px;
+    }
     label {
       padding-left: 28px;
-      &::before {
+      &::after {
         width: 22px;
         height: 22px;
         border: 2px solid ${style.colors.darkBlue};
@@ -239,13 +244,6 @@ const formAgree = css`
         transform: translateY(-50%);
       }
       cursor: pointer;
-    }
-    a {
-      &::before {
-        left: -22px;
-        width: 11px;
-        height: 6.5px;
-      }
     }
   `)}
 `

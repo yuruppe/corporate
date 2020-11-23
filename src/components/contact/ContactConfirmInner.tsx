@@ -3,7 +3,6 @@ import { useContext } from 'react'
 import { useEffectOnce } from '~/hooks/useEffectOnce'
 import { AppContext } from '~/store/appContext'
 import { FormPostData } from '~/types/Form'
-import { routingStart } from '~/utils/routing'
 import { Picture } from '../common/Picture'
 import ContactStyles from './ContactStyles'
 import axios from 'axios'
@@ -15,7 +14,7 @@ type Props = {
 
 const ContactConfirmInner: React.FC<Props> = ({ endPoint, xWriteApiKey }) => {
   const router = useRouter()
-  const { appState, appDispatch } = useContext(AppContext)
+  const { appState } = useContext(AppContext)
 
   const onSubmit = (): void => {
     const { name, company, mail, tel, detail } = appState.formTmpData
@@ -41,22 +40,10 @@ const ContactConfirmInner: React.FC<Props> = ({ endPoint, xWriteApiKey }) => {
       })
       .then(() => {
         router.push('/contact/complete')
-        // routingStart(() => {
-        //   window.scrollTo(0, 0)
-        //   appDispatch({ type: 'SET_IS_LOADING', value: true })
-        //   router.push('/contact/complete')
-        // })
       })
       .catch((err) => {
         console.error(err)
-
         router.push('/contact/error')
-
-        // routingStart(() => {
-        //   window.scrollTo(0, 0)
-        //   appDispatch({ type: 'SET_IS_LOADING', value: true })
-        //   router.push('/contact/error')
-        // })
       })
   }
 
