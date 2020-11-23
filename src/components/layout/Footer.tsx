@@ -1,16 +1,17 @@
 import { useContext } from 'react'
 import { AppContext } from '~/store/appContext'
-import style from '~/styles/components/layout/Footer.module.scss'
 import cn from 'classnames'
 import { CustomLink } from '../common/CustomLink'
+import style from '~/styles'
+import { css } from '@emotion/react'
 
 const Footer: React.FC = () => {
   const { appState } = useContext(AppContext)
 
   return (
-    <footer className={style.wrap}>
-      <div className={cn(style.top, 'pc-only')}>
-        <div className={style.sns}>
+    <footer css={wrap}>
+      <div className="pc-only">
+        <div css={sns}>
           <a
             href="https://instagram.com/yuruppe.inc?igshid=10cfjlokkxj98"
             target="_blank"
@@ -20,19 +21,19 @@ const Footer: React.FC = () => {
             <img src="/img/common/instagram.svg" alt="instagram" />
           </a>
         </div>
-        <div className={style.other}>
+        <div css={other}>
           <CustomLink href="/about">
             <span>会社情報</span>
           </CustomLink>
         </div>
-        <div className={style.other}>
+        <div css={other}>
           <CustomLink href="/privacy">
             <span>プライバシーポリシー</span>
           </CustomLink>
         </div>
       </div>
-      <div className={style.bottom}>
-        <div className={cn(style.logo, { [style.dark]: appState.darkMode })}>
+      <div css={bottom}>
+        <div css={logo} className={cn({ dark: appState.darkMode })}>
           <svg
             width="100"
             height="64"
@@ -48,14 +49,82 @@ const Footer: React.FC = () => {
             />
           </svg>
         </div>
-        <div
-          className={cn(style.copyright, { [style.dark]: appState.darkMode })}
-        >
+        <div css={copyright} className={cn({ dark: appState.darkMode })}>
           <span>Copyright © YURUPPE.inc. All rights reserved.</span>
         </div>
       </div>
     </footer>
   )
 }
+
+const wrap = css`
+  position: relative;
+  width: 100%;
+  padding: ${style.vwSp(40)} 0 ${style.vwSp(80)};
+  text-align: center;
+  ${style.pc(css`
+    padding: 77px 180px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  `)}
+`
+
+const logo = css`
+  svg {
+    path {
+      fill: #318fa4;
+    }
+  }
+  &.dark {
+    svg {
+      path {
+        fill: white;
+      }
+    }
+  }
+`
+const sns = css`
+  font-size: 18px;
+  a {
+    display: flex;
+    align-items: center;
+  }
+  span {
+    display: inline-block;
+    padding-right: 37px;
+  }
+`
+const other = css`
+  padding: 52px 0 0;
+  font-size: 14px;
+  a {
+    color: ${style.colors.textGray};
+  }
+  & + & {
+    padding: 16px 0 0;
+  }
+`
+
+const bottom = css`
+  text-align: center;
+  ${style.pc(css`
+    text-align: right;
+  `)}
+`
+const copyright = css`
+  padding: ${style.vwSp(80)} 0 0;
+  font-weight: ${style.config.weight.black};
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  &.dark {
+    color: white;
+  }
+  ${style.pc(css`
+    padding: 51px 0 0;
+    font-size: 12px;
+  `)}
+`
 
 export { Footer }

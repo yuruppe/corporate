@@ -19,6 +19,7 @@
     "@types/classnames": "^2.2.11",
     "axios": "^0.21.0",
     "classnames": "^2.2.6",
+    "emotion-rgba": "^0.0.8",
     "framer-motion": "^2.9.4",
     "gsap": "^3.5.1",
     "imagemin-mozjpeg": "^9.0.0",

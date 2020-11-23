@@ -1,9 +1,10 @@
 import { AppContext, useAppReducer } from '~/store/appContext'
 import { ContextDevTool } from 'react-context-devtool'
 
-import style from '~/styles/components/layout/Layout.module.scss'
 import { useContext } from 'react'
 import cn from 'classnames'
+import { css } from '@emotion/react'
+import style from '~/styles'
 
 type LayoutProps = {
   children: React.ReactNode
@@ -14,12 +15,27 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <>
-      <div className={cn(style.wrap, { [style.dark]: appState.darkMode })}>
+      <div css={wrap} className={cn({ dark: appState.darkMode })}>
         {children}
       </div>
     </>
   )
 }
+
+const wrap = css`
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  background-color: ${style.colors.lightBlue};
+  padding: 116px 0 0;
+  transition: background-color 0.3s ease-in-out;
+  &.dark {
+    background-color: ${style.colors.blogBack};
+  }
+  ${style.pc(css`
+    padding: 162px 0 0;
+  `)}
+`
 
 type Props = {
   children: React.ReactNode

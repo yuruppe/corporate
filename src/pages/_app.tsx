@@ -1,16 +1,13 @@
 import * as React from 'react'
 import { AppProps } from 'next/app'
 
-// import 'sanitize.css'
-// import '../styles/default/global.scss'
-
-import { Header } from '~/components/layout/Header'
 import { Footer } from '~/components/layout/Footer'
 import { Provider } from '~/components/layout/Provider'
 import { PageWrap } from '~/components/layout/PageWrap'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Global } from '@emotion/react'
 import { globalStyles } from '~/styles/global'
+import { Header } from '~/components/layout/Header'
 
 const MyApp = ({ Component, pageProps, router }: AppProps): JSX.Element => {
   return (

@@ -1,16 +1,17 @@
 import { useContext } from 'react'
-import style from '~/styles/components/layout/Header.module.scss'
-import { Menu } from './Menu'
 import cn from 'classnames'
 import { AppContext } from '~/store/appContext'
-import { CustomLink } from '../common/CustomLink'
+import { CustomLink } from '~/components/common/CustomLink'
+import { Menu } from './Menu'
+import style from '~/styles'
+import { css } from '@emotion/react'
 
 const Header: React.FC = () => {
   const { appState, appDispatch } = useContext(AppContext)
 
   return (
-    <header className={style.wrap}>
-      <div className={cn(style.logo, { [style.dark]: appState.darkMode })}>
+    <header css={wrap}>
+      <div css={logo} className={cn({ dark: appState.darkMode })}>
         <CustomLink href="/">
           <svg
             width="146"
@@ -29,9 +30,10 @@ const Header: React.FC = () => {
           </svg>
         </CustomLink>
       </div>
-      <div className={style.button}>
+      <div css={button}>
         <div
-          className={cn(style.top, { [style.dark]: appState.darkMode })}
+          css={top}
+          className={cn({ dark: appState.darkMode })}
           onClick={(): void => {
             if (appState.menu.isAnim) return
             if (appState.menu.isOpen) {
@@ -41,22 +43,122 @@ const Header: React.FC = () => {
             }
           }}
         >
-          <div className={style.hamburger}>
+          <div css={hamburger}>
             <span />
             <span />
             <span />
           </div>
         </div>
-        <div className={style.middle} />
-        <div
-          className={cn(style.bottom, { [style.dark]: appState.darkMode })}
-        />
+        <div />
+        <div css={bottom} className={cn({ dark: appState.darkMode })} />
       </div>
-      <nav className={style.nav}>
+      <nav css={nav}>
         <Menu />
       </nav>
     </header>
   )
 }
+
+const wrap = css`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  padding: 20px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 100;
+  ${style.pc(css`
+    padding: 55px 91px;
+  `)}
+`
+
+const logo = css`
+  width: 145.37px;
+  height: auto;
+  pointer-events: auto;
+  svg {
+    width: 100%;
+    height: 100%;
+    path {
+      fill: black;
+    }
+  }
+  &.dark {
+    svg {
+      width: 100%;
+      height: 100%;
+      path {
+        fill: white;
+      }
+    }
+  }
+  ${style.pc(css`
+    width: 189px;
+  `)}
+`
+
+const button = css`
+  position: relative;
+  width: 68px;
+  height: 68px;
+  border-radius: 60px;
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+`
+const top = css`
+  width: 100%;
+  height: 100%;
+  border: 4px solid ${style.colors.darkBlue};
+  border-radius: inherit;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &.dark {
+    border-color: ${style.colors.blogDark};
+  }
+`
+const hamburger = css`
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 20px;
+    background-color: black;
+  }
+`
+const bottom = css`
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: ${style.colors.darkBlue};
+  border-radius: inherit;
+  z-index: -1;
+  &.dark {
+    background-color: ${style.colors.blogDark};
+  }
+`
+
+const nav = css`
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+`
 
 export { Header }
