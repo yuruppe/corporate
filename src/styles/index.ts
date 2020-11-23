@@ -3,6 +3,7 @@ import config from '~/styles/config'
 import mixin from './mixin'
 import calc from './calc'
 import colors from './colors'
+import easing from './easing'
 
 const sp = (style: SerializedStyles): SerializedStyles => {
   return css`
@@ -38,4 +39,5 @@ export default {
   colors,
   vwSp: calc.vwSp,
   vwPc: calc.vwPc,
+  easing,
 }

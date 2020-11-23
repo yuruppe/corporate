@@ -30,10 +30,13 @@ const Header: React.FC = () => {
           </svg>
         </CustomLink>
       </div>
-      <div css={button}>
+      <div css={button} className={cn({ open: appState.menu.isOpen })}>
         <div
           css={top}
-          className={cn({ dark: appState.darkMode })}
+          className={cn(
+            { dark: appState.darkMode },
+            { open: appState.menu.isOpen },
+          )}
           onClick={(): void => {
             if (appState.menu.isAnim) return
             if (appState.menu.isOpen) {
@@ -43,7 +46,7 @@ const Header: React.FC = () => {
             }
           }}
         >
-          <div css={hamburger}>
+          <div css={hamburger} className={cn({ open: appState.menu.isOpen })}>
             <span />
             <span />
             <span />
@@ -109,6 +112,10 @@ const button = css`
   z-index: 10;
   pointer-events: auto;
   cursor: pointer;
+  transition: transform 0.3s ${style.easing.outBack};
+  &.open {
+    transform: rotate(1deg);
+  }
 `
 const top = css`
   width: 100%;
@@ -119,8 +126,12 @@ const top = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: transform 0.3s ${style.easing.outBack};
   &.dark {
     border-color: ${style.colors.blogDark};
+  }
+  &.open {
+    transform: translateY(6%);
   }
 `
 const hamburger = css`
@@ -131,11 +142,39 @@ const hamburger = css`
   flex-direction: column;
   justify-content: space-between;
   span {
+    position: absolute;
+    left: 0;
     display: block;
     width: 100%;
     height: 4px;
     border-radius: 20px;
     background-color: black;
+    transition: opacity 0.1s ease, top 0.4s ${style.easing.outBack},
+      transform 0.4s ${style.easing.outBack};
+    &:nth-of-type(1) {
+      top: 0;
+    }
+    &:nth-of-type(2) {
+      top: 8px;
+    }
+    &:nth-of-type(3) {
+      top: 16px;
+    }
+  }
+  &.open {
+    span {
+      &:nth-of-type(1) {
+        top: 8px;
+        transform: rotate(45deg);
+      }
+      &:nth-of-type(2) {
+        opacity: 0;
+      }
+      &:nth-of-type(3) {
+        top: 8px;
+        transform: rotate(-45deg);
+      }
+    }
   }
 `
 const bottom = css`

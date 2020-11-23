@@ -41,17 +41,23 @@ const Menu: React.FC = () => {
     }
   }
 
+  const _wageWrap = `.css-${waveWrap.name}`
+  const _wrap = `.css-${wrap.name}`
+  const _bg = `.css-${bg.name}`
+  const _item = `.css-${item.name}`
+  const _bottomItem = `.css-${bottomItem.name}`
+
   const open = (): void => {
     const main = 'main'
     gsap
       .timeline({
-        onComplete: () => {
+        onStart: () => {
           appDispatch({ type: 'MENU_ANIM_ENDED' })
         },
       })
       .addLabel(main)
       .to(
-        `.css-${waveWrap.name}`,
+        _wageWrap,
         {
           y: '0%',
           ease: 'circ.out',
@@ -59,12 +65,42 @@ const Menu: React.FC = () => {
         main,
       )
       .to(
-        `.css-${wrap.name}`,
+        _wrap,
         {
           // opacity: 1,
           visibility: 'visible',
         },
         main,
+      )
+      .to(
+        _bg,
+        {
+          opacity: 1,
+          duration: 0.4,
+        },
+        main,
+      )
+      .to(
+        _item,
+        {
+          y: 0,
+          ease: 'back.out(1.8)',
+          duration: 0.4,
+          stagger: 0.1,
+          opacity: 1,
+        },
+        main,
+      )
+      .to(
+        _bottomItem,
+        {
+          y: 0,
+          ease: 'back.out(1.8)',
+          duration: 0.4,
+          stagger: 0.1,
+          opacity: 1,
+        },
+        main + '+=0.6',
       )
   }
   const close = (): void => {
@@ -73,24 +109,54 @@ const Menu: React.FC = () => {
       .timeline({
         onComplete: () => {
           appDispatch({ type: 'MENU_ANIM_ENDED' })
-          gsap.set(`.css-${wrap.name}`, {
+          gsap.set(_wrap, {
             visibility: 'hidden',
           })
         },
       })
       .addLabel(main)
       .to(
-        `.css-${waveWrap.name}`,
+        _wageWrap,
         {
           y: '-100%',
-          ease: 'circ.out',
+          ease: 'back.in(0.8)',
         },
         main,
       )
       .to(
-        `.css-${wrap.name}`,
+        _bg,
+        {
+          opacity: 0,
+          duration: 0.4,
+        },
+        main + '+=0.4',
+      )
+      .to(
+        _wrap,
         {
           // opacity: 0,
+        },
+        main,
+      )
+      .to(
+        _item,
+        {
+          y: -40,
+          ease: 'back.out(1.6)',
+          duration: 0.4,
+          stagger: 0.03,
+          opacity: 0,
+        },
+        main,
+      )
+      .to(
+        _bottomItem,
+        {
+          y: -20,
+          ease: 'back.out(1.6)',
+          duration: 0.4,
+          stagger: 0.03,
+          opacity: 0,
         },
         main,
       )
@@ -192,10 +258,10 @@ const wrap = css`
   width: 100%;
   height: 100%;
   z-index: 1;
-  padding: ${style.vwSp(116)} 0 0;
+  padding: ${style.vwSp(80)} 0 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   pointer-events: auto;
   visibility: hidden;
   &.active {
@@ -228,6 +294,7 @@ const moveForever = keyframes`
   }
 `
 const waveHeight = 600
+const waveHeightSp = 80
 const waveWrap = css`
   position: absolute;
   top: 0;
@@ -253,6 +320,12 @@ const waveWrap = css`
     height: 900px;
     background-color: white;
   }
+  ${style.sp(css`
+    padding-top: ${waveHeightSp}vh;
+    &::before {
+      height: ${waveHeightSp + 0.1}vh;
+    }
+  `)}
   .waves {
     position: relative;
     width: 100%;
@@ -262,7 +335,7 @@ const waveWrap = css`
     max-height: 150px;
     transform: rotate(180deg);
     ${style.sp(css`
-      height: 40px;
+      height: 90px;
       min-height: 40px;
     `)}
   }
@@ -340,7 +413,8 @@ const anchor = css`
 const bottomList = css`
   position: relative;
   padding-left: ${style.vwSp(64)};
-  padding-bottom: ${style.vwSp(69)};
+  /* padding-bottom: ${style.vwSp(29)}; */
+  padding-top: ${style.vwSp(40)};
   ${style.pc(css`
     display: none;
   `)}
