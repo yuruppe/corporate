@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import React, { useContext } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form/dist/index.ie11'
 import { useEffectOnce } from '~/hooks/useEffectOnce'
 import { AppContext } from '~/store/appContext'
 import { FormTmpData } from '~/types/Form'

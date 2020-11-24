@@ -261,6 +261,12 @@ const formAgree = css`
       }
       cursor: pointer;
     }
+    a {
+      transition: opacity 0.3s ease;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
   `)}
 `
 
