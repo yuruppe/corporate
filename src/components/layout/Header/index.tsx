@@ -103,7 +103,24 @@ const logo = css`
     width: 189px;
   `)}
 `
-
+const top = css`
+  width: 100%;
+  height: 100%;
+  border: 4px solid ${style.colors.darkBlue};
+  border-radius: inherit;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ${style.easing.outBack},
+    background-color 0.2s ease-in-out;
+  &.dark {
+    border-color: ${style.colors.blogDark};
+  }
+  &.open {
+    transform: translateY(6%) !important;
+  }
+`
 const button = css`
   position: relative;
   width: 68px;
@@ -116,23 +133,14 @@ const button = css`
   &.open {
     transform: rotate(1deg);
   }
-`
-const top = css`
-  width: 100%;
-  height: 100%;
-  border: 4px solid ${style.colors.darkBlue};
-  border-radius: inherit;
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.3s ${style.easing.outBack};
-  &.dark {
-    border-color: ${style.colors.blogDark};
-  }
-  &.open {
-    transform: translateY(6%);
-  }
+  ${style.pc(css`
+    &:hover {
+      .css-${top.name} {
+        background-color: #eeeeee;
+        transform: translateY(1%);
+      }
+    }
+  `)}
 `
 const hamburger = css`
   position: relative;

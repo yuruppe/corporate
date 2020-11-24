@@ -1,4 +1,4 @@
-import { css } from '@emotion/react'
+import { css, keyframes } from '@emotion/react'
 import style from '~/styles'
 import { CustomLink } from '../common/CustomLink'
 
@@ -34,7 +34,12 @@ const HomeInner: React.FC<Props> = ({ description }) => {
           </CustomLink>
         </li>
         <li css={linkItem}>
-          <a css={linkAnchor}>
+          <a
+            css={linkAnchor}
+            href="https://yuruppe.stores.jp"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <h2 css={linkTitle} className="blank">
               映像屋さんの服
             </h2>
@@ -97,6 +102,7 @@ const linkItem = css`
     & + & {
       margin-left: 15px;
     }
+    ${style.mixin.animPop()}
   `)}
 `
 const linkAnchor = css`

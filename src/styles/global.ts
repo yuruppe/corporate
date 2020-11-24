@@ -135,6 +135,14 @@ const reset = css`
     text-decoration: inherit; /* 1 */
     vertical-align: inherit; /* 2 */
   }
+  audio,
+  canvas,
+  iframe,
+  img,
+  svg,
+  video {
+    vertical-align: middle;
+  }
 `
 
 const globalStyles = css`

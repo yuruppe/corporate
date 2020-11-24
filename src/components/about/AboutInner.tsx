@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import { css } from '@emotion/react'
 import { CustomLink } from '../common/CustomLink'
 import { Picture } from '../common/Picture'
@@ -65,10 +66,16 @@ const AboutInner: React.FC = () => {
                 <dt>取引先</dt>
                 <dd>
                   <ul>
-                    <li>株式会社ソニ～</li>
-                    <li>株式会社めちゃめちゃすごい会社</li>
-                    <li>株式会社エーベックス</li>
-                    <li>株式会社めちゃめちゃすごい会社</li>
+                    <li>
+                      ユニバーサル ミュージック合同会社 (UNIVERSAL MUSIC LLC)
+                    </li>
+                    <li>エイベックス株式会社</li>
+                    <li>株式会社講談社</li>
+                    <li>ソニー株式会社(Sony Corporation)</li>
+                    <li>株式会社ソニー・ミュージックエンタテインメント</li>
+                    <li>株式会社トイズファクトリー</li>
+                    <li>UUUM(ウーム)株式会社 </li>
+                    <li>株式会社 VAZ</li>
                   </ul>
                 </dd>
               </dl>

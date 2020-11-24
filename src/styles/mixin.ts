@@ -1,4 +1,4 @@
-import { css, SerializedStyles } from '@emotion/react'
+import { css, keyframes, SerializedStyles } from '@emotion/react'
 import style from './index'
 
 const mixin = {
@@ -166,6 +166,23 @@ const mixin = {
     padding: 0 50px 40px;
     max-width: 1080px;
     margin: 0 auto;
+  `,
+  pop: (size = 1.03): SerializedStyles => keyframes`
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(${size});
+    }
+    100% {
+      transform: scale(1);
+    }
+  `,
+  animPop: (size?: number): SerializedStyles => css`
+    /* will-change: transform; */
+    &:hover {
+      animation: ${mixin.pop(size)} 0.4s ease-in-out;
+    }
   `,
 }
 

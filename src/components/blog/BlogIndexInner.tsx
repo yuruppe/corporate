@@ -120,6 +120,7 @@ const itemInner = css`
   padding: ${style.vwSp(16)} ${style.vwSp(16)} ${style.vwSp(24)};
   background-color: white;
   border-radius: ${style.vwSp(16)};
+  height: 100%;
   ${style.pc(css`
     padding: 16px 16px 24px;
     border-radius: 16px;

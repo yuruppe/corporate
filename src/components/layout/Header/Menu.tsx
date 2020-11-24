@@ -211,7 +211,7 @@ const Menu: React.FC = () => {
             className={cn('store', {
               current: false,
             })}
-            href=""
+            href="https://yuruppe.stores.jp"
             target="_blank"
             rel="noopener noreferrer"
           >
