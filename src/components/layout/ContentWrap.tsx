@@ -14,7 +14,6 @@ const ContentWrap: React.FC<Props> = ({ children }) => {
 
   useEffectOnce(() => {
     router.events.on('routeChangeStart', () => {
-      console.log('routeChangeStart')
       appDispatch({ type: 'SET_IS_LOADING', value: true })
     })
   })

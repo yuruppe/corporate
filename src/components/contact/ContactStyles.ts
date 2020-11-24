@@ -15,9 +15,19 @@ const title = css`
   img {
     width: ${style.vwSp(212)};
   }
+  &.error {
+    img {
+      width: ${style.vwSp(304)};
+    }
+  }
   ${style.pc(css`
     img {
       width: 212px;
+    }
+    &.error {
+      img {
+        width: 304px;
+      }
     }
   `)}
 `
@@ -92,16 +102,22 @@ const formLabel = css`
 
 const formInput = css`
   position: relative;
+  box-shadow: none;
+  outline: none;
   input,
   textarea {
     width: 100%;
-    font-family: $baseFont;
+    font-family: inherit;
     background-color: white;
     border-radius: ${style.vwSp(16)};
     border: 2px solid ${style.colors.defaultGray};
     padding: ${style.vwSp(16)} ${style.vwSp(15)};
-    transition: 0.1s all ease-in-out;
+    transition: 0.2s all ease-in-out;
     font-size: ${style.vwSp(16)};
+    box-shadow: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     &:focus {
       outline: none;
       border: 2px solid black;
@@ -276,6 +292,7 @@ const formSubmit = css`
       font-size: 16px;
       line-height: 24px;
     }
+    ${style.mixin.animPop()}
   `)}
 `
 
@@ -388,6 +405,7 @@ const back = css`
   ${style.pc(css`
     width: 352px;
     margin: 40px auto 0;
+    ${style.mixin.animPop()}
   `)}
 `
 

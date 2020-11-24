@@ -124,6 +124,9 @@ const back = css`
   ${style.pc(css`
     width: 352px;
     margin: 40px auto 0;
+    &:hover {
+      ${style.mixin.animPop()}
+    }
   `)}
 `
 

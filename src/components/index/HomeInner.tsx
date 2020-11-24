@@ -61,7 +61,7 @@ const inner = css`
   ${style.mixin.borderSquareFrame()}
   padding: ${style.vwSp(40)} ${style.vwSp(48)} ${style.vwSp(48)};
   ${style.pc(css`
-    padding: 100px 180px 97px;
+    padding: 54px 180px 57px;
   `)}
 `
 const title = css`
@@ -70,8 +70,8 @@ const title = css`
   font-weight: ${style.config.weight.black};
   white-space: nowrap;
   ${style.pc(css`
-    font-size: 40px;
-    line-height: 59px;
+    font-size: 64px;
+    line-height: 95px;
   `)}
 `
 const desc = css`
@@ -82,8 +82,8 @@ const desc = css`
   font-weight: ${style.config.weight.extraBold};
   text-align: justify;
   ${style.pc(css`
-    padding: 44px 0 0;
-    font-size: 12px;
+    padding: 32px 0 0;
+    font-size: 16px;
   `)}
 `
 const linkList = css`

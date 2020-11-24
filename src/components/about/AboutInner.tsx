@@ -181,6 +181,10 @@ const topItem = css`
     & + & {
       padding: 81px 0 0;
     }
+    dl {
+      display: flex;
+      align-items: center;
+    }
     dt {
       width: 79px;
     }
@@ -263,6 +267,7 @@ const back = css`
   ${style.pc(css`
     width: 352px;
     margin: 40px auto 0;
+    ${style.mixin.animPop()}
   `)}
 `
 

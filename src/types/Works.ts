@@ -6,5 +6,6 @@ export type WorksType = {
   movie: string | undefined
   detail: string | string[]
   links: { fieldId: 'link_item'; link_name: string; link_url: string }[]
+  urabanashi?: string
   credits: { fieldId: 'credit_item'; name: string; role: string }[]
 }

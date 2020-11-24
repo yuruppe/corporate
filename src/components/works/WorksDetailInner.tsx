@@ -74,19 +74,11 @@ const WorksDetailInner: React.FC<Props> = ({ work }) => {
           ) : (
             <p css={descText}>{work.detail}</p>
           )}
-          {work.links.length > 0 ? (
+          {work.urabanashi ? (
             <div css={descLink}>
-              {work.links.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.link_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  css={descAnchor}
-                >
-                  {link.link_name}
-                </a>
-              ))}
+              <CustomLink href={`/urabanashi/${work.urabanashi}`}>
+                <div css={descAnchor}>詳しいウラ話</div>
+              </CustomLink>
             </div>
           ) : null}
         </div>
@@ -134,6 +126,7 @@ const title = css`
 
 const cover = css`
   margin: ${style.vwSp(88)} 0 0;
+  background-color: ${style.colors.defaultGray};
   img {
     width: 100%;
   }
@@ -240,8 +233,13 @@ const descText = css`
 `
 const descLink = css`
   padding: ${style.vwSp(48)} 0 0;
+  display: inline-block;
   ${style.pc(css`
     padding: 52px 0 0;
+    transition: opacity 0.3s ease;
+    &:hover {
+      opacity: 0.6;
+    }
   `)}
 `
 const descAnchor = css`
@@ -328,6 +326,7 @@ const back = css`
   ${style.pc(css`
     width: 352px;
     margin: 40px auto 0;
+    ${style.mixin.animPop()}
   `)}
 `
 

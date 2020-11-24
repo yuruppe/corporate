@@ -143,9 +143,6 @@ const PrivacyInner: React.FC = () => {
             <h2>第10条（お問い合わせ窓口）</h2>
             <p>
               当本ポリシーに関するお問い合わせは，下記の窓口までお願いいたします。
-            </p>
-            <p>
-              当本ポリシーに関するお問い合わせは，下記の窓口までお願いいたします。
               <br />
               社名：株式会社YURUPPE
               <br />
@@ -228,6 +225,7 @@ const back = css`
   ${style.pc(css`
     width: 352px;
     margin: 40px auto 0;
+    ${style.mixin.animPop()}
   `)}
 `
 

@@ -20,7 +20,7 @@
     "axios": "^0.21.0",
     "classnames": "^2.2.6",
     "emotion-rgba": "^0.0.8",
-    "framer-motion": "^2.9.4",
+    "framer-motion": "1.10.3",
     "gsap": "^3.5.1",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",

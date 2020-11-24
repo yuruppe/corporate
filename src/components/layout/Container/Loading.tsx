@@ -10,8 +10,8 @@ const Loading: React.FC = () => {
   useEffect(() => {
     if (!appState.launch) {
       // on launch process
+      // window.scrollTo(0, 0)
       launchAnim(() => {
-        window.scrollTo(0, 0)
         appDispatch({ type: 'SET_LAUNCH' })
         appDispatch({ type: 'SET_IS_LOADING', value: false })
       })

@@ -101,6 +101,12 @@ const logo = css`
   }
   ${style.pc(css`
     width: 189px;
+    a {
+      transition: opacity 0.4s ease;
+      &:hover {
+        opacity: 0.6;
+      }
+    }
   `)}
 `
 const top = css`

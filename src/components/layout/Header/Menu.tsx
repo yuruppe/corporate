@@ -41,6 +41,19 @@ const Menu: React.FC = () => {
     }
   }
 
+  const handleMouseOver = (): void => {
+    gsap.to(`.css-${anchor.name}`, {
+      opacity: 0.2,
+      duration: 0.3,
+    })
+  }
+  const handleMouseLeave = (): void => {
+    gsap.to(`.css-${anchor.name}`, {
+      opacity: 1,
+      duration: 0.3,
+    })
+  }
+
   const _wageWrap = `.css-${waveWrap.name}`
   const _wrap = `.css-${wrap.name}`
   const _bg = `.css-${bg.name}`
@@ -195,7 +208,11 @@ const Menu: React.FC = () => {
         </svg>`,
         }}
       />
-      <ul>
+      <ul
+        css={list}
+        onMouseOver={handleMouseOver}
+        onMouseLeave={handleMouseLeave}
+      >
         <li css={item}>
           <MainItem route="/" text="トップ" />
         </li>
@@ -362,7 +379,10 @@ const waveWrap = css`
     }
   }
 `
-
+const list = css`
+  max-width: 400px;
+  margin: 0 auto;
+`
 const item = css`
   padding: ${style.vwSp(32)} 0 0;
   text-align: center;
@@ -378,6 +398,7 @@ const anchor = css`
   font-weight: ${style.config.weight.extraBold};
   letter-spacing: 0.1em;
   color: ${style.colors.midBlue};
+  transition: opacity 0.2s ease;
   &.current {
     color: black;
   }
@@ -406,6 +427,9 @@ const anchor = css`
         height: 32px;
         transform: translateY(-50%);
       }
+    }
+    &:hover {
+      opacity: 1 !important;
     }
   `)}
 `

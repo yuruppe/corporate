@@ -90,6 +90,10 @@ const sns = css`
   a {
     display: flex;
     align-items: center;
+    transition: opacity 0.2s ease;
+    &:hover {
+      opacity: 0.5;
+    }
   }
   span {
     display: inline-block;
@@ -101,6 +105,10 @@ const other = css`
   font-size: 14px;
   a {
     color: ${style.colors.textGray};
+    transition: opacity 0.2s ease;
+    &:hover {
+      opacity: 0.5;
+    }
   }
   & + & {
     padding: 16px 0 0;

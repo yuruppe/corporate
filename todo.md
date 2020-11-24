@@ -1,1 +1,0 @@
-- urlを反映する(blog -> urabanashi, works -> tukutta)

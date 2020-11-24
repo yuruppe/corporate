@@ -179,6 +179,14 @@ const sns = css`
     .facebook {
       width: 10px;
     }
+    a {
+      transition: all 0.4s ${style.easing.outExpo};
+      display: inline-block;
+      &:hover {
+        transform: scale(1.1);
+        opacity: 0.7;
+      }
+    }
   `)}
 `
 

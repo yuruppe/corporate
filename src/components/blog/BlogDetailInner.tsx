@@ -12,7 +12,7 @@ type Props = {
 
 const BlogDetailInner: React.FC<Props> = ({ blog, authorData }) => {
   return (
-    <div css={main}>
+    <>
       <div>
         <h2 css={title}>
           <Picture
@@ -28,57 +28,59 @@ const BlogDetailInner: React.FC<Props> = ({ blog, authorData }) => {
           img={blog.thumbnail.url}
         />
       </div>
-      <div css={body}>
-        <div css={heading}>
-          <ul css={tagList}>
-            {Array.isArray(blog.tags) ? (
-              <>
-                {blog.tags.map((tag, index) => (
-                  <li css={tagItem} key={index}>
-                    <span>{tag}</span>
-                  </li>
-                ))}
-              </>
-            ) : (
-              <li css={tagItem}>
-                <span>{blog.tags}</span>
-              </li>
-            )}
-          </ul>
-          <h1 css={blogTitle}>{blog.title}</h1>
-        </div>
-        <div css={desc}>
-          <div css={descMember}>
-            <div css={descMemberImg}>
-              <Picture
-                webp={`${authorData.icon.url}?webp`}
-                img={authorData.icon.url}
-              />
-            </div>
-            <div css={descMemberText}>
-              <span>{authorData.name}</span>
-              <span>
-                {blog.date
-                  .split('T')[0]
-                  .replace('-', '/')
-                  .replace('-', '/')}
-              </span>
-            </div>
+      <div css={main}>
+        <div css={body}>
+          <div css={heading}>
+            <ul css={tagList}>
+              {Array.isArray(blog.tags) ? (
+                <>
+                  {blog.tags.map((tag, index) => (
+                    <li css={tagItem} key={index}>
+                      <span>{tag}</span>
+                    </li>
+                  ))}
+                </>
+              ) : (
+                <li css={tagItem}>
+                  <span>{blog.tags}</span>
+                </li>
+              )}
+            </ul>
+            <h1 css={blogTitle}>{blog.title}</h1>
           </div>
-          <div
-            css={content}
-            dangerouslySetInnerHTML={{ __html: blog.detail }}
-          ></div>
+          <div css={desc}>
+            <div css={descMember}>
+              <div css={descMemberImg}>
+                <Picture
+                  webp={`${authorData.icon.url}?webp`}
+                  img={authorData.icon.url}
+                />
+              </div>
+              <div css={descMemberText}>
+                <span>{authorData.name}</span>
+                <span>
+                  {blog.date
+                    .split('T')[0]
+                    .replace('-', '/')
+                    .replace('-', '/')}
+                </span>
+              </div>
+            </div>
+            <div
+              css={content}
+              dangerouslySetInnerHTML={{ __html: blog.detail }}
+            ></div>
+          </div>
+        </div>
+        <div css={backWrap}>
+          <div css={back}>
+            <CustomLink href="/urabanashi">
+              <span>一覧にもどる</span>
+            </CustomLink>
+          </div>
         </div>
       </div>
-      <div css={backWrap}>
-        <div css={back}>
-          <CustomLink href="/urabanashi">
-            <span>一覧にもどる</span>
-          </CustomLink>
-        </div>
-      </div>
-    </div>
+    </>
   )
 }
 
@@ -309,6 +311,7 @@ const back = css`
   ${style.pc(css`
     width: 352px;
     margin: 40px auto 0;
+    ${style.mixin.animPop()}
   `)}
 `
 
