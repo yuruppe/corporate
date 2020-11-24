@@ -1,5 +1,1 @@
-- Menuを押してメニューが閉じるタイミングの制御
-- Menuのアニメーションを作る
-- 修正を反映
 - urlを反映する(blog -> urabanashi, works -> tukutta)
-- メンバーの文言とか修正反映

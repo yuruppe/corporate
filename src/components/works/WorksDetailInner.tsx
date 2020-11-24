@@ -102,7 +102,7 @@ const WorksDetailInner: React.FC<Props> = ({ work }) => {
       </div>
       <div css={backWrap}>
         <div css={back}>
-          <CustomLink href="/works">
+          <CustomLink href="/tukutta">
             <span>一覧にもどる</span>
           </CustomLink>
         </div>

@@ -73,7 +73,7 @@ const BlogDetailInner: React.FC<Props> = ({ blog, authorData }) => {
       </div>
       <div css={backWrap}>
         <div css={back}>
-          <CustomLink href="/blog">
+          <CustomLink href="/urabanashi">
             <span>一覧にもどる</span>
           </CustomLink>
         </div>

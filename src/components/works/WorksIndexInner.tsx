@@ -24,7 +24,7 @@ const WorksIndexInner: React.FC<Props> = ({ works }) => {
         <ul css={list}>
           {works.map((work, index) => (
             <li css={item} key={index}>
-              <CustomLink href={`/works/${work.id}`}>
+              <CustomLink href={`/tukutta/${work.id}`}>
                 <div css={itemInner}>
                   <div css={img}>
                     <Picture

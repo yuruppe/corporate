@@ -24,7 +24,7 @@ const BlogIndexInner: React.FC<Props> = ({ blogs }) => {
         <ul css={list}>
           {blogs.map((blog, index) => (
             <li css={item} key={index}>
-              <CustomLink href={`/blog/${blog.id}`}>
+              <CustomLink href={`/urabanashi/${blog.id}`}>
                 <div css={itemInner}>
                   <div css={img}>
                     <Picture
