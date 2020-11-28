@@ -4,6 +4,9 @@ import { AppContext } from '~/store/appContext'
 import gsap from 'gsap'
 import style from '~/styles'
 import cn from 'classnames'
+import Lottie from 'lottie-web'
+import lottieLoadingPc from '~/json/loading_pc.json'
+import lottieLoadingSp from '~/json/loading.json'
 
 const Loading: React.FC = () => {
   const { appState, appDispatch } = useContext(AppContext)
@@ -27,11 +30,46 @@ const Loading: React.FC = () => {
   }, [appState.isLoading])
 
   return (
-    <div css={loadOverlay}>
-      <div css={inner} className={cn({ dark: appState.darkMode })}></div>
+    <div css={root}>
+      <div css={launchLoadingWrap}>
+        <div css={launchLoading} id="loadingAnim" />
+      </div>
+      <div css={loadOverlay}>
+        <div css={inner} className={cn({ dark: appState.darkMode })}></div>
+      </div>
     </div>
   )
 }
+const root = css`
+  pointer-events: none;
+`
+
+const launchLoadingWrap = css`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  overflow: hidden;
+`
+const launchLoading = css`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%) scale(2);
+  pointer-events: auto;
+  svg {
+    g > g {
+    }
+  }
+  ${style.sp(css`
+    transform: translate(-50%, -50%) scale(2.5);
+  `)}
+`
 
 const loadOverlay = css`
   position: fixed;
@@ -61,12 +99,37 @@ const inner = css`
 const target = `.css-${inner.name}`
 
 const launchAnim = (cb: () => void): void => {
+  const container = document.getElementById('loadingAnim')
+
+  // 遷移ロードを消す
   gsap.to(target, {
     y: '100%',
     duration: 0.5,
     delay: 1.0,
     ease: 'expo.out',
-    onComplete: cb,
+  })
+
+  const anim = Lottie.loadAnimation({
+    container,
+    renderer: 'svg',
+    loop: false,
+    autoplay: true,
+    animationData: window.innerWidth < 768 ? lottieLoadingSp : lottieLoadingPc,
+  })
+  anim.addEventListener('DOMLoaded', () => {
+    // anim.goToAndStop(2000)
+    anim.play()
+    setTimeout(() => {
+      gsap.set(container, {
+        backgroundColor: 'transparent',
+      })
+    }, 600)
+    setTimeout(() => {
+      gsap.set(container, {
+        display: 'none',
+      })
+      cb()
+    }, 3000)
   })
 }
 
