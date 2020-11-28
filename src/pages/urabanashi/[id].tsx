@@ -33,6 +33,7 @@ const BlogDetail: NextPage<Props> = ({ blog, authorData }) => {
       </Head>
       <main>
         <BlogDetailInner blog={blog} authorData={authorData} />
+        <img src="ssssss" alt="" />
       </main>
     </>
   )

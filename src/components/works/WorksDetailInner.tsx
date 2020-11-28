@@ -15,11 +15,13 @@ const WorksDetailInner: React.FC<Props> = ({ work }) => {
     <div css={main}>
       <div>
         <h2 css={title}>
-          <Picture
-            webp={require('@public/img/page/worksTitle.png?webp')}
-            img={require('@public/img/page/worksTitle.png')}
-            alt="つくったやつ"
-          />
+          <CustomLink href="/tsukutta">
+            <Picture
+              webp={require('@public/img/page/worksTitle.png?webp')}
+              img={require('@public/img/page/worksTitle.png')}
+              alt="つくったやつ"
+            />
+          </CustomLink>
         </h2>
       </div>
       <div css={cover} className={cn({ movie: work.movie })}>
@@ -94,7 +96,7 @@ const WorksDetailInner: React.FC<Props> = ({ work }) => {
       </div>
       <div css={backWrap}>
         <div css={back}>
-          <CustomLink href="/tukutta">
+          <CustomLink href="/tsukutta">
             <span>一覧にもどる</span>
           </CustomLink>
         </div>
@@ -117,6 +119,10 @@ const title = css`
   img {
     width: ${style.vwSp(212)};
   }
+  a {
+    display: inline-block;
+    ${style.mixin.animPop(1.08)}
+  }
   ${style.pc(css`
     img {
       width: 212px;
@@ -127,6 +133,8 @@ const title = css`
 const cover = css`
   margin: ${style.vwSp(88)} 0 0;
   background-color: ${style.colors.defaultGray};
+  border-radius: ${style.vwSp(16)};
+  overflow: hidden;
   img {
     width: 100%;
   }
@@ -135,6 +143,7 @@ const cover = css`
   }
   ${style.pc(css`
     margin: 80px 0 0;
+    border-radius: 16px;
     &.movie {
       height: 508px;
     }

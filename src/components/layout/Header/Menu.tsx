@@ -9,7 +9,7 @@ import style from '~/styles'
 import { rgba } from 'emotion-rgba'
 
 type MainItemProps = {
-  route: '/' | '/tukutta' | '/urabanashi' | '/member' | '/contact'
+  route: '/' | '/tsukutta' | '/urabanashi' | '/member' | '/contact'
   text: string
 }
 
@@ -217,7 +217,7 @@ const Menu: React.FC = () => {
           <MainItem route="/" text="トップ" />
         </li>
         <li css={item}>
-          <MainItem route="/tukutta" text="つくったやつ" />
+          <MainItem route="/tsukutta" text="つくったやつ" />
         </li>
         <li css={item}>
           <MainItem route="/urabanashi" text="ウラ話" />

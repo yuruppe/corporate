@@ -24,7 +24,7 @@ const WorksIndexInner: React.FC<Props> = ({ works }) => {
         <ul css={list}>
           {works.map((work, index) => (
             <li css={item} key={index}>
-              <CustomLink href={`/tukutta/${work.id}`}>
+              <CustomLink href={`/tsukutta/${work.id}`}>
                 <div css={itemInner}>
                   <div css={img}>
                     <Picture
@@ -64,6 +64,10 @@ const main = css`
   padding: 0 ${style.vwSp(style.config.project.paddingSpSide)} ${style.vwSp(48)};
   ${style.pc(css`
     ${style.mixin.mainPcStyle()}
+    max-width: ${style.vwPc(1180)};
+    width: ${style.vwPc(1180)};
+    padding-left: ${style.vwPc(50)};
+    padding-right: ${style.vwPc(50)};
   `)}
 `
 
@@ -84,13 +88,15 @@ const body = css`
   margin: ${style.vwSp(88)} 0 0;
   width: 100%;
   ${style.pc(css`
-    margin: 80px 0 0;
+    margin: 40px 0 0;
   `)}
 `
 const list = css`
   position: relative;
+  width: 100%;
   ${style.pc(css`
     display: flex;
+    flex-wrap: wrap;
   `)}
 `
 
@@ -166,16 +172,17 @@ const item = css`
     padding: ${style.vwSp(20)} 0 0;
   }
   ${style.pc(css`
-    width: 352px;
-    margin-left: 12px;
+    width: ${style.vwPc(352)};
+    margin-top: 40px;
+    margin-left: ${style.vwPc(12)};
     & + & {
       padding: 0;
     }
     &:first-of-type {
-      margin: 0;
+      margin-left: 0;
     }
-    &:nth-of-type(3n) {
-      margin: 0;
+    &:nth-of-type(3n + 1) {
+      margin-left: 0;
     }
     a {
       &:hover {

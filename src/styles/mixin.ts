@@ -164,7 +164,7 @@ const mixin = {
   `,
   mainPcStyle: (): SerializedStyles => css`
     padding: 0 50px 40px;
-    max-width: 1080px;
+    max-width: 1180px;
     margin: 0 auto;
   `,
   pop: (size = 1.03): SerializedStyles => keyframes`

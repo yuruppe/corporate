@@ -13,22 +13,24 @@ type Props = {
 const BlogDetailInner: React.FC<Props> = ({ blog, authorData }) => {
   return (
     <>
-      <div>
-        <h2 css={title}>
-          <Picture
-            webp={require('@public/img/page/blogTitle.png?webp')}
-            img={require('@public/img/page/blogTitle.png')}
-            alt="ウラ話"
-          />
-        </h2>
-      </div>
-      <div css={cover}>
-        <Picture
-          webp={`${blog.thumbnail.url}?fm=webp`}
-          img={blog.thumbnail.url}
-        />
-      </div>
       <div css={main}>
+        <div>
+          <h2 css={title}>
+            <CustomLink href="/urabanashi">
+              <Picture
+                webp={require('@public/img/page/blogTitle.png?webp')}
+                img={require('@public/img/page/blogTitle.png')}
+                alt="ウラ話"
+              />
+            </CustomLink>
+          </h2>
+        </div>
+        <div css={cover}>
+          <Picture
+            webp={`${blog.thumbnail.url}?fm=webp`}
+            img={blog.thumbnail.url}
+          />
+        </div>
         <div css={body}>
           <div css={heading}>
             <ul css={tagList}>
@@ -101,6 +103,10 @@ const title = css`
   &::before {
     background-color: ${style.colors.blogDark};
   }
+  a {
+    display: inline-block;
+    ${style.mixin.animPop(1.08)}
+  }
   ${style.pc(css`
     img {
       width: 104px;
@@ -110,10 +116,13 @@ const title = css`
 
 const cover = css`
   margin: ${style.vwSp(88)} 0 0;
+  border-radius: ${style.vwSp(16)};
+  overflow: hidden;
   img {
     width: 100%;
   }
   ${style.pc(css`
+    border-radius: 16px;
     margin: 80px 0 0;
   `)}
 `
@@ -238,6 +247,9 @@ const content = css`
   }
   img {
     width: 100%;
+    overflow: hidden;
+    display: inline-block;
+    border-radius: ${style.vwSp(16)};
   }
   p {
     font-size: ${style.vwSp(16)};
@@ -287,6 +299,9 @@ const content = css`
     }
     p {
       font-size: 16px;
+    }
+    img {
+      border-radius: 16px;
     }
   `)}
 `
