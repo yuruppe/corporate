@@ -1,24 +1,31 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
-import Head from 'next/head'
 import axios from 'axios'
 import ErrorPage from 'next/error'
 import { WorksType } from '~/types/Works'
 import { WorksDetailInner } from '~/components/works/WorksDetailInner'
+import { Meta } from '~/components/layout/Meta'
 
 type Props = {
   work: WorksType
+  description: string
 }
 
-const WorksDetail: NextPage<Props> = ({ work }) => {
+const WorksDetail: NextPage<Props> = ({ work, description }) => {
   if (!work) {
     return <ErrorPage statusCode={404} />
   }
 
   return (
     <>
-      <Head>
-        <title>{`${work.title} | つくったやつ | YURUPPE.inc`}</title>
-      </Head>
+      <Meta
+        id="tsukutta_id"
+        dynamic={{
+          title: work.title,
+          description: description,
+          ogp: work.thumbnail.url,
+          path: work.id,
+        }}
+      />
       <main>
         <WorksDetailInner work={work} />
       </main>
@@ -63,6 +70,8 @@ export const getStaticProps: GetStaticProps = async ({
     return item.id === params?.id
   })
 
+  const rawDetail = content.detail
+
   if (!content) {
     content = ''
   } else {
@@ -76,6 +85,7 @@ export const getStaticProps: GetStaticProps = async ({
   return {
     props: {
       work: content,
+      description: rawDetail,
     },
   }
 }

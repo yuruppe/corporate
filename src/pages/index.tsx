@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from 'next'
-import Head from 'next/head'
 import axios from 'axios'
 import { HomeInner } from '~/components/index/HomeInner'
+import { Meta } from '~/components/layout/Meta'
 
 type Props = {
   description: any
@@ -10,9 +10,7 @@ type Props = {
 const Home: NextPage<Props> = ({ description }) => {
   return (
     <>
-      <Head>
-        <title>YURUPPE.inc</title>
-      </Head>
+      <Meta id="index" />
 
       <main>
         <HomeInner description={description} />

@@ -1,8 +1,8 @@
 import { GetStaticProps, NextPage } from 'next'
-import Head from 'next/head'
 import axios from 'axios'
 import { WorksType } from '~/types/Works'
 import { WorksIndexInner } from '~/components/works/WorksIndexInner'
+import { Meta } from '~/components/layout/Meta'
 
 type Props = {
   works: WorksType[]
@@ -11,9 +11,7 @@ type Props = {
 const WorksIndex: NextPage<Props> = ({ works }) => {
   return (
     <>
-      <Head>
-        <title>つくったやつ | YURUPPE.inc</title>
-      </Head>
+      <Meta id="tsukutta_index" />
 
       <main>
         <WorksIndexInner works={works} />

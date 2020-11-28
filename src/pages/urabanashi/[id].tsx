@@ -1,5 +1,4 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
-import Head from 'next/head'
 import axios from 'axios'
 import ErrorPage from 'next/error'
 import { BlogType } from '~/types/Blog'
@@ -7,6 +6,7 @@ import { MemberType } from '~/types/Member'
 import { useContext, useEffect } from 'react'
 import { AppContext } from '~/store/appContext'
 import { BlogDetailInner } from '~/components/blog/BlogDetailInner'
+import { Meta } from '~/components/layout/Meta'
 
 type Props = {
   blog: BlogType
@@ -28,9 +28,16 @@ const BlogDetail: NextPage<Props> = ({ blog, authorData }) => {
 
   return (
     <>
-      <Head>
-        <title>{`${blog.title} | ウラ話 | YURUPPE.inc`}</title>
-      </Head>
+      <Meta
+        id="urabanashi_id"
+        dynamic={{
+          title: blog.title,
+          description: blog.meta_description,
+          ogp: blog.thumbnail.url,
+          path: blog.id,
+        }}
+      />
+
       <main>
         <BlogDetailInner blog={blog} authorData={authorData} />
         <img src="ssssss" alt="" />

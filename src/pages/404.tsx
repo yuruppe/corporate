@@ -1,13 +1,11 @@
 import { NextPage } from 'next'
-import Head from 'next/head'
 import { ErrorInner } from '~/components/error/ErrorInner'
+import { Meta } from '~/components/layout/Meta'
 
 const Error: NextPage = () => {
   return (
     <>
-      <Head>
-        <title>エラー | YURUPPE.inc</title>
-      </Head>
+      <Meta id="error" />
 
       <main>
         <ErrorInner />

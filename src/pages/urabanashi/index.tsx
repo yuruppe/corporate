@@ -1,10 +1,10 @@
 import { GetStaticProps, NextPage } from 'next'
-import Head from 'next/head'
 import axios from 'axios'
 import { BlogType } from '~/types/Blog'
 import { useContext, useEffect } from 'react'
 import { AppContext } from '~/store/appContext'
 import { BlogIndexInner } from '~/components/blog/BlogIndexInner'
+import { Meta } from '~/components/layout/Meta'
 
 type Props = {
   blogs: BlogType[]
@@ -22,9 +22,7 @@ const BlogIndex: NextPage<Props> = ({ blogs }) => {
 
   return (
     <>
-      <Head>
-        <title>ウラ話 | YURUPPE.inc</title>
-      </Head>
+      <Meta id="urabanashi_idnex" />
 
       <main>
         <BlogIndexInner blogs={blogs} />

@@ -1,10 +1,10 @@
 import { NextPage } from 'next'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import { AppContext } from '~/store/appContext'
 import { useEffectOnce } from '~/hooks/useEffectOnce'
 import { ContactCompleteInner } from '~/components/contact/ContactCompleteInner'
+import { Meta } from '~/components/layout/Meta'
 
 const ContactComplete: NextPage = () => {
   const router = useRouter()
@@ -20,9 +20,7 @@ const ContactComplete: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>完了 | お問い合わせ | YURUPPE.inc</title>
-      </Head>
+      <Meta id="contact_complete" />
 
       <main>
         <ContactCompleteInner />

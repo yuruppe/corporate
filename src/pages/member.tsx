@@ -1,8 +1,8 @@
 import { GetStaticProps, NextPage } from 'next'
-import Head from 'next/head'
 import axios from 'axios'
 import { CoverImageUserID, MemberType } from '~/types/Member'
 import { MemberInner } from '~/components/member/MemberInner'
+import { Meta } from '~/components/layout/Meta'
 
 type Props = {
   members: MemberType[]
@@ -12,9 +12,7 @@ type Props = {
 const Member: NextPage<Props> = ({ members, coverURL }) => {
   return (
     <>
-      <Head>
-        <title>Member | YURUPPE.inc</title>
-      </Head>
+      <Meta id="member" />
 
       <main>
         <MemberInner members={members} coverURL={coverURL} />

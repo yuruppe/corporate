@@ -1,13 +1,11 @@
 import { NextPage } from 'next'
-import Head from 'next/head'
+import { Meta } from '~/components/layout/Meta'
 import { PrivacyInner } from '~/components/privacy/PrivacyInner'
 
 const Home: NextPage = () => {
   return (
     <>
-      <Head>
-        <title>プライバシーポリシー | YURUPPE.inc</title>
-      </Head>
+      <Meta id="privacy" />
 
       <main>
         <PrivacyInner />

@@ -6,4 +6,5 @@ export type BlogType = {
   author: string
   date: string
   detail: any
+  meta_description: string
 }

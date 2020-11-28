@@ -1,10 +1,10 @@
 import { NextPage } from 'next'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import { AppContext } from '~/store/appContext'
 import { useEffectOnce } from '~/hooks/useEffectOnce'
 import { ContactErrorInner } from '~/components/contact/ContactErrorInner'
+import { Meta } from '~/components/layout/Meta'
 
 const ContactError: NextPage = () => {
   const router = useRouter()
@@ -18,9 +18,7 @@ const ContactError: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>エラー | お問い合わせ | YURUPPE.inc</title>
-      </Head>
+      <Meta id="contact_error" />
 
       <main>
         <ContactErrorInner />

@@ -1,13 +1,11 @@
 import { NextPage } from 'next'
-import Head from 'next/head'
 import { AboutInner } from '~/components/about/AboutInner'
+import { Meta } from '~/components/layout/Meta'
 
 const About: NextPage = () => {
   return (
     <>
-      <Head>
-        <title>About | YURUPPE.inc</title>
-      </Head>
+      <Meta id="about" />
 
       <main>
         <AboutInner />
