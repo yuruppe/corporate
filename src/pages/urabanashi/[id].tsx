@@ -73,7 +73,7 @@ export const getStaticProps: GetStaticProps = async ({
   if (preview) {
     const draftUrl =
       process.env.END_POINT +
-      'portfolios/' +
+      'blog/' +
       previewData.id +
       `?draftKey=${previewData.draftKey}`
     const draftRes = await axios.get(draftUrl, key)
