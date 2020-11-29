@@ -26,6 +26,10 @@ const Meta: React.FC<Props> = ({ id, dynamic }) => {
     _ogp = dynamic.ogp
     _path = '/' + dynamic.path
   }
+  if (id !== 'index' && !dynamic) {
+    const top = metaData.pages.find((page) => page.id === 'index')
+    _description += top.description
+  }
 
   return (
     <Head>
