@@ -25,6 +25,12 @@ const Meta: React.FC<Props> = ({ id, dynamic }) => {
     _description = dynamic.description
     _ogp = dynamic.ogp
     _path = '/' + dynamic.path
+    if (id === 'tsukutta_id') {
+      _title += ' | つくったやつ | YURUPPE.inc'
+    }
+    if (id === 'urabanashi_id') {
+      _title += ' | ウラ話 | YURUPPE.inc'
+    }
   }
   if (id !== 'index' && !dynamic) {
     const top = metaData.pages.find((page) => page.id === 'index')
