@@ -15,7 +15,7 @@ const preview: NextApiHandler = async (req, res) => {
 
   // 下書きのデータを取得
   const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
+    headers: { 'X-API-KEY': process.env.X_API_KEY },
   }
   const url =
     'https://yuruppe.microcms.io/api/v1/blog/' +
