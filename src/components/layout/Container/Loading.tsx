@@ -5,8 +5,8 @@ import gsap from 'gsap'
 import style from '~/styles'
 import cn from 'classnames'
 import Lottie from 'lottie-web'
-import lottieLoadingPc from '~/json/loading_pc.json'
-import lottieLoadingSp from '~/json/loading.json'
+import lottieLoadingPc from '~/json/loading_green.json'
+// import lottieLoadingSp from '~/json/loading.json'
 
 const Loading: React.FC = () => {
   const { appState, appDispatch } = useContext(AppContext)
@@ -60,12 +60,17 @@ const launchLoading = css`
   background-color: white;
   width: 100%;
   height: 100%;
-  transform: translate(-50%, -50%) scale(2);
+  transform: translate(-50%, -50%);
   pointer-events: auto;
-  svg {
-    g > g {
-    }
-  }
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: inherit;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   ${style.sp(css`
     transform: translate(-50%, -50%) scale(2.5);
   `)}
@@ -114,7 +119,8 @@ const launchAnim = (cb: () => void): void => {
     renderer: 'svg',
     loop: false,
     autoplay: true,
-    animationData: window.innerWidth < 768 ? lottieLoadingSp : lottieLoadingPc,
+    // animationData: window.innerWidth < 768 ? lottieLoadingSp : lottieLoadingPc,
+    animationData: lottieLoadingPc,
   })
   anim.addEventListener('DOMLoaded', () => {
     // anim.goToAndStop(2000)

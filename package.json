@@ -4,7 +4,7 @@
   "private": true,
   "author": "Ryota Ito",
   "scripts": {
-    "dev": "next dev -p 8888",
+    "dev": "next dev -p 8000",
     "build": "next build",
     "start": "next start",
     "export": "next build && next export -o htdocs/",

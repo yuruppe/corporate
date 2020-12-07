@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/router'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { useEffectOnce } from '~/hooks/useEffectOnce'
 import { AppContext } from '~/store/appContext'
 
@@ -31,7 +31,7 @@ const ContentWrap: React.FC<Props> = ({ children }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          key={router.route}
+          key={router.asPath}
         >
           {children}
         </motion.div>

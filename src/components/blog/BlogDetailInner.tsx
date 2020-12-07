@@ -8,9 +8,14 @@ import { Picture } from '../common/Picture'
 type Props = {
   blog: BlogType
   authorData: MemberType
+  recommended: BlogType[]
 }
 
-const BlogDetailInner: React.FC<Props> = ({ blog, authorData }) => {
+const BlogDetailInner: React.FC<Props> = ({
+  blog,
+  authorData,
+  recommended,
+}) => {
   return (
     <>
       <div css={main}>
@@ -73,7 +78,48 @@ const BlogDetailInner: React.FC<Props> = ({ blog, authorData }) => {
               dangerouslySetInnerHTML={{ __html: blog.detail }}
             ></div>
           </div>
+          <div css={desc}>
+            <h2 css={recTitle}>おすすめ</h2>
+            <ul css={recList}>
+              {recommended.map((rec, index) => (
+                <div key={index} css={recItem}>
+                  <CustomLink href={`/urabanashi/${rec.id}`}>
+                    <div css={img}>
+                      <Picture
+                        webp={`${rec.thumbnail.url}?fm=webp`}
+                        img={`${rec.thumbnail.url}`}
+                        alt=""
+                      />
+                    </div>
+                    <div>
+                      <div css={recTag}>
+                        <ul css={tagList}>
+                          {Array.isArray(rec.tags) ? (
+                            <>
+                              {rec.tags.map((tag, index) => (
+                                <li css={tagItem} key={index}>
+                                  <span>{tag}</span>
+                                </li>
+                              ))}
+                            </>
+                          ) : (
+                            <li css={tagItem}>
+                              <span>{rec.tags}</span>
+                            </li>
+                          )}
+                        </ul>
+                      </div>
+                      <div css={recItemTitle}>
+                        <h3>{rec.title}</h3>
+                      </div>
+                    </div>
+                  </CustomLink>
+                </div>
+              ))}
+            </ul>
+          </div>
         </div>
+
         <div css={backWrap}>
           <div css={back}>
             <CustomLink href="/urabanashi">
@@ -143,12 +189,13 @@ const heading = css`
   background-color: white;
   border-radius: ${style.vwSp(16)};
   ${style.pc(css`
-    padding: 40px 90px;
+    padding: 40px 54px;
     border-radius: 16px;
   `)}
 `
 const tagList = css`
   display: flex;
+  flex-wrap: wrap;
 `
 const tagItem = css`
   padding: ${style.vwSp(4)} ${style.vwSp(12)};
@@ -195,6 +242,7 @@ const desc = css`
   ${style.pc(css`
     padding: 40px 54px;
     border-radius: 16px;
+    margin: 20px 0 0;
   `)}
 `
 
@@ -302,6 +350,104 @@ const content = css`
     }
     img {
       border-radius: 16px;
+    }
+  `)}
+`
+
+const recTitle = css`
+  font-size: ${style.vwSp(24)};
+  font-weight: 900;
+  padding: ${style.vwSp(7)} 0 0;
+  ${style.pc(css`
+    font-size: 24px;
+    padding: 0;
+  `)}
+`
+const recList = css`
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: auto;
+  padding: ${style.vwSp(32)} 0 0;
+  ${style.pc(css`
+    padding: 32px 0 0;
+    display: block;
+    overflow: auto;
+  `)}
+`
+
+const img = css`
+  overflow: hidden;
+  border-radius: ${style.vwSp(8)};
+  width: ${style.vwSp(160)};
+  flex-shrink: 0;
+  ${style.pc(css`
+    border-radius: 8px;
+    width: auto;
+    margin-right: 50px;
+    img {
+      width: 220px;
+      transition: transform 1.2s ${style.easing.outExpo};
+    }
+  `)}
+`
+const recTag = css`
+  padding: ${style.vwSp(25)} 0 0;
+  li {
+    margin-top: ${style.vwSp(5)};
+  }
+  ${style.pc(css`
+    padding: 0;
+    margin-top: -5px;
+    transition: opacity 0.3s ease;
+    li {
+      margin-top: 5px;
+    }
+    li + li {
+      margin-left: 16px;
+    }
+  `)}
+`
+const recItemTitle = css`
+  padding: ${style.vwSp(16)} 0 0;
+  h3 {
+    font-size: ${style.vwSp(16)};
+    font-weight: 800;
+  }
+  ${style.pc(css`
+    padding: 16px 0 0;
+    transition: opacity 0.3s ease;
+    h3 {
+      font-size: 16px;
+    }
+  `)}
+`
+const recItem = css`
+  & + & {
+    margin-left: ${style.vwSp(16)};
+  }
+  a {
+    display: block;
+  }
+  ${style.pc(css`
+    & + & {
+      margin: 16px 0 0;
+    }
+    a {
+      display: flex;
+      &:hover {
+        .css-${img.name} {
+          img {
+            transform: scale(1.1);
+          }
+        }
+        .css-${recTag.name} {
+          opacity: 0.5;
+        }
+        .css-${recItemTitle.name} {
+          opacity: 0.5;
+        }
+      }
     }
   `)}
 `

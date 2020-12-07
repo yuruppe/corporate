@@ -7,13 +7,15 @@ import { useContext, useEffect } from 'react'
 import { AppContext } from '~/store/appContext'
 import { BlogDetailInner } from '~/components/blog/BlogDetailInner'
 import { Meta } from '~/components/layout/Meta'
+import { TopRecType } from '~/types/top'
 
 type Props = {
   blog: BlogType
   authorData: MemberType
+  recommended: BlogType[]
 }
 
-const BlogDetail: NextPage<Props> = ({ blog, authorData }) => {
+const BlogDetail: NextPage<Props> = ({ blog, authorData, recommended }) => {
   if (!blog) {
     return <ErrorPage statusCode={404} />
   }
@@ -39,7 +41,11 @@ const BlogDetail: NextPage<Props> = ({ blog, authorData }) => {
       />
 
       <main>
-        <BlogDetailInner blog={blog} authorData={authorData} />
+        <BlogDetailInner
+          blog={blog}
+          authorData={authorData}
+          recommended={recommended}
+        />
       </main>
     </>
   )
@@ -82,12 +88,6 @@ export const getStaticProps: GetStaticProps = async ({
     return item.id === params?.id
   })
 
-  const memberRes = await axios.get(
-    process.env.END_POINT + `member/${content.author[0]}`,
-    key,
-  )
-  const authorData: MemberType = await memberRes.data
-
   if (!content) {
     content = ''
   } else {
@@ -98,10 +98,49 @@ export const getStaticProps: GetStaticProps = async ({
       content.detail = content.detail.split('\n')
     }
   }
+
+  /**
+   * member
+   */
+  let authorData: MemberType
+  if (content !== '') {
+    const memberRes = await axios.get(
+      process.env.END_POINT + `member/${content.author[0]}`,
+      key,
+    )
+    authorData = await memberRes.data
+  }
+
+  /**
+   * recommended
+   */
+  const recommendedRes = await axios.get(
+    process.env.END_POINT + 'top/main',
+    key,
+  )
+  const recommendedData = await recommendedRes.data
+  const recommended: TopRecType[] = recommendedData.blog_rec
+
+  const BlogData: Array<BlogType> = await res.data.contents
+  const recBlogData = BlogData.filter((blog) => {
+    return recommended.find((rec) => {
+      return rec.blog_rec_id === blog.id
+    })
+  })
+  recBlogData.map((d) => {
+    if (typeof d.tags === 'string') {
+      if (d.tags.split(',').length > 1) {
+        d.tags = d.tags.toString().split(',')
+      }
+    }
+    return d
+  })
+
   return {
     props: {
       blog: content,
       authorData,
+      recommended: recBlogData,
     },
   }
 }
