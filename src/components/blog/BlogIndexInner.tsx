@@ -3,16 +3,109 @@ import { CustomLink } from '../common/CustomLink'
 import { Picture } from '../common/Picture'
 import style from '~/styles'
 import { BlogType } from '~/types/Blog'
+import { useContext, useEffect, useState } from 'react'
+import { AppContext } from '~/store/appContext'
+import gsap from 'gsap'
+import cn from 'classnames'
 
 type Props = {
   blogs: BlogType[]
 }
 
 const BlogIndexInner: React.FC<Props> = ({ blogs }) => {
+  const { appState } = useContext(AppContext)
+  const { isLoading } = appState
+  const worksLength = blogs.length
+
+  const initialLength = 6
+  const moreLength = 6
+
+  const [moreBtnState, setMoreBtnState] = useState<boolean>(true)
+  const [itemCount, setItemCount] = useState<number>(0)
+  const [nowCount, setNowCount] = useState<number>(0)
+  const [item, setItem] = useState<NodeListOf<Element>>()
+
+  const defaultInitParam: gsap.TweenVars = {
+    opacity: 0,
+    y: 70,
+  }
+  const defaultAnimParam: gsap.TweenVars = {
+    opacity: 1,
+    y: 0,
+    ease: 'expo.out',
+    duration: 1.9,
+  }
+
+  const _item = '.works_item'
+  useEffect(() => {
+    gsap.set('.works_title', defaultInitParam)
+    gsap.set('.works_more', defaultInitParam)
+    const targetItem = document.querySelectorAll(_item)
+    gsap.set(targetItem, {
+      opacity: 0,
+      y: 70,
+      display: 'none',
+    })
+    setItem(targetItem)
+  }, [])
+
+  useEffect(() => {
+    if (!isLoading) {
+      setTimeout(() => {
+        setItemCount(initialLength)
+      }, 1200)
+      const main = 'main'
+      gsap
+        .timeline({
+          delay: 1.2,
+          onComplete: () => {
+            gsap.to('.works_more', defaultAnimParam)
+          },
+        })
+        .addLabel(main)
+        .to('.works_title', defaultAnimParam, main)
+    }
+  }, [isLoading])
+
+  useEffect(() => {
+    if (itemCount) {
+      const target = []
+      const node = Array.prototype.slice.call(item, 0)
+      node.forEach((__item, index) => {
+        if (index < itemCount && index >= nowCount) {
+          target.push(__item)
+          gsap.set(__item, {
+            display: 'block',
+          })
+        }
+      })
+      if (!target.length) {
+        setMoreBtnState(false)
+        return
+      }
+      gsap.to(target, {
+        delay: 0.5,
+        opacity: 1,
+        y: 0,
+        ease: 'expo.out',
+        duration: 1.9,
+        stagger: 0.2,
+      })
+      if (nowCount + target.length === worksLength) {
+        setMoreBtnState(false)
+      }
+      setNowCount(nowCount + target.length)
+    }
+  }, [itemCount])
+
+  const moreBtnOnClick = (): void => {
+    setItemCount(itemCount + moreLength)
+  }
+
   return (
     <div css={main}>
       <div>
-        <h1 css={title}>
+        <h1 css={title} className="works_title">
           <Picture
             webp={require('@public/img/page/blogTitle.png?webp')}
             img={require('@public/img/page/blogTitle.png')}
@@ -23,7 +116,7 @@ const BlogIndexInner: React.FC<Props> = ({ blogs }) => {
       <div css={body}>
         <ul css={list}>
           {blogs.map((blog, index) => (
-            <li css={item} key={index}>
+            <li css={itemStyle} key={index} className="works_item">
               <CustomLink href={`/urabanashi/${blog.id}`}>
                 <div css={itemInner}>
                   <div css={img}>
@@ -54,6 +147,14 @@ const BlogIndexInner: React.FC<Props> = ({ blogs }) => {
             </li>
           ))}
         </ul>
+        <div
+          css={backWrap}
+          className={cn('works_more', { active: moreBtnState })}
+        >
+          <div css={back} onClick={moreBtnOnClick}>
+            <span>もっとみる</span>
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -168,7 +269,7 @@ const itemTitle = css`
     transition: opacity 0.6s ease;
   `)}
 `
-const item = css`
+const itemStyle = css`
   & + & {
     padding: ${style.vwSp(20)} 0 0;
   }
@@ -197,6 +298,35 @@ const item = css`
       .css-${itemTitle.name} {
         opacity: 0.4;
       }
+    }
+  `)}
+`
+const backWrap = css`
+  display: none;
+  padding: 0 ${style.vwSp(style.config.project.paddingSpSide)};
+  ${style.pc(css`
+    padding: 0;
+  `)}
+  &.active {
+    display: block;
+  }
+`
+const back = css`
+  margin: ${style.vwSp(40)} 0 0;
+  cursor: pointer;
+  ${style.mixin.borderSquareButton()}
+  &::before {
+    border-color: ${style.colors.blogDark};
+    background-color: ${style.colors.blogDark};
+  }
+  &::after {
+    border-color: ${style.colors.blogDark};
+  }
+  ${style.pc(css`
+    width: 352px;
+    margin: 40px auto 0;
+    &:hover {
+      ${style.mixin.animPop()}
     }
   `)}
 `

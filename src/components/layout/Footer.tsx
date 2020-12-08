@@ -1,15 +1,43 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { AppContext } from '~/store/appContext'
 import cn from 'classnames'
 import { CustomLink } from '../common/CustomLink'
 import style from '~/styles'
 import { css } from '@emotion/react'
+import gsap from 'gsap'
 
 const Footer: React.FC = () => {
   const { appState } = useContext(AppContext)
 
+  const defaultInitParam: gsap.TweenVars = {
+    opacity: 0,
+    y: -40,
+  }
+  useEffect(() => {
+    gsap.set('.footer_main', defaultInitParam)
+  }, [])
+
+  useEffect(() => {
+    if (!appState.isLoading) {
+      const main = 'main'
+      gsap
+        .timeline({ delay: 1.7 })
+        .addLabel(main)
+        .to(
+          '.footer_main',
+          {
+            opacity: 1,
+            y: 0,
+            ease: 'expo.out',
+            duration: 1.8,
+          },
+          main,
+        )
+    }
+  }, [appState.isLoading])
+
   return (
-    <footer css={wrap}>
+    <footer css={wrap} className="footer_main">
       <div className="pc-only">
         <div css={sns}>
           <a
