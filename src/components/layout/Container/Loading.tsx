@@ -46,7 +46,7 @@ const Loading: React.FC = () => {
 
   return (
     <div css={root}>
-      <div css={landing}>
+      <div css={landing} id="landingAnimWrap">
         <div id="landingAnim" />
       </div>
       <div css={transition}>
@@ -237,7 +237,7 @@ const open = (): void => {
     gsap.set(_root, {
       display: 'none',
     })
-    gsap.set(`.css-${landing.name}`, {
+    gsap.set('#landingAnimWrap', {
       display: 'none',
     })
     loadCallback()
