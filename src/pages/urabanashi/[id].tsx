@@ -8,6 +8,8 @@ import { AppContext } from '~/store/appContext'
 import { BlogDetailInner } from '~/components/blog/BlogDetailInner'
 import { Meta } from '~/components/layout/Meta'
 import { TopRecType } from '~/types/top'
+import gsap from 'gsap'
+import { ScrollTrigger } from '~/utils/ScrollTrigger'
 
 type Props = {
   blog: BlogType
@@ -19,6 +21,7 @@ const BlogDetail: NextPage<Props> = ({ blog, authorData, recommended }) => {
   if (!blog) {
     return <ErrorPage statusCode={404} />
   }
+  gsap.registerPlugin(ScrollTrigger)
   const { appDispatch } = useContext(AppContext)
 
   useEffect(() => {

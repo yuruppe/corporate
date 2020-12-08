@@ -4,6 +4,8 @@ import ErrorPage from 'next/error'
 import { WorksType } from '~/types/Works'
 import { WorksDetailInner } from '~/components/works/WorksDetailInner'
 import { Meta } from '~/components/layout/Meta'
+import gsap from 'gsap'
+import { ScrollTrigger } from '~/utils/ScrollTrigger'
 
 type Props = {
   work: WorksType
@@ -14,6 +16,7 @@ const WorksDetail: NextPage<Props> = ({ work, description }) => {
   if (!work) {
     return <ErrorPage statusCode={404} />
   }
+  gsap.registerPlugin(ScrollTrigger)
 
   return (
     <>

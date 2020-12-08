@@ -2,12 +2,15 @@ import { GetStaticProps, NextPage } from 'next'
 import axios from 'axios'
 import { HomeInner } from '~/components/index/HomeInner'
 import { Meta } from '~/components/layout/Meta'
+import gsap from 'gsap'
+import { ScrollTrigger } from '~/utils/ScrollTrigger'
 
 type Props = {
   description: any
 }
 
 const Home: NextPage<Props> = ({ description }) => {
+  gsap.registerPlugin(ScrollTrigger)
   return (
     <>
       <Meta id="index" />

@@ -5,12 +5,15 @@ import { useContext, useEffect } from 'react'
 import { AppContext } from '~/store/appContext'
 import { BlogIndexInner } from '~/components/blog/BlogIndexInner'
 import { Meta } from '~/components/layout/Meta'
+import gsap from 'gsap'
+import { ScrollTrigger } from '~/utils/ScrollTrigger'
 
 type Props = {
   blogs: BlogType[]
 }
 
 const BlogIndex: NextPage<Props> = ({ blogs }) => {
+  gsap.registerPlugin(ScrollTrigger)
   const { appDispatch } = useContext(AppContext)
 
   useEffect(() => {

@@ -3,12 +3,46 @@ import { css } from '@emotion/react'
 import { CustomLink } from '../common/CustomLink'
 import { Picture } from '../common/Picture'
 import style from '~/styles'
+import { useContext, useEffect } from 'react'
+import { AppContext } from '~/store/appContext'
+import gsap from 'gsap'
 
 const AboutInner: React.FC = () => {
+  const { appState } = useContext(AppContext)
+  const { isLoading } = appState
+  const defaultInitParam: gsap.TweenVars = {
+    opacity: 0,
+    y: 70,
+  }
+  const defaultAnimParam: gsap.TweenVars = {
+    opacity: 1,
+    y: 0,
+    ease: 'expo.out',
+    duration: 1.9,
+  }
+
+  useEffect(() => {
+    gsap.set('.about_title', defaultInitParam)
+    gsap.set('.about_inner', defaultInitParam)
+  }, [])
+
+  useEffect(() => {
+    if (!isLoading) {
+      const main = 'main'
+      gsap
+        .timeline({
+          delay: 1.2,
+        })
+        .addLabel(main)
+        .to('.about_title', defaultAnimParam, main)
+        .to('.about_inner', defaultAnimParam, main + '+=0.2')
+    }
+  }, [isLoading])
+
   return (
     <div css={main}>
       <div>
-        <h1 css={title}>
+        <h1 css={title} className="about_title">
           <Picture
             webp={require('@public/img/page/aboutTitle.png?webp')}
             img={require('@public/img/page/aboutTitle.png')}
@@ -16,7 +50,7 @@ const AboutInner: React.FC = () => {
           />
         </h1>
       </div>
-      <div css={body}>
+      <div css={body} className="about_inner">
         <div css={logo}>
           <img src="/img/common/logo_illust_black.svg" alt="YURUPPE.inc" />
         </div>

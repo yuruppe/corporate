@@ -3,7 +3,7 @@ import { metaDataType } from '~/types/meta'
 const metaData: metaDataType = {
   meta: {
     domain: 'https://yuruppe.co.jp',
-    ogpImagePath: '/assets/img/common/ogp.png',
+    ogpImagePath: '/img/common/ogp.png',
     type: 'website',
     websiteName: 'YURUPPE.inc',
   },

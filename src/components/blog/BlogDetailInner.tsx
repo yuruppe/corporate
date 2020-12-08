@@ -1,9 +1,12 @@
 import { css } from '@emotion/react'
+import { useContext, useEffect } from 'react'
+import { AppContext } from '~/store/appContext'
 import style from '~/styles'
 import { BlogType } from '~/types/Blog'
 import { MemberType } from '~/types/Member'
 import { CustomLink } from '../common/CustomLink'
 import { Picture } from '../common/Picture'
+import gsap from 'gsap'
 
 type Props = {
   blog: BlogType
@@ -16,11 +19,55 @@ const BlogDetailInner: React.FC<Props> = ({
   authorData,
   recommended,
 }) => {
+  const { appState } = useContext(AppContext)
+  const { isLoading } = appState
+  const defaultInitParam: gsap.TweenVars = {
+    opacity: 0,
+    y: 70,
+  }
+  const defaultAnimParam: gsap.TweenVars = {
+    opacity: 1,
+    y: 0,
+    ease: 'expo.out',
+    duration: 1.9,
+  }
+
+  useEffect(() => {
+    gsap.set('.blog_title', defaultInitParam)
+    gsap.set('.blog_cover', defaultInitParam)
+    gsap.set('.blog_heading', defaultInitParam)
+    gsap.set('.blog_description', defaultInitParam)
+    gsap.set('.blog_credit', defaultInitParam)
+  }, [])
+
+  useEffect(() => {
+    if (!isLoading) {
+      const main = 'main'
+      gsap
+        .timeline({
+          delay: 1.2,
+        })
+        .addLabel(main)
+        .to('.blog_title', defaultAnimParam, main)
+        .to('.blog_cover', defaultAnimParam, main + '+=0.2')
+
+      gsap
+        .timeline({ scrollTrigger: '.blog_heading' })
+        .to('.blog_heading', defaultAnimParam)
+      gsap
+        .timeline({ scrollTrigger: '.blog_description' })
+        .to('.blog_description', defaultAnimParam)
+      gsap
+        .timeline({ scrollTrigger: '.blog_credit' })
+        .to('.blog_credit', defaultAnimParam)
+    }
+  }, [isLoading])
+
   return (
     <>
       <div css={main}>
         <div>
-          <h2 css={title}>
+          <h2 css={title} className="blog_title">
             <CustomLink href="/urabanashi">
               <Picture
                 webp={require('@public/img/page/blogTitle.png?webp')}
@@ -30,14 +77,14 @@ const BlogDetailInner: React.FC<Props> = ({
             </CustomLink>
           </h2>
         </div>
-        <div css={cover}>
+        <div css={cover} className="blog_cover">
           <Picture
             webp={`${blog.thumbnail.url}?fm=webp`}
             img={blog.thumbnail.url}
           />
         </div>
         <div css={body}>
-          <div css={heading}>
+          <div css={heading} className="blog_heading">
             <ul css={tagList}>
               {Array.isArray(blog.tags) ? (
                 <>
@@ -55,7 +102,7 @@ const BlogDetailInner: React.FC<Props> = ({
             </ul>
             <h1 css={blogTitle}>{blog.title}</h1>
           </div>
-          <div css={desc}>
+          <div css={desc} className="blog_description">
             <div css={descMember}>
               <div css={descMemberImg}>
                 <Picture
@@ -78,7 +125,7 @@ const BlogDetailInner: React.FC<Props> = ({
               dangerouslySetInnerHTML={{ __html: blog.detail }}
             ></div>
           </div>
-          <div css={desc}>
+          <div css={desc} className="blog_credit">
             <h2 css={recTitle}>おすすめ</h2>
             <ul css={recList}>
               {recommended.map((rec, index) => (

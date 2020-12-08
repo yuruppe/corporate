@@ -3,6 +3,8 @@ import axios from 'axios'
 import { CoverImageUserID, MemberType } from '~/types/Member'
 import { MemberInner } from '~/components/member/MemberInner'
 import { Meta } from '~/components/layout/Meta'
+import gsap from 'gsap'
+import { ScrollTrigger } from '~/utils/ScrollTrigger'
 
 type Props = {
   members: MemberType[]
@@ -10,6 +12,7 @@ type Props = {
 }
 
 const Member: NextPage<Props> = ({ members, coverURL }) => {
+  gsap.registerPlugin(ScrollTrigger)
   return (
     <>
       <Meta id="member" />

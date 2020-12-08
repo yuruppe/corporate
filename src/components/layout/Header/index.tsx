@@ -1,17 +1,59 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import cn from 'classnames'
 import { AppContext } from '~/store/appContext'
 import { CustomLink } from '~/components/common/CustomLink'
 import { Menu } from './Menu'
 import style from '~/styles'
 import { css } from '@emotion/react'
+import gsap from 'gsap'
 
 const Header: React.FC = () => {
   const { appState, appDispatch } = useContext(AppContext)
 
+  const defaultInitParam: gsap.TweenVars = {
+    opacity: 0,
+    y: -40,
+  }
+  useEffect(() => {
+    gsap.set('.header_logo', defaultInitParam)
+    gsap.set('.header_button', defaultInitParam)
+  }, [])
+
+  useEffect(() => {
+    if (!appState.isLoading) {
+      const main = 'main'
+      gsap
+        .timeline({ delay: 1.7 })
+        .addLabel(main)
+        .to(
+          '.header_logo',
+          {
+            opacity: 1,
+            y: 0,
+            ease: 'back.out(2.7)',
+            duration: 1.0,
+          },
+          main,
+        )
+        .to(
+          '.header_button',
+          {
+            opacity: 1,
+            y: 0,
+            ease: 'back.out(1.7)',
+            duration: 1.0,
+          },
+          main,
+        )
+    }
+  }, [appState.isLoading])
+
   return (
     <header css={wrap}>
-      <div css={logo} className={cn({ dark: appState.darkMode })}>
+      <div
+        css={logo}
+        className={cn({ dark: appState.darkMode }, 'header_logo')}
+      >
         <CustomLink href="/">
           <svg
             width="146"
@@ -30,7 +72,10 @@ const Header: React.FC = () => {
           </svg>
         </CustomLink>
       </div>
-      <div css={button} className={cn({ open: appState.menu.isOpen })}>
+      <div
+        css={button}
+        className={cn({ open: appState.menu.isOpen }, 'header_button')}
+      >
         <div
           css={top}
           className={cn(

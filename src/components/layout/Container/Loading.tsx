@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { AppContext } from '~/store/appContext'
 import gsap from 'gsap'
 import style from '~/styles'
@@ -23,6 +23,7 @@ import chara10 from '~/json/chara10.json'
 
 const Loading: React.FC = () => {
   const { appState, appDispatch } = useContext(AppContext)
+  const mounted = useRef()
   useEffect(() => {
     if (!appState.launch) {
       // on launch process
@@ -33,12 +34,16 @@ const Loading: React.FC = () => {
       })
       return
     }
-    if (appState.isLoading) {
-      // Loading start
-      routeingStartAnim(appState.darkMode)
+    if (!mounted.current) {
+      mounted.current = true
     } else {
-      // Loading end
-      routingEndAnim(appState.darkMode)
+      if (appState.isLoading) {
+        // Loading start
+        routeingStartAnim(appState.darkMode)
+      } else {
+        // Loading end
+        routingEndAnim(appState.darkMode)
+      }
     }
   }, [appState.isLoading])
 
@@ -230,6 +235,9 @@ const open = (): void => {
       landingAnim.play()
     }, 300)
   }, 500)
+  setTimeout(() => {
+    loadCallback()
+  }, 1200)
   landingAnim.addEventListener('complete', () => {
     gsap.set(_root, {
       display: 'none',
@@ -237,7 +245,6 @@ const open = (): void => {
     gsap.set('#landingAnimWrap', {
       display: 'none',
     })
-    loadCallback()
   })
 }
 

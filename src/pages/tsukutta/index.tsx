@@ -3,12 +3,15 @@ import axios from 'axios'
 import { WorksType } from '~/types/Works'
 import { WorksIndexInner } from '~/components/works/WorksIndexInner'
 import { Meta } from '~/components/layout/Meta'
+import gsap from 'gsap'
+import { ScrollTrigger } from '~/utils/ScrollTrigger'
 
 type Props = {
   works: WorksType[]
 }
 
 const WorksIndex: NextPage<Props> = ({ works }) => {
+  gsap.registerPlugin(ScrollTrigger)
   return (
     <>
       <Meta id="tsukutta_index" />

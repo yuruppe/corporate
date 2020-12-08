@@ -5,16 +5,63 @@ import { CustomLink } from '~/components/common/CustomLink'
 import { WorksType } from '~/types/Works'
 import { css } from '@emotion/react'
 import style from '~/styles'
+import gsap from 'gsap'
+import { useContext, useEffect } from 'react'
+import { AppContext } from '~/store/appContext'
 
 type Props = {
   work: WorksType
 }
 
 const WorksDetailInner: React.FC<Props> = ({ work }) => {
+  const { appState } = useContext(AppContext)
+  const { isLoading } = appState
+  const defaultInitParam: gsap.TweenVars = {
+    opacity: 0,
+    y: 70,
+  }
+  const defaultAnimParam: gsap.TweenVars = {
+    opacity: 1,
+    y: 0,
+    ease: 'expo.out',
+    duration: 1.9,
+  }
+
+  useEffect(() => {
+    gsap.set('.works_title', defaultInitParam)
+    gsap.set('.works_cover', defaultInitParam)
+    gsap.set('.works_heading', defaultInitParam)
+    gsap.set('.works_description', defaultInitParam)
+    gsap.set('.works_credit', defaultInitParam)
+  }, [])
+
+  useEffect(() => {
+    if (!isLoading) {
+      const main = 'main'
+      gsap
+        .timeline({
+          delay: 1.2,
+        })
+        .addLabel(main)
+        .to('.works_title', defaultAnimParam, main)
+        .to('.works_cover', defaultAnimParam, main + '+=0.2')
+
+      gsap
+        .timeline({ scrollTrigger: '.works_heading' })
+        .to('.works_heading', defaultAnimParam)
+      gsap
+        .timeline({ scrollTrigger: '.works_description' })
+        .to('.works_description', defaultAnimParam)
+      gsap
+        .timeline({ scrollTrigger: '.works_credit' })
+        .to('.works_credit', defaultAnimParam)
+    }
+  }, [isLoading])
+
   return (
     <div css={main}>
       <div>
-        <h2 css={title}>
+        <h2 css={title} className="works_title">
           <CustomLink href="/tsukutta">
             <Picture
               webp={require('@public/img/page/worksTitle.png?webp')}
@@ -24,7 +71,7 @@ const WorksDetailInner: React.FC<Props> = ({ work }) => {
           </CustomLink>
         </h2>
       </div>
-      <div css={cover} className={cn({ movie: work.movie })}>
+      <div css={cover} className={cn({ movie: work.movie }, 'works_cover')}>
         {work.movie ? (
           <>
             <ReactPlayer
@@ -45,7 +92,7 @@ const WorksDetailInner: React.FC<Props> = ({ work }) => {
         )}
       </div>
       <div css={body}>
-        <div css={heading}>
+        <div css={heading} className="works_heading">
           <ul css={tagList}>
             {Array.isArray(work.tags) ? (
               <>
@@ -63,7 +110,7 @@ const WorksDetailInner: React.FC<Props> = ({ work }) => {
           </ul>
           <h1 css={workTitle}>{work.title}</h1>
         </div>
-        <div css={desc}>
+        <div css={desc} className="works_description">
           <h2 css={descTitle}>せつめい</h2>
           {Array.isArray(work.detail) ? (
             <>
@@ -84,7 +131,7 @@ const WorksDetailInner: React.FC<Props> = ({ work }) => {
             </div>
           ) : null}
         </div>
-        <div css={credit}>
+        <div css={credit} className="works_credit">
           <h2 css={creditTitle}>つくった人たち</h2>
           {work.credits.map((credit, index) => (
             <dl css={creditItem} key={index}>

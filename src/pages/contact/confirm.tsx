@@ -1,6 +1,8 @@
 import { GetStaticProps, NextPage } from 'next'
 import { ContactConfirmInner } from '~/components/contact/ContactConfirmInner'
 import { Meta } from '~/components/layout/Meta'
+import gsap from 'gsap'
+import { ScrollTrigger } from '~/utils/ScrollTrigger'
 
 type Props = {
   endPoint: string
@@ -8,6 +10,7 @@ type Props = {
 }
 
 const ContactConfirm: NextPage<Props> = ({ endPoint, xWriteApiKey }) => {
+  gsap.registerPlugin(ScrollTrigger)
   return (
     <>
       <Meta id="contact_confirm" />

@@ -8,17 +8,60 @@ import chara03 from '~/json/top_chara03.json'
 import chara04 from '~/json/top_chara04.json'
 import chara05 from '~/json/top_chara05.json'
 import { useEffectOnce } from '~/hooks/useEffectOnce'
+import { useContext, useEffect } from 'react'
+import { AppContext } from '~/store/appContext'
+import gsap from 'gsap'
 
 type Props = {
   description: any
 }
 
 const HomeInner: React.FC<Props> = ({ description }) => {
+  const { appState } = useContext(AppContext)
+  const defaultInitParam: gsap.TweenVars = {
+    opacity: 0,
+    y: 70,
+  }
   useEffectOnce(() => {
     init()
+    gsap.set('.top_main', defaultInitParam)
+    gsap.set('.top_item', defaultInitParam)
   })
+
+  useEffect(() => {
+    if (!appState.isLoading) {
+      const main = 'main'
+      gsap
+        .timeline({
+          delay: 1.2,
+        })
+        .addLabel(main)
+        .to(
+          '.top_main',
+          {
+            opacity: 1,
+            y: 0,
+            ease: 'expo.out',
+            duration: 1.9,
+          },
+          main,
+        )
+        .to(
+          '.top_item',
+          {
+            opacity: 1,
+            y: 0,
+            ease: 'expo.out',
+            duration: 1.9,
+            stagger: 0.1,
+          },
+          main,
+        )
+    }
+  }, [appState.isLoading])
+
   return (
-    <div css={main}>
+    <div css={main} className="top_main">
       <div css={inner}>
         <h1 css={title}>YURUPPE inc.</h1>
         <div css={desc} dangerouslySetInnerHTML={{ __html: description }} />
@@ -27,7 +70,7 @@ const HomeInner: React.FC<Props> = ({ description }) => {
       </div>
 
       <ul css={linkList}>
-        <li css={linkItem}>
+        <li css={linkItem} className="top_item">
           <CustomLink href="/tsukutta">
             <div css={linkAnchor}>
               <h2 css={linkTitle} className="arrow">
@@ -37,7 +80,7 @@ const HomeInner: React.FC<Props> = ({ description }) => {
           </CustomLink>
           <div id="top_chara02" css={topChara02} />
         </li>
-        <li css={linkItem}>
+        <li css={linkItem} className="top_item">
           <CustomLink href="/urabanashi">
             <div css={linkAnchor}>
               <h2 css={linkTitle} className="arrow">
@@ -47,7 +90,7 @@ const HomeInner: React.FC<Props> = ({ description }) => {
           </CustomLink>
           <div id="top_chara03" css={topChara03} />
         </li>
-        <li css={linkItem}>
+        <li css={linkItem} className="top_item">
           <a
             css={linkAnchor}
             href="https://yuruppe.stores.jp"

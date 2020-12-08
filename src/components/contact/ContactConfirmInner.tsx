@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { useEffectOnce } from '~/hooks/useEffectOnce'
 import { AppContext } from '~/store/appContext'
 import { FormPostData } from '~/types/Form'
 import { Picture } from '../common/Picture'
 import ContactStyles from './ContactStyles'
 import axios from 'axios'
+import gsap from 'gsap'
 
 type Props = {
   endPoint: string
@@ -13,8 +14,39 @@ type Props = {
 }
 
 const ContactConfirmInner: React.FC<Props> = ({ endPoint, xWriteApiKey }) => {
-  const router = useRouter()
   const { appState } = useContext(AppContext)
+  const { isLoading } = appState
+  const defaultInitParam: gsap.TweenVars = {
+    opacity: 0,
+    y: 70,
+  }
+  const defaultAnimParam: gsap.TweenVars = {
+    opacity: 1,
+    y: 0,
+    ease: 'expo.out',
+    duration: 1.9,
+  }
+
+  useEffect(() => {
+    gsap.set('.contact_title', defaultInitParam)
+    gsap.set('.contact_inner', defaultInitParam)
+  }, [])
+
+  useEffect(() => {
+    if (!isLoading) {
+      const main = 'main'
+      gsap
+        .timeline({
+          delay: 1.2,
+        })
+        .addLabel(main)
+        .to('.contact_title', defaultAnimParam, main)
+        .to('.contact_inner', defaultAnimParam, main + '+=0.2')
+    }
+  }, [isLoading])
+
+  // こっからフォーム
+  const router = useRouter()
 
   const onSubmit = (): void => {
     const { name, company, mail, tel, detail } = appState.formTmpData
@@ -63,7 +95,7 @@ const ContactConfirmInner: React.FC<Props> = ({ endPoint, xWriteApiKey }) => {
   return (
     <div css={ContactStyles.main}>
       <div>
-        <h1 css={ContactStyles.title}>
+        <h1 css={ContactStyles.title} className="contact_title">
           <Picture
             webp={require('@public/img/page/contactTitle.png?webp')}
             img={require('@public/img/page/contactTitle.png')}
@@ -71,7 +103,7 @@ const ContactConfirmInner: React.FC<Props> = ({ endPoint, xWriteApiKey }) => {
           />
         </h1>
       </div>
-      <div css={ContactStyles.body}>
+      <div css={ContactStyles.body} className="contact_inner">
         <p css={ContactStyles.intro}>
           入力内容をご確認の上「送信する」ボタンを押してください。
           <br />

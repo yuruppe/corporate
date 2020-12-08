@@ -4,6 +4,9 @@ import style from '~/styles'
 import { MemberType } from '~/types/Member'
 import { MemberItem } from './MemberItem'
 import { CustomLink } from '../common/CustomLink'
+import { useContext, useEffect } from 'react'
+import { AppContext } from '~/store/appContext'
+import gsap from 'gsap'
 
 type Props = {
   members: MemberType[]
@@ -11,10 +14,41 @@ type Props = {
 }
 
 const MemberInner: React.FC<Props> = ({ members, coverURL }) => {
+  const { appState } = useContext(AppContext)
+  const { isLoading } = appState
+  const defaultInitParam: gsap.TweenVars = {
+    opacity: 0,
+    y: 70,
+  }
+  const defaultAnimParam: gsap.TweenVars = {
+    opacity: 1,
+    y: 0,
+    ease: 'expo.out',
+    duration: 1.9,
+  }
+
+  useEffect(() => {
+    gsap.set('.member_title', defaultInitParam)
+    gsap.set('.member_inner', defaultInitParam)
+  }, [])
+
+  useEffect(() => {
+    if (!isLoading) {
+      const main = 'main'
+      gsap
+        .timeline({
+          delay: 1.2,
+        })
+        .addLabel(main)
+        .to('.member_title', defaultAnimParam, main)
+        .to('.member_inner', defaultAnimParam, main + '+=0.2')
+    }
+  }, [isLoading])
+
   return (
     <div css={main}>
       <div>
-        <h1 css={title}>
+        <h1 css={title} className="member_title">
           <Picture
             webp={require('@public/img/page/memberTitle.png?webp')}
             img={require('@public/img/page/memberTitle.png')}
@@ -22,7 +56,7 @@ const MemberInner: React.FC<Props> = ({ members, coverURL }) => {
           />
         </h1>
       </div>
-      <div css={inner}>
+      <div css={inner} className="member_inner">
         <div css={cover}>
           <Picture webp={`${coverURL}?fm=webp`} img={coverURL} />
         </div>
