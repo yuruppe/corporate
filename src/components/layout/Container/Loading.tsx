@@ -134,6 +134,13 @@ const landing = css`
       transform: translate(-50%, -50%) !important;
     }
   }
+  ${style.sp(css`
+    div {
+      svg {
+        transform: translate(-50%, -50%) scale(0.5) !important;
+      }
+    }
+  `)}
 `
 const transition = css`
   ${defaultAbsolute}
@@ -155,12 +162,24 @@ const transition = css`
       transform: translate(-50%, -50%) !important;
     }
   }
+  ${style.sp(css`
+    div {
+      svg {
+        transform: translate(-50%, -50%) scale(0.5) !important;
+      }
+    }
+  `)}
 `
 const chara = css`
   ${defaultAbsolute}
   display: flex;
   justify-content: center;
   align-items: center;
+  ${style.sp(css`
+    div {
+      width: ${style.vwSp(128)};
+    }
+  `)}
 `
 
 // JSONをロードしてカウント、15たまったらランディングの関数をたたく
