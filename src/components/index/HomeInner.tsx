@@ -104,7 +104,7 @@ const topChara02 = css`
 const topChara03 = css`
   position: absolute;
   top: 0;
-  right: 20%;
+  left: 20%;
   ${charaDefault}
 `
 const topChara04 = css`
