@@ -35,11 +35,9 @@ const Loading: React.FC = () => {
     }
     if (appState.isLoading) {
       // Loading start
-      console.log('遷移開始')
       routeingStartAnim(appState.darkMode)
     } else {
       // Loading end
-      console.log('遷移終了')
       routingEndAnim(appState.darkMode)
     }
   }, [appState.isLoading])
@@ -173,7 +171,6 @@ const loadAnim = (id: string, data: any, loop = false): AnimationItem => {
 
   anim.addEventListener('DOMLoaded', () => {
     loadAnimCount++
-    console.log(loadAnimCount)
     if (loadAnimCount === 15) {
       open()
     }
