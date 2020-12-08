@@ -23,7 +23,7 @@ import chara10 from '~/json/chara10.json'
 
 const Loading: React.FC = () => {
   const { appState, appDispatch } = useContext(AppContext)
-  const mounted = useRef()
+  const mounted = useRef<boolean>(false)
   useEffect(() => {
     if (!appState.launch) {
       // on launch process
