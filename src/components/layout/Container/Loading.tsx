@@ -35,9 +35,11 @@ const Loading: React.FC = () => {
     }
     if (appState.isLoading) {
       // Loading start
+      console.log('遷移開始')
       routeingStartAnim(appState.darkMode)
     } else {
       // Loading end
+      console.log('遷移終了')
       routingEndAnim(appState.darkMode)
     }
   }, [appState.isLoading])
@@ -212,6 +214,7 @@ const allTransitionAnimLoad = (): void => {
   allCharaLoad()
   transitionAnimGreen = loadAnim('transitionGreen', transitionGreen)
   transitionAnimGray = loadAnim('transitionGray', transitionGray)
+  nowChara = allCharaArray[0]
 }
 
 // 実際にコンポーネント側から叩かれて、最初に動く関数
@@ -245,9 +248,6 @@ let start = false
 let nowChara: AnimationItem
 
 const routeingStartAnim = (isDark: boolean): void => {
-  if (!transitionAnimGreen) {
-    allTransitionAnimLoad()
-  }
   if (!transitionAnimGreen) return
 
   gsap.set(_root, {
@@ -272,6 +272,7 @@ const routeingStartAnim = (isDark: boolean): void => {
 
 const routingEndAnim = (isDark: boolean): void => {
   if (!transitionAnimGreen) return
+  if (!nowChara) return
 
   const anim = isDark ? transitionAnimGray : transitionAnimGreen
   anim.addEventListener('complete', () => {
