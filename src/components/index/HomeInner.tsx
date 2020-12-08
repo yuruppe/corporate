@@ -130,7 +130,7 @@ const charaDefault = css`
   ${style.sp(css`
     width: ${style.vwSp(80)};
   `)}
-  z-index: -5;
+  z-index: -10;
 `
 const topChara01 = css`
   position: absolute;
@@ -196,6 +196,7 @@ const linkList = css`
 `
 const linkItem = css`
   position: relative;
+  transform: translate3d(0, 0, 1px);
   margin: ${style.vwSp(24)} 0 0;
   ${style.mixin.borderCircleButton()}
   ${style.pc(css`
@@ -320,7 +321,7 @@ const init = () => {
 const register = (anim: AnimObject): void => {
   setTimeout(() => {
     setInterval(() => {
-      if (Math.random() > 0.6) {
+      if (Math.random() > 0.85) {
         if (!anim.isAnim) {
           anim.isAnim = true
           anim.data.addEventListener('complete', () => {
