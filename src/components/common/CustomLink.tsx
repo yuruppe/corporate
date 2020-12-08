@@ -17,7 +17,7 @@ const CustomLink: React.FC<Props> = ({
   onClick,
 }) => {
   const router = useRouter()
-  const { appState } = useContext(AppContext)
+  const { appState, appDispatch } = useContext(AppContext)
 
   const handleClick = (e: React.MouseEvent<HTMLElement>): void => {
     e.preventDefault()
@@ -33,6 +33,11 @@ const CustomLink: React.FC<Props> = ({
         offset: 0,
       })
       return
+    }
+    if (href.includes('urabanashi')) {
+      appDispatch({ type: 'SET_DARK_MODE', value: true })
+    } else {
+      appDispatch({ type: 'SET_DARK_MODE', value: false })
     }
 
     router.push(href)

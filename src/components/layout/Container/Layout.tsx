@@ -24,7 +24,7 @@ const wrap = css`
   min-height: 100%;
   background-color: ${style.colors.lightBlue};
   padding: 116px 0 0;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out 0.5s;
   &.dark {
     background-color: ${style.colors.blogBack};
   }

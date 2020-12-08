@@ -4,9 +4,22 @@ import { AppContext } from '~/store/appContext'
 import gsap from 'gsap'
 import style from '~/styles'
 import cn from 'classnames'
-import Lottie from 'lottie-web'
-import lottieLoadingPc from '~/json/loading_green.json'
-// import lottieLoadingSp from '~/json/loading.json'
+import Lottie, { AnimationItem } from 'lottie-web'
+import landingGreen from '~/json/landing_green.json'
+import landingGray from '~/json/landing_gray.json'
+import transitionGreen from '~/json/transition_green.json'
+import transitionGray from '~/json/transition_gray.json'
+import chara00 from '~/json/chara00.json'
+import chara01 from '~/json/chara01.json'
+import chara02 from '~/json/chara02.json'
+import chara03 from '~/json/chara03.json'
+import chara04 from '~/json/chara04.json'
+import chara05 from '~/json/chara05.json'
+import chara06 from '~/json/chara06.json'
+import chara07 from '~/json/chara07.json'
+import chara08 from '~/json/chara08.json'
+import chara09 from '~/json/chara09.json'
+import chara10 from '~/json/chara10.json'
 
 const Loading: React.FC = () => {
   const { appState, appDispatch } = useContext(AppContext)
@@ -22,138 +35,256 @@ const Loading: React.FC = () => {
     }
     if (appState.isLoading) {
       // Loading start
-      routeingStartAnim()
+      routeingStartAnim(appState.darkMode)
     } else {
       // Loading end
-      routingEndAnim()
+      routingEndAnim(appState.darkMode)
     }
   }, [appState.isLoading])
 
   return (
     <div css={root}>
-      <div css={launchLoadingWrap}>
-        <div css={launchLoading} id="loadingAnim" />
+      <div css={landing}>
+        <div id="landingAnim" />
       </div>
-      <div css={loadOverlay}>
-        <div css={inner} className={cn({ dark: appState.darkMode })}></div>
+      <div css={transition}>
+        <div id="transitionGreen" />
+      </div>
+      <div css={transition}>
+        <div id="transitionGray" />
+      </div>
+      <div css={chara}>
+        <div id="chara00-landing" />
+      </div>
+      <div css={chara} className="anim-00">
+        <div id="chara00" />
+      </div>
+      <div css={chara} className="anim-01">
+        <div id="chara01" />
+      </div>
+      <div css={chara} className="anim-02">
+        <div id="chara02" />
+      </div>
+      <div css={chara} className="anim-03">
+        <div id="chara03" />
+      </div>
+      <div css={chara} className="anim-04">
+        <div id="chara04" />
+      </div>
+      <div css={chara} className="anim-05">
+        <div id="chara05" />
+      </div>
+      <div css={chara} className="anim-06">
+        <div id="chara06" />
+      </div>
+      <div css={chara} className="anim-07">
+        <div id="chara07" />
+      </div>
+      <div css={chara} className="anim-08">
+        <div id="chara08" />
+      </div>
+      <div css={chara} className="anim-09">
+        <div id="chara09" />
+      </div>
+      <div css={chara} className="anim-10">
+        <div id="chara10" />
       </div>
     </div>
   )
 }
+const defaultAbsolute = css`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`
 const root = css`
-  pointer-events: none;
-`
-
-const launchLoadingWrap = css`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   z-index: 10000;
-  overflow: hidden;
 `
-const launchLoading = css`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background-color: white;
-  width: 100%;
-  height: 100%;
-  transform: translate(-50%, -50%);
-  pointer-events: auto;
-  width: auto;
-  height: auto;
-  min-width: 100%;
-  min-height: 100%;
-  max-width: inherit;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  ${style.sp(css`
-    transform: translate(-50%, -50%) scale(2.5);
-  `)}
-`
-
-const loadOverlay = css`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 10;
-  overflow: hidden;
-`
-
-const inner = css`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: auto;
-  background-color: ${style.colors.lightBlue};
-  transition: background-color 0.3s ease-in-out;
-  &.dark {
-    background-color: ${style.colors.blogBack};
+const _root = `.css-${root.name}`
+const landing = css`
+  ${defaultAbsolute}
+  div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    svg {
+      width: auto !important;
+      height: auto !important;
+      min-width: 100%;
+      min-height: 100%;
+      max-width: inherit;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) !important;
+    }
   }
 `
+const transition = css`
+  ${defaultAbsolute}
+  div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    svg {
+      width: auto !important;
+      height: auto !important;
+      min-width: 100%;
+      min-height: 100%;
+      max-width: inherit;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) !important;
+    }
+  }
+`
+const chara = css`
+  ${defaultAbsolute}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
-const target = `.css-${inner.name}`
-
-const launchAnim = (cb: () => void): void => {
-  const container = document.getElementById('loadingAnim')
-
-  // 遷移ロードを消す
-  gsap.to(target, {
-    y: '100%',
-    duration: 0.5,
-    delay: 1.0,
-    ease: 'expo.out',
-  })
-
+// JSONをロードしてカウント、15たまったらランディングの関数をたたく
+let loadAnimCount = 0
+const loadAnim = (id: string, data: any, loop = false): AnimationItem => {
   const anim = Lottie.loadAnimation({
-    container,
+    container: document.getElementById(id),
     renderer: 'svg',
-    loop: false,
-    autoplay: true,
-    // animationData: window.innerWidth < 768 ? lottieLoadingSp : lottieLoadingPc,
-    animationData: lottieLoadingPc,
+    loop,
+    autoplay: false,
+    animationData: data,
   })
+
   anim.addEventListener('DOMLoaded', () => {
-    // anim.goToAndStop(2000)
+    loadAnimCount++
+    console.log(loadAnimCount)
+    if (loadAnimCount === 15) {
+      open()
+    }
+  })
+
+  return anim
+}
+/**
+ * アニメーションデータ全部
+ */
+const allCharaArray: AnimationItem[] = []
+let landingAnim: AnimationItem
+let landingChara: AnimationItem
+const allCharaLoad = (): void => {
+  allCharaArray.push(loadAnim('chara00', chara00))
+  allCharaArray.push(loadAnim('chara01', chara01))
+  allCharaArray.push(loadAnim('chara02', chara02))
+  allCharaArray.push(loadAnim('chara03', chara03))
+  allCharaArray.push(loadAnim('chara04', chara04))
+  allCharaArray.push(loadAnim('chara05', chara05))
+  allCharaArray.push(loadAnim('chara06', chara06))
+  allCharaArray.push(loadAnim('chara07', chara07))
+  allCharaArray.push(loadAnim('chara08', chara08))
+  allCharaArray.push(loadAnim('chara09', chara09))
+  allCharaArray.push(loadAnim('chara10', chara10))
+}
+let transitionAnimGreen: AnimationItem
+let transitionAnimGray: AnimationItem
+
+// コンポーネントからもらってるコールバックを一時保存する変数
+let loadCallback: () => void
+
+// 全部のアニメーションを読み込む
+const allTransitionAnimLoad = (): void => {
+  const isBlog = location.href.includes('urabanashi')
+  landingAnim = loadAnim('landingAnim', isBlog ? landingGray : landingGreen)
+  landingChara = loadAnim('chara00-landing', chara00)
+  allCharaLoad()
+  transitionAnimGreen = loadAnim('transitionGreen', transitionGreen)
+  transitionAnimGray = loadAnim('transitionGray', transitionGray)
+}
+
+// 実際にコンポーネント側から叩かれて、最初に動く関数
+const launchAnim = (cb: () => void): void => {
+  loadCallback = cb
+  allTransitionAnimLoad()
+}
+
+/**
+ * もろもろアニメーションがおわってサイトを見せる時の最後の関数
+ */
+const open = (): void => {
+  setTimeout(() => {
+    landingChara.play()
+    setTimeout(() => {
+      landingAnim.play()
+    }, 300)
+  }, 500)
+  landingAnim.addEventListener('complete', () => {
+    gsap.set(_root, {
+      display: 'none',
+    })
+    gsap.set(`.css-${landing.name}`, {
+      display: 'none',
+    })
+    loadCallback()
+  })
+}
+
+let start = false
+let nowChara: AnimationItem
+
+const routeingStartAnim = (isDark: boolean): void => {
+  if (!transitionAnimGreen) {
+    allTransitionAnimLoad()
+  }
+  if (!transitionAnimGreen) return
+
+  gsap.set(_root, {
+    display: 'block',
+  })
+  const min = 1
+  const max = 11
+  nowChara =
+    allCharaArray[Math.floor(Math.random() * (max + 1 - min)) + min - 1]
+  const anim = isDark ? transitionAnimGray : transitionAnimGreen
+  setTimeout(() => {
     anim.play()
-    setTimeout(() => {
-      gsap.set(container, {
-        backgroundColor: 'transparent',
-      })
-    }, 600)
-    setTimeout(() => {
-      gsap.set(container, {
-        display: 'none',
-      })
-      cb()
-    }, 3000)
-  })
+    nowChara.play()
+  }, 300)
+  start = true
+  setTimeout(() => {
+    if (start) {
+      anim.pause()
+    }
+  }, 1300)
 }
 
-const routeingStartAnim = (): void => {
-  gsap.to(target, {
-    y: '0%',
-    duration: 0.5,
-    ease: 'expo.out',
-  })
-}
+const routingEndAnim = (isDark: boolean): void => {
+  if (!transitionAnimGreen) return
 
-const routingEndAnim = (): void => {
-  gsap.to(target, {
-    y: '100%',
-    duration: 0.5,
-    delay: 0.5,
-    ease: 'expo.out',
+  const anim = isDark ? transitionAnimGray : transitionAnimGreen
+  anim.addEventListener('complete', () => {
+    gsap.set(_root, {
+      display: 'none',
+    })
+    nowChara.goToAndStop(0)
+    anim.goToAndStop(0)
   })
+  setTimeout(() => {
+    start = false
+    anim.play()
+  }, 500)
 }
 
 export { Loading }
