@@ -258,10 +258,8 @@ const routeingStartAnim = (isDark: boolean): void => {
   nowChara =
     allCharaArray[Math.floor(Math.random() * (max + 1 - min)) + min - 1]
   const anim = isDark ? transitionAnimGray : transitionAnimGreen
-  setTimeout(() => {
-    anim.play()
-    nowChara.play()
-  }, 300)
+  anim.play()
+  nowChara.play()
   start = true
   setTimeout(() => {
     if (start) {
