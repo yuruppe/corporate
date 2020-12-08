@@ -39,7 +39,7 @@ const WorksDetailInner: React.FC<Props> = ({ work }) => {
   useEffect(() => {
     if (!isLoading) {
       const main = 'main'
-      gsap
+      const tl = gsap
         .timeline({
           delay: 1.2,
         })
@@ -47,12 +47,17 @@ const WorksDetailInner: React.FC<Props> = ({ work }) => {
         .to('.works_title', defaultAnimParam, main)
         .to('.works_cover', defaultAnimParam, main + '+=0.2')
 
-      gsap
-        .timeline({ scrollTrigger: '.works_heading' })
-        .to('.works_heading', defaultAnimParam)
-      gsap
-        .timeline({ scrollTrigger: '.works_description' })
-        .to('.works_description', defaultAnimParam)
+      if (window.innerWidth < 768) {
+        tl.to('.works_heading', defaultAnimParam, main + '+=0.5')
+        tl.to('.works_description', defaultAnimParam, main + '+=1.2')
+      } else {
+        gsap
+          .timeline({ scrollTrigger: '.works_heading' })
+          .to('.works_heading', defaultAnimParam)
+        gsap
+          .timeline({ scrollTrigger: '.works_description' })
+          .to('.works_description', defaultAnimParam)
+      }
       gsap
         .timeline({ scrollTrigger: '.works_credit' })
         .to('.works_credit', defaultAnimParam)

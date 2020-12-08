@@ -44,7 +44,7 @@ const BlogDetailInner: React.FC<Props> = ({
   useEffect(() => {
     if (!isLoading) {
       const main = 'main'
-      gsap
+      const tl = gsap
         .timeline({
           delay: 1.2,
         })
@@ -52,12 +52,18 @@ const BlogDetailInner: React.FC<Props> = ({
         .to('.blog_title', defaultAnimParam, main)
         .to('.blog_cover', defaultAnimParam, main + '+=0.2')
 
-      gsap
-        .timeline({ scrollTrigger: '.blog_heading' })
-        .to('.blog_heading', defaultAnimParam)
-      gsap
-        .timeline({ scrollTrigger: '.blog_description' })
-        .to('.blog_description', defaultAnimParam)
+      if (window.innerWidth < 768) {
+        tl.to('.blog_heading', defaultAnimParam, main + '+=0.5')
+        tl.to('.blog_description', defaultAnimParam, main + '+=1.2')
+      } else {
+        gsap
+          .timeline({ scrollTrigger: '.blog_heading' })
+          .to('.blog_heading', defaultAnimParam)
+        gsap
+          .timeline({ scrollTrigger: '.blog_description' })
+          .to('.blog_description', defaultAnimParam)
+      }
+
       gsap
         .timeline({ scrollTrigger: '.blog_credit' })
         .to('.blog_credit', defaultAnimParam)
