@@ -59,7 +59,10 @@ const BlogIndexInner: React.FC<Props> = ({ blogs }) => {
         .timeline({
           delay: 1.2,
           onComplete: () => {
-            gsap.to('.works_more', defaultAnimParam)
+            gsap.to('.works_more', {
+              ...defaultAnimParam,
+              visibility: 'visible',
+            })
           },
         })
         .addLabel(main)
@@ -304,6 +307,7 @@ const itemStyle = css`
 const backWrap = css`
   display: none;
   padding: 0 ${style.vwSp(style.config.project.paddingSpSide)};
+  visibility: hidden;
   ${style.pc(css`
     padding: 0;
   `)}

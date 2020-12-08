@@ -30,6 +30,7 @@ const MemberInner: React.FC<Props> = ({ members, coverURL }) => {
   useEffect(() => {
     gsap.set('.member_title', defaultInitParam)
     gsap.set('.member_inner', defaultInitParam)
+    gsap.set('.back_button', defaultInitParam)
   }, [])
 
   useEffect(() => {
@@ -42,6 +43,9 @@ const MemberInner: React.FC<Props> = ({ members, coverURL }) => {
         .addLabel(main)
         .to('.member_title', defaultAnimParam, main)
         .to('.member_inner', defaultAnimParam, main + '+=0.2')
+      gsap
+        .timeline({ scrollTrigger: '.back_button' })
+        .to('.back_button', defaultAnimParam)
     }
   }, [isLoading])
 
@@ -70,7 +74,7 @@ const MemberInner: React.FC<Props> = ({ members, coverURL }) => {
           </div>
         </div>
       </div>
-      <div css={backWrap}>
+      <div css={backWrap} className="back_button">
         <div css={back}>
           <CustomLink href="/">
             <span>もどる</span>

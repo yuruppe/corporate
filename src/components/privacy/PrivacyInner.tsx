@@ -23,6 +23,7 @@ const PrivacyInner: React.FC = () => {
   useEffect(() => {
     gsap.set('.privacy_title', defaultInitParam)
     gsap.set('.privacy_inner', defaultInitParam)
+    gsap.set('.back_button', defaultInitParam)
   }, [])
 
   useEffect(() => {
@@ -35,6 +36,9 @@ const PrivacyInner: React.FC = () => {
         .addLabel(main)
         .to('.privacy_title', defaultAnimParam, main)
         .to('.privacy_inner', defaultAnimParam, main + '+=0.2')
+      gsap
+        .timeline({ scrollTrigger: '.back_button' })
+        .to('.back_button', defaultAnimParam)
     }
   }, [isLoading])
   return (
@@ -184,7 +188,7 @@ const PrivacyInner: React.FC = () => {
           </li>
         </ol>
       </div>
-      <div css={back}>
+      <div css={back} className="back_button">
         <CustomLink href="/">
           <span>トップへもどる</span>
         </CustomLink>

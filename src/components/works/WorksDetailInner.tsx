@@ -33,6 +33,7 @@ const WorksDetailInner: React.FC<Props> = ({ work }) => {
     gsap.set('.works_heading', defaultInitParam)
     gsap.set('.works_description', defaultInitParam)
     gsap.set('.works_credit', defaultInitParam)
+    gsap.set('.back_button', defaultInitParam)
   }, [])
 
   useEffect(() => {
@@ -55,6 +56,9 @@ const WorksDetailInner: React.FC<Props> = ({ work }) => {
       gsap
         .timeline({ scrollTrigger: '.works_credit' })
         .to('.works_credit', defaultAnimParam)
+      gsap
+        .timeline({ scrollTrigger: '.back_button' })
+        .to('.back_button', defaultAnimParam)
     }
   }, [isLoading])
 
@@ -141,7 +145,7 @@ const WorksDetailInner: React.FC<Props> = ({ work }) => {
           ))}
         </div>
       </div>
-      <div css={backWrap}>
+      <div css={backWrap} className="back_button">
         <div css={back}>
           <CustomLink href="/tsukutta">
             <span>一覧にもどる</span>

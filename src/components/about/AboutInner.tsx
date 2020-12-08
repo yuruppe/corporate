@@ -24,6 +24,7 @@ const AboutInner: React.FC = () => {
   useEffect(() => {
     gsap.set('.about_title', defaultInitParam)
     gsap.set('.about_inner', defaultInitParam)
+    gsap.set('.back_button', defaultInitParam)
   }, [])
 
   useEffect(() => {
@@ -36,6 +37,9 @@ const AboutInner: React.FC = () => {
         .addLabel(main)
         .to('.about_title', defaultAnimParam, main)
         .to('.about_inner', defaultAnimParam, main + '+=0.2')
+      gsap
+        .timeline({ scrollTrigger: '.back_button' })
+        .to('.back_button', defaultAnimParam)
     }
   }, [isLoading])
 
@@ -117,7 +121,7 @@ const AboutInner: React.FC = () => {
           </ul>
         </div>
       </div>
-      <div css={back}>
+      <div css={back} className="back_button">
         <CustomLink href="/">
           <span>もどる</span>
         </CustomLink>

@@ -38,6 +38,7 @@ const BlogDetailInner: React.FC<Props> = ({
     gsap.set('.blog_heading', defaultInitParam)
     gsap.set('.blog_description', defaultInitParam)
     gsap.set('.blog_credit', defaultInitParam)
+    gsap.set('.back_button', defaultInitParam)
   }, [])
 
   useEffect(() => {
@@ -60,6 +61,9 @@ const BlogDetailInner: React.FC<Props> = ({
       gsap
         .timeline({ scrollTrigger: '.blog_credit' })
         .to('.blog_credit', defaultAnimParam)
+      gsap
+        .timeline({ scrollTrigger: '.back_button' })
+        .to('.back_button', defaultAnimParam)
     }
   }, [isLoading])
 
@@ -167,7 +171,7 @@ const BlogDetailInner: React.FC<Props> = ({
           </div>
         </div>
 
-        <div css={backWrap}>
+        <div css={backWrap} className="back_button">
           <div css={back}>
             <CustomLink href="/urabanashi">
               <span>一覧にもどる</span>
