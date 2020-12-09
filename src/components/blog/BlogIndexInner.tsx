@@ -20,7 +20,7 @@ const BlogIndexInner: React.FC<Props> = ({ blogs }) => {
   const initialLength = 6
   const moreLength = 6
 
-  const [moreBtnState, setMoreBtnState] = useState<boolean>(true)
+  const [moreBtnState, setMoreBtnState] = useState<boolean>(false)
   const [itemCount, setItemCount] = useState<number>(0)
   const [nowCount, setNowCount] = useState<number>(0)
   const [item, setItem] = useState<NodeListOf<Element>>()
@@ -53,6 +53,7 @@ const BlogIndexInner: React.FC<Props> = ({ blogs }) => {
     if (!isLoading) {
       setTimeout(() => {
         setItemCount(initialLength)
+        setMoreBtnState(true)
       }, 1200)
       const main = 'main'
       gsap
@@ -147,14 +148,13 @@ const BlogIndexInner: React.FC<Props> = ({ blogs }) => {
             </li>
           ))}
         </ul>
-        <div
-          css={backWrap}
-          className={cn('works_more', { active: moreBtnState })}
-        >
-          <div css={back} onClick={moreBtnOnClick}>
-            <span>もっとみる</span>
+        {moreBtnState ? (
+          <div css={backWrap} className={cn('works_more')}>
+            <div css={back} onClick={moreBtnOnClick}>
+              <span>もっとみる</span>
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
     </div>
   )
@@ -306,11 +306,6 @@ const backWrap = css`
   ${style.pc(css`
     padding: 0;
   `)}
-  &.active {
-    visibility: hidden;
-    position: absolute;
-    opacity: 0;
-  }
 `
 const back = css`
   margin: ${style.vwSp(40)} 0 0;
