@@ -72,33 +72,32 @@ const Header: React.FC = () => {
           </svg>
         </CustomLink>
       </div>
-      <div
-        css={button}
-        className={cn({ open: appState.menu.isOpen }, 'header_button')}
-      >
-        <div
-          css={top}
-          className={cn(
-            { dark: appState.darkMode },
-            { open: appState.menu.isOpen },
-          )}
-          onClick={(): void => {
-            if (appState.menu.isAnim) return
-            if (appState.menu.isOpen) {
-              appDispatch({ type: 'CLOSE_MENU' })
-            } else {
-              appDispatch({ type: 'OPEN_MENU' })
-            }
-          }}
-        >
-          <div css={hamburger} className={cn({ open: appState.menu.isOpen })}>
-            <span />
-            <span />
-            <span />
+      <div className="header_button">
+        <div css={button} className={cn({ open: appState.menu.isOpen })}>
+          <div
+            css={top}
+            className={cn(
+              { dark: appState.darkMode },
+              { open: appState.menu.isOpen },
+            )}
+            onClick={(): void => {
+              if (appState.menu.isAnim) return
+              if (appState.menu.isOpen) {
+                appDispatch({ type: 'CLOSE_MENU' })
+              } else {
+                appDispatch({ type: 'OPEN_MENU' })
+              }
+            }}
+          >
+            <div css={hamburger} className={cn({ open: appState.menu.isOpen })}>
+              <span />
+              <span />
+              <span />
+            </div>
           </div>
+          <div />
+          <div css={bottom} className={cn({ dark: appState.darkMode })} />
         </div>
-        <div />
-        <div css={bottom} className={cn({ dark: appState.darkMode })} />
       </div>
       <nav css={nav}>
         <Menu />
