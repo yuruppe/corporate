@@ -196,7 +196,7 @@ const cover = css`
   }
   &.movie {
     position: relative;
-    padding-top: 56.25%;
+    padding-top: 56.3%;
     iframe {
       position: absolute;
       top: 0;

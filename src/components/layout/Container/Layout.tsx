@@ -12,7 +12,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { appState } = useContext(AppContext)
 
   return (
-    <div css={wrap} className={cn({ dark: appState.darkMode })}>
+    <div
+      css={wrap}
+      className={cn({ dark: appState.darkMode })}
+      style={{ opacity: 0 }}
+      id="root"
+    >
       {children}
     </div>
   )

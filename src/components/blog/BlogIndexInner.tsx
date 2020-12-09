@@ -39,7 +39,7 @@ const BlogIndexInner: React.FC<Props> = ({ blogs }) => {
   const _item = '.works_item'
   useEffect(() => {
     gsap.set('.works_title', defaultInitParam)
-    gsap.set('.works_more', { ...defaultInitParam, visibility: 'hidden' })
+    gsap.set('.works_more', defaultInitParam)
     const targetItem = document.querySelectorAll(_item)
     gsap.set(targetItem, {
       opacity: 0,
@@ -59,9 +59,6 @@ const BlogIndexInner: React.FC<Props> = ({ blogs }) => {
         .timeline({
           delay: 1.2,
           onComplete: () => {
-            gsap.set('.works_more', {
-              visibility: 'visible',
-            })
             gsap.to('.works_more', defaultAnimParam)
           },
         })
@@ -305,18 +302,14 @@ const itemStyle = css`
   `)}
 `
 const backWrap = css`
-  display: none;
   padding: 0 ${style.vwSp(style.config.project.paddingSpSide)};
-  opacity: 0;
   ${style.pc(css`
     padding: 0;
   `)}
   &.active {
-    display: block;
-    opacity: 1;
-  }
-  &.works_more {
     visibility: hidden;
+    position: absolute;
+    opacity: 0;
   }
 `
 const back = css`

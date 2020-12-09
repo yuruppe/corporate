@@ -248,6 +248,7 @@ const launchAnim = (cb: () => void): void => {
  * もろもろアニメーションがおわってサイトを見せる時の最後の関数
  */
 const open = (): void => {
+  gsap.set('#root', { opacity: 1 })
   setTimeout(() => {
     landingChara.play()
     setTimeout(() => {
