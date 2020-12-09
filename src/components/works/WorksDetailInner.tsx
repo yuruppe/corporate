@@ -195,14 +195,19 @@ const cover = css`
     width: 100%;
   }
   &.movie {
-    height: ${style.vwSp(236)};
+    position: relative;
+    padding-top: 56.25%;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
   ${style.pc(css`
     margin: 80px 0 0;
     border-radius: 16px;
-    &.movie {
-      height: 508px;
-    }
   `)}
 `
 

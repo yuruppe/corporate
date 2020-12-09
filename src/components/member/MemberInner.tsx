@@ -46,6 +46,18 @@ const MemberInner: React.FC<Props> = ({ members, coverURL }) => {
       gsap
         .timeline({ scrollTrigger: '.back_button' })
         .to('.back_button', defaultAnimParam)
+
+      gsap
+        .timeline()
+        .to('#member_body', {
+          scrollTop: 300,
+          duration: 0.8,
+          delay: 1.4,
+        })
+        .to('#member_body', {
+          scrollTop: 0,
+          duration: 0.8,
+        })
     }
   }, [isLoading])
 
@@ -65,7 +77,7 @@ const MemberInner: React.FC<Props> = ({ members, coverURL }) => {
           <Picture webp={`${coverURL}?fm=webp`} img={coverURL} />
         </div>
         <div css={bodyWrap}>
-          <div css={body}>
+          <div css={body} id="member_body">
             <ul>
               {members.map((member) => (
                 <MemberItem member={member} key={member.id} />

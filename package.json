@@ -36,6 +36,7 @@
     "react-hook-form": "^6.11.0",
     "react-player": "^2.6.2",
     "react-scroll": "^1.8.1",
+    "react-scrollbars-custom": "^4.0.25",
     "sanitize.css": "^11.0.0",
     "sass": "^1.26.3",
     "typesync": "^0.8.0",
