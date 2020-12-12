@@ -22,6 +22,7 @@ const ContactCompleteInner: React.FC = () => {
   useEffect(() => {
     gsap.set('.contact_title', defaultInitParam)
     gsap.set('.contact_inner', defaultInitParam)
+    gsap.set('.contact_button', defaultInitParam)
   }, [])
 
   useEffect(() => {
@@ -34,6 +35,7 @@ const ContactCompleteInner: React.FC = () => {
         .addLabel(main)
         .to('.contact_title', defaultAnimParam, main)
         .to('.contact_inner', defaultAnimParam, main + '+=0.2')
+        .to('.contact_button', defaultAnimParam, main + '+=0.6')
     }
   }, [isLoading])
   return (
@@ -57,7 +59,7 @@ const ContactCompleteInner: React.FC = () => {
           しばらくお待ちください。
         </p>
       </div>
-      <div css={ContactStyles.back}>
+      <div css={ContactStyles.back} className="contact_button">
         <CustomLink href="/">
           <span>トップへもどる</span>
         </CustomLink>
