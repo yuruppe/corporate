@@ -74,7 +74,7 @@ const HomeInner: React.FC<Props> = ({ description }) => {
           <CustomLink href="/tsukutta">
             <div css={linkAnchor}>
               <h2 css={linkTitle} className="arrow">
-                つくったやつ
+                つくったもの
               </h2>
             </div>
           </CustomLink>

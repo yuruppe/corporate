@@ -110,7 +110,7 @@ const WorksIndexInner: React.FC<Props> = ({ works }) => {
           <Picture
             webp={require('@public/img/page/worksTitle.png?webp')}
             img={require('@public/img/page/worksTitle.png')}
-            alt="つくったやつ"
+            alt="つくったもの"
           />
         </h1>
       </div>

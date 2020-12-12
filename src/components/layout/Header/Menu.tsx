@@ -217,7 +217,7 @@ const Menu: React.FC = () => {
           <MainItem route="/" text="トップ" />
         </li>
         <li css={item}>
-          <MainItem route="/tsukutta" text="つくったやつ" />
+          <MainItem route="/tsukutta" text="つくったもの" />
         </li>
         <li css={item}>
           <MainItem route="/urabanashi" text="ウラ話" />

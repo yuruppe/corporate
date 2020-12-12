@@ -72,7 +72,7 @@ const Header: React.FC = () => {
           </svg>
         </CustomLink>
       </div>
-      <div className="header_button">
+      <div className="header_button" css={buttonRoot}>
         <div css={button} className={cn({ open: appState.menu.isOpen })}>
           <div
             css={top}
@@ -171,6 +171,10 @@ const top = css`
     transform: translateY(6%) !important;
   }
 `
+const buttonRoot = css`
+  position: relative;
+  z-index: 10;
+`
 const button = css`
   position: relative;
   width: 68px;
@@ -186,7 +190,6 @@ const button = css`
   ${style.pc(css`
     &:hover {
       .css-${top.name} {
-        background-color: #eeeeee;
         transform: translateY(1%);
       }
     }

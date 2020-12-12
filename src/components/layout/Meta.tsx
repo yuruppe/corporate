@@ -26,7 +26,7 @@ const Meta: React.FC<Props> = ({ id, dynamic }) => {
     _ogp = dynamic.ogp
     _path = '/' + dynamic.path
     if (id === 'tsukutta_id') {
-      _title += ' | つくったやつ | YURUPPE.inc'
+      _title += ' | つくったもの | YURUPPE.inc'
     }
     if (id === 'urabanashi_id') {
       _title += ' | ウラ話 | YURUPPE.inc'

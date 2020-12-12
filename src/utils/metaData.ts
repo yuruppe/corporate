@@ -17,8 +17,8 @@ const metaData: metaDataType = {
     },
     {
       id: 'tsukutta_index',
-      title: 'つくったやつ | YURUPPE.inc',
-      description: 'つくったやつ一覧をご覧いただけます。',
+      title: 'つくったもの | YURUPPE.inc',
+      description: 'つくったもの一覧をご覧いただけます。',
       path: '/tsukutta',
     },
     {
