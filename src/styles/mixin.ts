@@ -184,6 +184,13 @@ const mixin = {
       animation: ${mixin.pop(size)} 0.4s ease-in-out;
     }
   `,
+  ie: (style: SerializedStyles): SerializedStyles => {
+    return css`
+      @media all and (-ms-high-contrast: none) {
+        ${style}
+      }
+    `
+  },
 }
 
 export default mixin

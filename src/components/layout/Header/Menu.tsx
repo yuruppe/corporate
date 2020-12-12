@@ -288,6 +288,10 @@ const wrap = css`
     padding: 163px 0 0;
     padding: 100px 0 0;
   `)}
+  ${style.mixin.ie(css`
+    display: flex;
+    justify-content: center;
+  `)}
 `
 const bg = css`
   position: absolute;
@@ -382,6 +386,9 @@ const waveWrap = css`
 const list = css`
   max-width: 400px;
   margin: 0 auto;
+  ${style.mixin.ie(css`
+    width: 400px;
+  `)}
 `
 const item = css`
   padding: ${style.vwSp(32)} 0 0;

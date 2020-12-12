@@ -174,6 +174,12 @@ const top = css`
 const buttonRoot = css`
   position: relative;
   z-index: 10;
+  ${style.mixin.ie(css`
+    position: absolute;
+    top: 50%;
+    right: 91px;
+    transform: translateY(-50%);
+  `)}
 `
 const button = css`
   position: relative;

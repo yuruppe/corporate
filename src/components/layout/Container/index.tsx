@@ -13,13 +13,13 @@ const Container: React.FC<Props> = ({ children }) => {
   return (
     <>
       <AppContext.Provider value={{ appState, appDispatch }}>
-        {process.env.NODE_ENV === 'development' ? (
+        {/* {process.env.NODE_ENV === 'development' ? (
           <ContextDevTool
             context={AppContext}
             id="AppContext"
             displayName="App Context"
           />
-        ) : null}
+        ) : null} */}
         <Loading />
         <Layout>{children}</Layout>
       </AppContext.Provider>

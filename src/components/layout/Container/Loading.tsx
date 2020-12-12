@@ -112,6 +112,9 @@ const root = css`
   height: 100%;
   overflow: hidden;
   z-index: 10000;
+  ${style.mixin.ie(css`
+    display: none !important;
+  `)}
 `
 const _root = `.css-${root.name}`
 const landing = css`
