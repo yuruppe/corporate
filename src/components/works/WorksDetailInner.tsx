@@ -154,47 +154,48 @@ const WorksDetailInner: React.FC<Props> = ({ work, recommended }) => {
             </dl>
           ))}
         </div>
-      </div>
-      <div css={desc} className="works_recommended">
-        <h2 css={recTitle}>おすすめ</h2>
-        <ul css={recList}>
-          {recommended.map((rec, index) => (
-            <div key={index} css={recItem}>
-              <CustomLink href={`/tsukutta/${rec.id}`}>
-                <div css={img}>
-                  <Picture
-                    webp={`${rec.thumbnail.url}?fm=webp`}
-                    img={`${rec.thumbnail.url}`}
-                    alt=""
-                  />
-                </div>
-                <div>
-                  <div css={recTag}>
-                    <ul css={tagList}>
-                      {Array.isArray(rec.tags) ? (
-                        <>
-                          {rec.tags.map((tag, index) => (
-                            <li css={tagItem} key={index}>
-                              <span>{tag}</span>
-                            </li>
-                          ))}
-                        </>
-                      ) : (
-                        <li css={tagItem}>
-                          <span>{rec.tags}</span>
-                        </li>
-                      )}
-                    </ul>
+        <div css={desc} className="works_recommended">
+          <h2 css={recTitle}>おすすめ</h2>
+          <ul css={recList}>
+            {recommended.map((rec, index) => (
+              <div key={index} css={recItem}>
+                <CustomLink href={`/tsukutta/${rec.id}`}>
+                  <div css={img}>
+                    <Picture
+                      webp={`${rec.thumbnail.url}?fm=webp`}
+                      img={`${rec.thumbnail.url}`}
+                      alt=""
+                    />
                   </div>
-                  <div css={recItemTitle}>
-                    <h3>{rec.title}</h3>
+                  <div>
+                    <div css={recTag}>
+                      <ul css={tagList}>
+                        {Array.isArray(rec.tags) ? (
+                          <>
+                            {rec.tags.map((tag, index) => (
+                              <li css={tagItem} key={index}>
+                                <span>{tag}</span>
+                              </li>
+                            ))}
+                          </>
+                        ) : (
+                          <li css={tagItem}>
+                            <span>{rec.tags}</span>
+                          </li>
+                        )}
+                      </ul>
+                    </div>
+                    <div css={recItemTitle}>
+                      <h3>{rec.title}</h3>
+                    </div>
                   </div>
-                </div>
-              </CustomLink>
-            </div>
-          ))}
-        </ul>
+                </CustomLink>
+              </div>
+            ))}
+          </ul>
+        </div>
       </div>
+
       <div css={backWrap} className="back_button">
         <div css={back}>
           <CustomLink href="/tsukutta">
