@@ -137,7 +137,7 @@ const landing = css`
   ${style.sp(css`
     div {
       svg {
-        transform: translate(-50%, -50%) scale(0.5) !important;
+        transform: translate(-50%, -50%) scale(0.6) !important;
       }
     }
   `)}
@@ -165,7 +165,7 @@ const transition = css`
   ${style.sp(css`
     div {
       svg {
-        transform: translate(-50%, -50%) scale(0.5) !important;
+        transform: translate(-50%, -50%) scale(0.6) !important;
       }
     }
   `)}
