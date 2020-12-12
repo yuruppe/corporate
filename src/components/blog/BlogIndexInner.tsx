@@ -47,9 +47,6 @@ const BlogIndexInner: React.FC<Props> = ({ blogs }) => {
       display: 'none',
     })
     setItem(targetItem)
-    return (): void => {
-      gsap.set('.works_more', defaultInitParam)
-    }
   }, [])
 
   useEffect(() => {

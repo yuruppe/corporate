@@ -47,9 +47,6 @@ const WorksIndexInner: React.FC<Props> = ({ works }) => {
       display: 'none',
     })
     setItem(targetItem)
-    return (): void => {
-      gsap.set('.works_more', defaultInitParam)
-    }
   }, [])
 
   useEffect(() => {
