@@ -285,11 +285,14 @@ const routeingStartAnim = (isDark: boolean): void => {
   anim.play()
   nowChara.play()
   start = true
-  setTimeout(() => {
-    if (start) {
-      anim.pause()
-    }
-  }, 1300)
+  gsap.to('#root', {
+    delay: 1.0,
+    onStart: () => {
+      if (start) {
+        anim.pause()
+      }
+    },
+  })
 }
 
 const routingEndAnim = (isDark: boolean): void => {

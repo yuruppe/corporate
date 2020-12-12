@@ -6,13 +6,15 @@ import { WorksDetailInner } from '~/components/works/WorksDetailInner'
 import { Meta } from '~/components/layout/Meta'
 import gsap from 'gsap'
 import { ScrollTrigger } from '~/utils/ScrollTrigger'
+import { TopWorkRecType } from '~/types/top'
 
 type Props = {
   work: WorksType
   description: string
+  recommended: WorksType[]
 }
 
-const WorksDetail: NextPage<Props> = ({ work, description }) => {
+const WorksDetail: NextPage<Props> = ({ work, description, recommended }) => {
   if (!work) {
     return <ErrorPage statusCode={404} />
   }
@@ -30,7 +32,7 @@ const WorksDetail: NextPage<Props> = ({ work, description }) => {
         }}
       />
       <main>
-        <WorksDetailInner work={work} />
+        <WorksDetailInner work={work} recommended={recommended} />
       </main>
     </>
   )
@@ -59,16 +61,7 @@ export const getStaticProps: GetStaticProps = async ({
   }
   const res = await axios.get(process.env.END_POINT + 'works/?limit=9999', key)
   const data: Array<WorksType> = await res.data.contents
-  // プレビュー時は draft のコンテンツを追加
-  // if (preview) {
-  //   const draftUrl =
-  //     process.env.END_POINT +
-  //     'portfolios/' +
-  //     previewData.id +
-  //     `?draftKey=${previewData.draftKey}`
-  //   const draftRes = await axios.get(draftUrl, key)
-  //   data.unshift(await draftRes.data)
-  // }
+
   let content: WorksType | '' = data.find((item) => {
     return item.id === params?.id
   })
@@ -85,10 +78,37 @@ export const getStaticProps: GetStaticProps = async ({
       content.detail = content.detail.split('\n')
     }
   }
+
+  /**
+   * recommended
+   */
+  const recommendedRes = await axios.get(
+    process.env.END_POINT + 'top/main',
+    key,
+  )
+  const recommendedData = await recommendedRes.data
+  const recommended: TopWorkRecType[] = recommendedData.work_rec
+
+  const WorkData: Array<WorksType> = await res.data.contents
+  const recWorkData = WorkData.filter((work) => {
+    return recommended.find((rec) => {
+      return rec.work_rec_id === work.id
+    })
+  })
+  recWorkData.map((d) => {
+    if (typeof d.tags === 'string') {
+      if (d.tags.split(',').length > 1) {
+        d.tags = d.tags.toString().split(',')
+      }
+    }
+    return d
+  })
+
   return {
     props: {
       work: content,
       description: rawDetail,
+      recommended: recWorkData,
     },
   }
 }

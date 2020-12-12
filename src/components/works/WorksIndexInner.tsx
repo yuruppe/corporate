@@ -20,7 +20,7 @@ const WorksIndexInner: React.FC<Props> = ({ works }) => {
   const initialLength = 6
   const moreLength = 6
 
-  const [moreBtnState, setMoreBtnState] = useState<boolean>(false)
+  const [moreBtnState, setMoreBtnState] = useState<boolean>(true)
   const [itemCount, setItemCount] = useState<number>(0)
   const [nowCount, setNowCount] = useState<number>(0)
   const [item, setItem] = useState<NodeListOf<Element>>()
@@ -47,20 +47,27 @@ const WorksIndexInner: React.FC<Props> = ({ works }) => {
       display: 'none',
     })
     setItem(targetItem)
+    return (): void => {
+      gsap.set('.works_more', defaultInitParam)
+    }
   }, [])
 
   useEffect(() => {
     if (!isLoading) {
       setTimeout(() => {
         setItemCount(initialLength)
-        setMoreBtnState(true)
       }, 1200)
       const main = 'main'
       gsap
         .timeline({
           delay: 1.2,
-          onComplete: () => {
-            gsap.to('.works_more', defaultAnimParam)
+          onStart: () => {
+            gsap
+              .timeline({
+                scrollTrigger: '.works_more',
+                delay: 1.6,
+              })
+              .to('.works_more', defaultAnimParam)
           },
         })
         .addLabel(main)
@@ -148,7 +155,7 @@ const WorksIndexInner: React.FC<Props> = ({ works }) => {
           ))}
         </ul>
         {moreBtnState ? (
-          <div css={backWrap} className={cn('works_more')}>
+          <div css={backWrap} className="works_more" style={{ opacity: 0 }}>
             <div css={back} onClick={moreBtnOnClick}>
               <span>もっとみる</span>
             </div>
