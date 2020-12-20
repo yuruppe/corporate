@@ -62,7 +62,7 @@ const WorksIndexInner: React.FC<Props> = ({ works }) => {
             gsap
               .timeline({
                 scrollTrigger: '.works_more',
-                delay: 1.6,
+                delay: 0.3,
               })
               .to('.works_more', defaultAnimParam)
           },
