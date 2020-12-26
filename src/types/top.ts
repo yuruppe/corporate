@@ -13,4 +13,6 @@ export type TopType = {
   description: any
   blog_rec: TopRecType[]
   work_rec: TopWorkRecType[]
+  work_reel_id: string
+  work_reel_text: string | string[]
 }

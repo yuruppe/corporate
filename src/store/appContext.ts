@@ -11,6 +11,9 @@ type State = {
     isOpen: boolean
     isAnim: boolean
   }
+  worksModal: {
+    isOpened: boolean
+  }
 }
 const initialState: State = {
   count: 0,
@@ -21,6 +24,9 @@ const initialState: State = {
   menu: {
     isOpen: false,
     isAnim: false,
+  },
+  worksModal: {
+    isOpened: false,
   },
 }
 
@@ -33,6 +39,7 @@ type Action =
   | { type: 'CLOSE_MENU' }
   | { type: 'MENU_ANIM_ENDED' }
   | { type: 'SET_LAUNCH' }
+  | { type: 'SET_WORK_MODAL_OPENED' }
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
@@ -88,6 +95,13 @@ const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         launch: true,
+      }
+    case 'SET_WORK_MODAL_OPENED':
+      return {
+        ...state,
+        worksModal: {
+          isOpened: true,
+        },
       }
     default:
       return state

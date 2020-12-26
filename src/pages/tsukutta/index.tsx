@@ -5,12 +5,16 @@ import { WorksIndexInner } from '~/components/works/WorksIndexInner'
 import { Meta } from '~/components/layout/Meta'
 import gsap from 'gsap'
 import { ScrollTrigger } from '~/utils/ScrollTrigger'
+import { WorksModal } from '~/components/works/WorsModal'
+import { TopType } from '~/types/top'
 
 type Props = {
   works: WorksType[]
+  reelId: string
+  reelText: string | string[]
 }
 
-const WorksIndex: NextPage<Props> = ({ works }) => {
+const WorksIndex: NextPage<Props> = ({ works, reelId, reelText }) => {
   gsap.registerPlugin(ScrollTrigger)
   return (
     <>
@@ -18,6 +22,10 @@ const WorksIndex: NextPage<Props> = ({ works }) => {
 
       <main>
         <WorksIndexInner works={works} />
+        <WorksModal
+          work={works.find((d) => d.id === reelId)}
+          reelText={reelText}
+        />
       </main>
     </>
   )
@@ -46,9 +54,22 @@ export const getStaticProps: GetStaticProps = async (): Promise<{
     return d
   })
 
+  const topRes = await axios.get(process.env.END_POINT + 'top/main', key)
+
+  const topData: TopType = await topRes.data
+  const reelId = topData.work_reel_id
+  let reelText: string | string[]
+  if (typeof topData.work_reel_text === 'string') {
+    reelText = topData.work_reel_text.split('\n')
+  } else {
+    reelText = topData.work_reel_text
+  }
+
   return {
     props: {
       works: data,
+      reelId,
+      reelText,
     },
   }
 }
