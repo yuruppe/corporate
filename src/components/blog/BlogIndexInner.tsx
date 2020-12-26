@@ -231,14 +231,16 @@ const img = css`
   `)}
 `
 const tagList = css`
-  padding: ${style.vwSp(20)} 0;
+  padding: ${style.vwSp(12)} 0 ${style.vwSp(20)};
   display: flex;
+  flex-wrap: wrap;
   ${style.pc(css`
-    padding: 24px 0 16px;
+    padding: 16px 0 16px;
     transition: opacity 0.6s ease;
   `)}
 `
 const tagItem = css`
+  margin: ${style.vwSp(8)} 0 0;
   padding: ${style.vwSp(4)} ${style.vwSp(12)};
   border-radius: ${style.vwSp(40)};
   background-color: black;
@@ -255,6 +257,7 @@ const tagItem = css`
     letter-spacing: 0.1em;
   }
   ${style.pc(css`
+    margin-top: 8px;
     padding: 4px 12px;
     border-radius: 40px;
     margin-right: 8px;

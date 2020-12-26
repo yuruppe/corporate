@@ -305,10 +305,12 @@ const img = css`
   }
 `
 const tagList = css`
-  padding: ${style.vwSp(25)} 0 ${style.vwSp(10)};
+  padding: ${style.vwSp(17)} 0 ${style.vwSp(10)};
   display: flex;
+  flex-wrap: wrap;
 `
 const tagItem = css`
+  margin: ${style.vwSp(8)} 0 0;
   padding: ${style.vwSp(4)} ${style.vwSp(12)};
   border-radius: ${style.vwSp(40)};
   background-color: black;

@@ -267,18 +267,20 @@ const body = css`
 `
 
 const heading = css`
-  padding: ${style.vwSp(32)} ${style.vwSp(32)} ${style.vwSp(36)};
+  padding: ${style.vwSp(26)} ${style.vwSp(32)} ${style.vwSp(36)};
   background-color: white;
   border-radius: ${style.vwSp(16)};
   ${style.pc(css`
-    padding: 40px 90px;
+    padding: 32px 90px 40px;
     border-radius: 16px;
   `)}
 `
 const tagList = css`
   display: flex;
+  flex-wrap: wrap;
 `
 const tagItem = css`
+  margin: ${style.vwSp(8)} 0 0;
   padding: ${style.vwSp(4)} ${style.vwSp(12)};
   border-radius: ${style.vwSp(40)};
   background-color: black;
@@ -297,6 +299,7 @@ const tagItem = css`
   ${style.pc(css`
     padding: 4px 12px;
     border-radius: 40px;
+    margin-top: 8px;
     margin-right: 8px;
     span {
       font-size: 10px;

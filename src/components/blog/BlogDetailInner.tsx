@@ -242,11 +242,11 @@ const body = css`
 `
 
 const heading = css`
-  padding: ${style.vwSp(32)};
+  padding: ${style.vwSp(24)} ${style.vwSp(32)} ${style.vwSp(32)};
   background-color: white;
   border-radius: ${style.vwSp(16)};
   ${style.pc(css`
-    padding: 40px 54px;
+    padding: 32px 54px 40px;
     border-radius: 16px;
   `)}
 `
@@ -255,6 +255,7 @@ const tagList = css`
   flex-wrap: wrap;
 `
 const tagItem = css`
+  margin: ${style.vwSp(8)} 0 0;
   padding: ${style.vwSp(4)} ${style.vwSp(12)};
   border-radius: ${style.vwSp(40)};
   background-color: black;
@@ -274,6 +275,7 @@ const tagItem = css`
     padding: 4px 12px;
     border-radius: 40px;
     margin-right: 8px;
+    margin-top: 8px;
     span {
       font-size: 10px;
     }
