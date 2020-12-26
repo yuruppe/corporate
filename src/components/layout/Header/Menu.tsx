@@ -235,12 +235,12 @@ const Menu: React.FC = () => {
             映像屋さんの服
           </a>
         </li>
-        <li css={item}>
+        {/* <li css={item}>
           <MainItem route="/member" text="メンバー" />
         </li>
         <li css={item}>
           <MainItem route="/contact" text="お問い合わせ" />
-        </li>
+        </li> */}
       </ul>
       <ul css={bottomList}>
         <li css={bottomItem}>
@@ -254,6 +254,16 @@ const Menu: React.FC = () => {
           >
             SNS
           </a>
+        </li>
+        <li css={bottomItem}>
+          <CustomLink href="/member" onClick={handleClick}>
+            <span>メンバー</span>
+          </CustomLink>
+        </li>
+        <li css={bottomItem}>
+          <CustomLink href="/contact" onClick={handleClick}>
+            <span>お仕事の依頼</span>
+          </CustomLink>
         </li>
         <li css={bottomItem}>
           <CustomLink href="/about" onClick={handleClick}>
@@ -314,7 +324,7 @@ const moveForever = keyframes`
     transform: translate3d(85px,0,0);
   }
 `
-const waveHeight = 600
+const waveHeight = 500
 const waveHeightSp = 80
 const waveWrap = css`
   position: absolute;
@@ -392,7 +402,6 @@ const list = css`
 `
 const item = css`
   padding: ${style.vwSp(32)} 0 0;
-  text-align: center;
   ${style.pc(css`
     padding: 32px 0 0;
   `)}
@@ -445,7 +454,7 @@ const bottomList = css`
   position: relative;
   padding-left: ${style.vwSp(64)};
   /* padding-bottom: ${style.vwSp(29)}; */
-  padding-top: ${style.vwSp(40)};
+  padding-top: ${style.vwSp(70)};
   ${style.pc(css`
     display: none;
   `)}

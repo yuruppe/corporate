@@ -10,9 +10,10 @@ import cn from 'classnames'
 
 type Props = {
   works: WorksType[]
+  reelId: string
 }
 
-const WorksIndexInner: React.FC<Props> = ({ works }) => {
+const WorksIndexInner: React.FC<Props> = ({ works, reelId }) => {
   const { appState } = useContext(AppContext)
   const { isLoading } = appState
   const worksLength = works.length
@@ -123,7 +124,10 @@ const WorksIndexInner: React.FC<Props> = ({ works }) => {
           {works.map((work, index) => (
             <li css={itemStyle} key={index} className="works_item">
               <CustomLink href={`/tsukutta/${work.id}`}>
-                <div css={itemInner}>
+                <div
+                  css={itemInner}
+                  className={cn({ reel: reelId === work.id })}
+                >
                   <div css={img}>
                     <Picture
                       webp={`${work.thumbnail.url}?fm=webp`}
@@ -210,6 +214,21 @@ const itemInner = css`
   background-color: white;
   border-radius: ${style.vwSp(16)};
   height: 100%;
+  position: relative;
+  &.reel {
+    &::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -15px;
+      width: 62px;
+      height: 62px;
+      background-image: url('/img/common/reel.png');
+      background-size: cover;
+      z-index: 1;
+      pointer-events: none;
+    }
+  }
   ${style.pc(css`
     padding: 16px 16px 24px;
     border-radius: 16px;

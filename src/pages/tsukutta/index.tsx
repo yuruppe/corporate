@@ -21,7 +21,7 @@ const WorksIndex: NextPage<Props> = ({ works, reelId, reelText }) => {
       <Meta id="tsukutta_index" />
 
       <main>
-        <WorksIndexInner works={works} />
+        <WorksIndexInner works={works} reelId={reelId} />
         <WorksModal
           work={works.find((d) => d.id === reelId)}
           reelText={reelText}

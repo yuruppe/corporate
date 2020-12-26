@@ -50,6 +50,16 @@ const Footer: React.FC = () => {
           </a>
         </div>
         <div css={other}>
+          <CustomLink href="/member">
+            <span>メンバー</span>
+          </CustomLink>
+        </div>
+        <div css={other}>
+          <CustomLink href="/contact">
+            <span>お仕事の依頼</span>
+          </CustomLink>
+        </div>
+        <div css={other}>
           <CustomLink href="/about">
             <span>会社情報</span>
           </CustomLink>
