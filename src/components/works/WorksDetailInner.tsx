@@ -145,15 +145,17 @@ const WorksDetailInner: React.FC<Props> = ({ work, recommended }) => {
             </div>
           ) : null}
         </div>
-        <div css={credit} className="works_credit">
-          <h2 css={creditTitle}>つくった人たち</h2>
-          {work.credits.map((credit, index) => (
-            <dl css={creditItem} key={index}>
-              <dt css={creditRole}>{credit.role}</dt>
-              <dd css={creditName}>{credit.name}</dd>
-            </dl>
-          ))}
-        </div>
+        {work.credits.length ? (
+          <div css={credit} className="works_credit">
+            <h2 css={creditTitle}>つくった人たち</h2>
+            {work.credits.map((credit, index) => (
+              <dl css={creditItem} key={index}>
+                <dt css={creditRole}>{credit.role}</dt>
+                <dd css={creditName}>{credit.name}</dd>
+              </dl>
+            ))}
+          </div>
+        ) : null}
         <div css={desc} className="works_recommended">
           <h2 css={recTitle}>おすすめ</h2>
           <ul css={recList}>
