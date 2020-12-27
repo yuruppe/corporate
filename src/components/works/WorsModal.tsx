@@ -183,7 +183,7 @@ const inner = css`
   background-color: white;
   border-radius: 16px;
   padding: ${style.vwSp(16)} 0 ${style.vwSp(20)} ${style.vwSp(16)};
-  height: ${style.vwSp(551)};
+  height: 80vh;
 `
 const scrollContent = css`
   height: 100%;

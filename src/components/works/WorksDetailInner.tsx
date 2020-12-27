@@ -330,6 +330,9 @@ const desc = css`
     border-radius: 16px;
     margin: 20px 0 0;
   `)}
+  &.works_recommended {
+    padding-bottom: 0;
+  }
 `
 
 const descTitle = css`
@@ -446,9 +449,9 @@ const recList = css`
   overflow-x: scroll;
   overflow-y: hidden;
   height: auto;
-  padding: ${style.vwSp(32)} 0 0;
+  padding: ${style.vwSp(32)} 0 ${style.vwSp(32)};
   ${style.pc(css`
-    padding: 32px 0 0;
+    padding: 32px 0 40px;
     display: block;
     overflow: auto;
   `)}
@@ -491,6 +494,7 @@ const recItemTitle = css`
   h3 {
     font-size: ${style.vwSp(16)};
     font-weight: 800;
+    line-height: 1.6;
   }
   ${style.pc(css`
     padding: 16px 0 0;
