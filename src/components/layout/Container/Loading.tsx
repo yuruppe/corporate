@@ -323,16 +323,11 @@ const _end = (isDark: boolean): void => {
     nowChara.goToAndStop(0)
     anim.goToAndStop(0)
   })
+  nowChara.play()
   gsap.to('#root', {
-    delay: 0.5,
+    delay: 0.2,
     onStart: () => {
-      nowChara.play()
-      gsap.to('#root', {
-        delay: 0.2,
-        onStart: () => {
-          anim.play()
-        },
-      })
+      anim.play()
     },
   })
 }

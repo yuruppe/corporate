@@ -89,12 +89,12 @@ const BlogIndexInner: React.FC<Props> = ({ blogs }) => {
         return
       }
       gsap.to(target, {
-        delay: 0.5,
+        delay: 0.3,
         opacity: 1,
         y: 0,
         ease: 'expo.out',
         duration: 1.9,
-        stagger: 0.2,
+        stagger: 0.1,
       })
       if (nowCount + target.length === worksLength) {
         setMoreBtnState(false)
