@@ -311,13 +311,19 @@ const routingEndAnim = (isDark: boolean): void => {
     nowChara.goToAndStop(0)
     anim.goToAndStop(0)
   })
-  setTimeout(() => {
-    start = false
-    nowChara.play()
-    setTimeout(() => {
-      anim.play()
-    }, 200)
-  }, 500)
+  gsap.to('#root', {
+    delay: 0.5,
+    onStart: () => {
+      start = false
+      nowChara.play()
+      gsap.to('#root', {
+        delay: 0.2,
+        onStart: () => {
+          anim.play()
+        },
+      })
+    },
+  })
 }
 
 export { Loading }
