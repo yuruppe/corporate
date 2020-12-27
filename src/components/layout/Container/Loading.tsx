@@ -274,8 +274,18 @@ const open = (): void => {
 let start = false
 let nowChara: AnimationItem
 
+let count = 0
+let id: number
+
+const update = (): void => {
+  id = requestAnimationFrame(update)
+  count++
+}
+
 const routeingStartAnim = (isDark: boolean): void => {
   if (!transitionAnimGreen) return
+
+  requestAnimationFrame(update)
 
   gsap.set(_root, {
     display: 'block',
@@ -292,6 +302,7 @@ const routeingStartAnim = (isDark: boolean): void => {
     delay: 1.0,
     onStart: () => {
       if (start) {
+        console.log('start: ', count)
         anim.pause()
         nowChara.pause()
       }
@@ -302,6 +313,10 @@ const routeingStartAnim = (isDark: boolean): void => {
 const routingEndAnim = (isDark: boolean): void => {
   if (!transitionAnimGreen) return
   if (!nowChara) return
+
+  console.log(count)
+  cancelAnimationFrame(id)
+  count = 0
 
   const anim = isDark ? transitionAnimGray : transitionAnimGreen
   anim.addEventListener('complete', () => {
