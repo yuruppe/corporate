@@ -293,6 +293,7 @@ const routeingStartAnim = (isDark: boolean): void => {
     onStart: () => {
       if (start) {
         anim.pause()
+        nowChara.pause()
       }
     },
   })
@@ -312,7 +313,10 @@ const routingEndAnim = (isDark: boolean): void => {
   })
   setTimeout(() => {
     start = false
-    anim.play()
+    nowChara.play()
+    setTimeout(() => {
+      anim.play()
+    }, 200)
   }, 500)
 }
 
