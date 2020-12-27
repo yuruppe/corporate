@@ -223,7 +223,7 @@ const itemInner = css`
       left: -15px;
       width: 62px;
       height: 62px;
-      background-image: url('/img/common/reel.png');
+      background-image: url('/img/common/reel.svg');
       background-size: cover;
       z-index: 1;
       pointer-events: none;
