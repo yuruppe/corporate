@@ -166,7 +166,7 @@ const bg = css`
   z-index: -1;
   width: 100%;
   height: 100%;
-  background-color: ${rgba('#000', 0.32)};
+  background-color: ${rgba('#000', 0.48)};
 `
 const content = css`
   width: 100%;
