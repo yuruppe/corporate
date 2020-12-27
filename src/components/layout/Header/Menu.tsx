@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import { useRouter } from 'next/dist/client/router'
 import gsap from 'gsap'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AppContext } from '~/store/appContext'
 import { CustomLink } from '../../common/CustomLink'
 import { css, keyframes } from '@emotion/react'
@@ -34,6 +34,8 @@ const MainItem: React.FC<MainItemProps> = ({ route, text }) => {
 const Menu: React.FC = () => {
   // const router = useRouter()
   const { appState, appDispatch } = useContext(AppContext)
+  const [openTl, setOpenTl] = useState<gsap.core.Timeline>(null)
+  const [closeTl, setCloseTl] = useState<gsap.core.Timeline>(null)
 
   const handleClick = (): void => {
     if (!appState.menu.isAnim) {
@@ -42,12 +44,18 @@ const Menu: React.FC = () => {
   }
 
   const handleMouseOver = (): void => {
+    if (window.innerWidth < 768) {
+      return
+    }
     gsap.to(`.css-${anchor.name}`, {
       opacity: 0.2,
       duration: 0.3,
     })
   }
   const handleMouseLeave = (): void => {
+    if (window.innerWidth < 768) {
+      return
+    }
     gsap.to(`.css-${anchor.name}`, {
       opacity: 1,
       duration: 0.3,
@@ -62,123 +70,133 @@ const Menu: React.FC = () => {
 
   const open = (): void => {
     const main = 'main'
-    gsap
-      .timeline({
-        onStart: () => {
-          appDispatch({ type: 'MENU_ANIM_ENDED' })
-        },
-      })
-      .addLabel(main)
-      .to(
-        _wageWrap,
-        {
-          y: '0%',
-          ease: 'circ.out',
-        },
-        main,
-      )
-      .to(
-        _wrap,
-        {
-          // opacity: 1,
-          visibility: 'visible',
-        },
-        main,
-      )
-      .to(
-        _bg,
-        {
-          opacity: 1,
-          duration: 0.4,
-        },
-        main,
-      )
-      .to(
-        _item,
-        {
-          y: 0,
-          ease: 'back.out(1.8)',
-          duration: 0.4,
-          stagger: 0.1,
-          opacity: 1,
-        },
-        main,
-      )
-      .to(
-        _bottomItem,
-        {
-          y: 0,
-          ease: 'back.out(1.8)',
-          duration: 0.4,
-          stagger: 0.1,
-          opacity: 1,
-        },
-        main + '+=0.6',
-      )
+    setOpenTl(
+      gsap
+        .timeline({
+          onStart: () => {
+            appDispatch({ type: 'MENU_ANIM_ENDED' })
+          },
+        })
+        .addLabel(main)
+        .to(
+          _wageWrap,
+          {
+            y: '0%',
+            ease: 'circ.out',
+          },
+          main,
+        )
+        .to(
+          _wrap,
+          {
+            // opacity: 1,
+            visibility: 'visible',
+          },
+          main,
+        )
+        .to(
+          _bg,
+          {
+            opacity: 1,
+            duration: 0.4,
+          },
+          main,
+        )
+        .to(
+          _item,
+          {
+            y: 0,
+            ease: 'back.out(1.8)',
+            duration: 0.4,
+            stagger: 0.1,
+            opacity: 1,
+          },
+          main,
+        )
+        .to(
+          _bottomItem,
+          {
+            y: 0,
+            ease: 'back.out(1.8)',
+            duration: 0.8,
+            stagger: 0.1,
+            opacity: 1,
+          },
+          main + '+=0.2',
+        ),
+    )
   }
   const close = (): void => {
     const main = 'main'
-    gsap
-      .timeline({
-        onComplete: () => {
-          appDispatch({ type: 'MENU_ANIM_ENDED' })
-          gsap.set(_wrap, {
-            visibility: 'hidden',
-          })
-        },
-      })
-      .addLabel(main)
-      .to(
-        _wageWrap,
-        {
-          y: '-100%',
-          ease: 'back.in(0.8)',
-        },
-        main,
-      )
-      .to(
-        _bg,
-        {
-          opacity: 0,
-          duration: 0.4,
-        },
-        main + '+=0.4',
-      )
-      .to(
-        _wrap,
-        {
-          // opacity: 0,
-        },
-        main,
-      )
-      .to(
-        _item,
-        {
-          y: -40,
-          ease: 'back.out(1.6)',
-          duration: 0.4,
-          stagger: 0.03,
-          opacity: 0,
-        },
-        main,
-      )
-      .to(
-        _bottomItem,
-        {
-          y: -20,
-          ease: 'back.out(1.6)',
-          duration: 0.4,
-          stagger: 0.03,
-          opacity: 0,
-        },
-        main,
-      )
+    setCloseTl(
+      gsap
+        .timeline({
+          onComplete: () => {
+            appDispatch({ type: 'MENU_ANIM_ENDED' })
+            gsap.set(_wrap, {
+              visibility: 'hidden',
+            })
+          },
+        })
+        .addLabel(main)
+        .to(
+          _wageWrap,
+          {
+            y: '-100%',
+            ease: 'back.in(0.8)',
+          },
+          main,
+        )
+        .to(
+          _bg,
+          {
+            opacity: 0,
+            duration: 0.4,
+          },
+          main + '+=0.4',
+        )
+        .to(
+          _wrap,
+          {
+            // opacity: 0,
+          },
+          main,
+        )
+        .to(
+          _item,
+          {
+            y: -40,
+            ease: 'back.out(1.6)',
+            duration: 0.4,
+            stagger: 0.03,
+            opacity: 0,
+          },
+          main,
+        )
+        .to(
+          _bottomItem,
+          {
+            y: -20,
+            ease: 'back.out(1.6)',
+            duration: 0.4,
+            stagger: 0.03,
+            opacity: 0,
+          },
+          main,
+        ),
+    )
   }
 
   useEffect(() => {
     if (appState.menu.isOpen) {
+      if (closeTl) {
+        closeTl.clear()
+      }
       open()
     } else {
+      if (openTl) {
+        openTl.clear()
+      }
       close()
     }
   }, [appState.menu.isOpen])
