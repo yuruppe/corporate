@@ -103,7 +103,7 @@ const wrap = css`
   padding: ${style.vwSp(40)} 0 ${style.vwSp(80)};
   text-align: center;
   ${style.pc(css`
-    padding: 77px 180px;
+    padding: 77px 112px;
     text-align: left;
     display: flex;
     justify-content: space-between;

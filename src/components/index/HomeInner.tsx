@@ -1,4 +1,4 @@
-import { css, keyframes } from '@emotion/react'
+import { css, keyframes, SerializedStyles } from '@emotion/react'
 import Lottie, { AnimationItem } from 'lottie-web'
 import style from '~/styles'
 import { CustomLink } from '../common/CustomLink'
@@ -108,6 +108,15 @@ const HomeInner: React.FC<Props> = ({ description }) => {
   )
 }
 
+const pcMiddle = (_style: SerializedStyles): SerializedStyles => {
+  return css`
+    @media screen and (min-width: ${style.config.sp
+        .breakpoint}px) and (max-width: 950px) {
+      ${_style}
+    }
+  `
+}
+
 const main = css`
   position: relative;
   padding: 0 ${style.vwSp(style.config.project.paddingSpSide)} ${style.vwSp(48)};
@@ -123,6 +132,9 @@ const inner = css`
     padding: 54px 180px 57px;
   `)}
   z-index: 10;
+  ${pcMiddle(css`
+    padding: 54px 87px 57px;
+  `)}
 `
 const charaDefault = css`
   width: 120px;
@@ -215,6 +227,9 @@ const linkAnchor = css`
   ${style.pc(css`
     padding: 26px 32px;
   `)}
+  ${pcMiddle(css`
+    padding: 26px 18px;
+  `)}
 `
 const linkTitle = css`
   position: relative;
@@ -259,6 +274,19 @@ const linkTitle = css`
       &::before {
         width: 20px;
         height: 20px;
+      }
+    }
+  `)}
+  ${pcMiddle(css`
+    font-size: 17px;
+    &.arrow {
+      &::before {
+        transform: translateY(-50%) scale(0.7);
+      }
+    }
+    &.blank {
+      &::before {
+        transform: translateY(-60%) scale(0.7);
       }
     }
   `)}
