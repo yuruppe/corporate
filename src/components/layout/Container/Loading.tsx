@@ -271,21 +271,13 @@ const open = (): void => {
   })
 }
 
-let start = false
 let nowChara: AnimationItem
 
-let count = 0
-let id: number
-
-const update = (): void => {
-  id = requestAnimationFrame(update)
-  count++
-}
+let isStopped = false
+let endStarted = false
 
 const routeingStartAnim = (isDark: boolean): void => {
   if (!transitionAnimGreen) return
-
-  requestAnimationFrame(update)
 
   gsap.set(_root, {
     display: 'block',
@@ -297,14 +289,16 @@ const routeingStartAnim = (isDark: boolean): void => {
   const anim = isDark ? transitionAnimGray : transitionAnimGreen
   anim.play()
   nowChara.play()
-  start = true
+  isStopped = false
+  endStarted = false
   gsap.to('#root', {
     delay: 1.0,
     onStart: () => {
-      if (start) {
-        console.log('start: ', count)
-        anim.pause()
-        nowChara.pause()
+      isStopped = true
+      anim.pause()
+      nowChara.pause()
+      if (endStarted) {
+        _end(isDark)
       }
     },
   })
@@ -314,10 +308,13 @@ const routingEndAnim = (isDark: boolean): void => {
   if (!transitionAnimGreen) return
   if (!nowChara) return
 
-  console.log(count)
-  cancelAnimationFrame(id)
-  count = 0
+  endStarted = true
+  if (isStopped) {
+    _end(isDark)
+  }
+}
 
+const _end = (isDark: boolean): void => {
   const anim = isDark ? transitionAnimGray : transitionAnimGreen
   anim.addEventListener('complete', () => {
     gsap.set(_root, {
@@ -329,7 +326,6 @@ const routingEndAnim = (isDark: boolean): void => {
   gsap.to('#root', {
     delay: 0.5,
     onStart: () => {
-      start = false
       nowChara.play()
       gsap.to('#root', {
         delay: 0.2,
