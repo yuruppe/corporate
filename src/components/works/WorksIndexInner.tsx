@@ -224,7 +224,8 @@ const itemInner = css`
       width: 62px;
       height: 62px;
       background-image: url('/img/common/reel.svg');
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
       z-index: 1;
       pointer-events: none;
     }
