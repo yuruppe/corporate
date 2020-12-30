@@ -223,6 +223,9 @@ const itemInner = css`
 const img = css`
   overflow: hidden;
   border-radius: ${style.vwSp(8)};
+  img {
+    width: 100%;
+  }
   ${style.pc(css`
     border-radius: 8px;
     img {

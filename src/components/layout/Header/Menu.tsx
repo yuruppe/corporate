@@ -203,7 +203,11 @@ const Menu: React.FC = () => {
 
   return (
     <div css={wrap}>
-      <div css={bg} className={cn({ dark: appState.darkMode })} />
+      <div
+        css={bg}
+        className={cn({ dark: appState.darkMode })}
+        onClick={handleClick}
+      />
       <div
         css={waveWrap}
         dangerouslySetInnerHTML={{
@@ -315,10 +319,6 @@ const wrap = css`
   ${style.pc(css`
     padding: 163px 0 0;
     padding: 100px 0 0;
-  `)}
-  ${style.mixin.ie(css`
-    display: flex;
-    justify-content: center;
   `)}
 `
 const bg = css`
