@@ -201,6 +201,7 @@ const topList = css`
   ${style.pc(css`
     padding: 0;
     flex-shrink: 0;
+    padding-right: 30px;
   `)}
 `
 const topItem = css`
