@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
       <div className="pc-only">
         <div css={sns}>
           <a
-            href="https://instagram.com/yuruppe.inc?igshid=10cfjlokkxj98"
+            href="https://instagram.com/yuruppe_kun?igshid=1199ng9wyfut"
             target="_blank"
             rel="noopener noreferrer"
           >

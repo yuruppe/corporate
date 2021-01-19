@@ -267,7 +267,7 @@ const Menu: React.FC = () => {
       <ul css={bottomList}>
         <li css={bottomItem}>
           <a
-            href="https://instagram.com/yuruppe.inc?igshid=10cfjlokkxj98"
+            href="https://instagram.com/yuruppe_kun?igshid=1199ng9wyfut"
             target="_blank"
             rel="noopener noreferrer"
             css={bottomAnchor}
