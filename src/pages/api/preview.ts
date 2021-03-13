@@ -8,9 +8,7 @@ const preview: NextApiHandler = async (req, res) => {
     !req.query.id ||
     !req.query.draftKey
   ) {
-    return res
-      .status(401)
-      .json({ message: `Invalid query, ${process.env.SECRET_KEY}` })
+    return res.status(401).json({ message: `Invalid query secret key.` })
   }
 
   // 下書きのデータを取得
