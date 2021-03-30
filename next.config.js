@@ -12,6 +12,7 @@ const nextConfig = {
     config.resolve.alias['@public'] = resolve(__dirname, 'public')
     return config
   },
+  target: 'serverless',
 }
 
 module.exports = withPlugins([[optimizedImages, {}]], nextConfig)
