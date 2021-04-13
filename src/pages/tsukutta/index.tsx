@@ -22,10 +22,10 @@ const WorksIndex: NextPage<Props> = ({ works, reelId, reelText }) => {
 
       <main>
         <WorksIndexInner works={works} reelId={reelId} />
-        <WorksModal
+        {/* <WorksModal
           work={works.find((d) => d.id === reelId)}
           reelText={reelText}
-        />
+        /> */}
       </main>
     </>
   )
