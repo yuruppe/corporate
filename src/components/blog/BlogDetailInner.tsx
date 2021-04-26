@@ -357,7 +357,8 @@ const content = css`
   strong {
     font-weight: ${style.config.weight.extraBold};
   }
-  img {
+  img,
+  iframe {
     width: 100%;
     overflow: hidden;
     display: inline-block;
@@ -412,7 +413,8 @@ const content = css`
     p {
       font-size: 16px;
     }
-    img {
+    img,
+    iframe {
       border-radius: 16px;
     }
   `)}
