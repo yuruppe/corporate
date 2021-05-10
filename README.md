@@ -1,4 +1,4 @@
-# yuruppe 様 コーポレートサイト開発用リポジトリ
+# yuruppe inc corporate 
 
 ## Node Version
 v12.18.4
