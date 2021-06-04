@@ -178,6 +178,11 @@ const chara = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  ${style.pc(css`
+    div {
+      width: 180px;
+    }
+  `)}
   ${style.sp(css`
     div {
       width: ${style.vwSp(128)};
