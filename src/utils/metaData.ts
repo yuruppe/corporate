@@ -25,7 +25,7 @@ const metaData: metaDataType = {
       id: 'tsukutta_id',
       title: '',
       description: '',
-      path: '',
+      path: '/tsukutta/',
     },
     {
       id: 'urabanashi_idnex',
@@ -37,7 +37,7 @@ const metaData: metaDataType = {
       id: 'urabanashi_id',
       title: '',
       description: '',
-      path: '',
+      path: '/urabanashi/',
     },
     {
       id: 'contact_index',

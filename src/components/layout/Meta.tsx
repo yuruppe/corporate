@@ -24,7 +24,7 @@ const Meta: React.FC<Props> = ({ id, dynamic }) => {
     _title = dynamic.title
     _description = dynamic.description
     _ogp = dynamic.ogp
-    _path = '/' + dynamic.path
+    _path = data.path + dynamic.path
     if (id === 'tsukutta_id') {
       _title += ' | つくったもの | YURUPPE.inc'
     }
