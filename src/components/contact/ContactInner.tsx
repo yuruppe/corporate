@@ -58,7 +58,7 @@ const ContactInner: React.FC = () => {
         shouldValidate: true,
       })
       setValue('mail', appState.formTmpData.mail, { shouldValidate: true })
-      setValue('tel', appState.formTmpData.tel)
+      setValue('tel', appState.formTmpData.tel, { shouldValidate: true })
       setValue('detail', appState.formTmpData.detail, { shouldValidate: true })
       setValue('agree', appState.formTmpData.agree, { shouldValidate: true })
     }
@@ -164,7 +164,7 @@ const ContactInner: React.FC = () => {
             </dd>
           </dl>
           <dl css={ContactStyles.formItem}>
-            <dt css={ContactStyles.formLabel} className="elective">
+            <dt css={ContactStyles.formLabel}>
               <label htmlFor="tel">TEL</label>
             </dt>
             <dd css={ContactStyles.formInput}>
@@ -172,9 +172,12 @@ const ContactInner: React.FC = () => {
                 type="tel"
                 id="tel"
                 name="tel"
-                ref={register()}
+                ref={register({ required: true })}
                 placeholder="例)03-1234-5678"
               />
+              {errors.tel && (
+                <p css={ContactStyles.formError}>*印は必須項目です。</p>
+              )}
             </dd>
           </dl>
           <dl css={ContactStyles.formItem}>
