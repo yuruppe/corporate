@@ -14,7 +14,7 @@ const mixin = {
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: ${style.colors.darkBlue};
+      background-color: ${style.colors.darkBrown};
       border-radius: ${style.vwSp(24)};
       z-index: -1;
     }
@@ -25,7 +25,7 @@ const mixin = {
       left: 0;
       width: 100%;
       height: 100%;
-      border: ${style.vwSp(6)} solid ${style.colors.darkBlue};
+      border: ${style.vwSp(6)} solid ${style.colors.darkBrown};
       background-color: white;
       border-radius: ${style.vwSp(24)};
       z-index: -1;
@@ -37,7 +37,7 @@ const mixin = {
       }
       &::after {
         border-radius: 32px;
-        border: 6px solid ${style.colors.darkBlue};
+        border: 6px solid ${style.colors.darkBrown};
       }
     `)}
   `,
@@ -54,8 +54,8 @@ const mixin = {
       width: 100%;
       height: 100%;
       border-radius: ${style.vwSp(60)};
-      border: ${style.vwSp(6)} solid ${style.colors.darkBlue};
-      background-color: ${style.colors.darkBlue};
+      border: ${style.vwSp(6)} solid ${style.colors.darkBrown};
+      background-color: ${style.colors.darkBrown};
       z-index: -1;
     }
     &::after {
@@ -65,7 +65,7 @@ const mixin = {
       left: 0;
       width: 100%;
       height: 100%;
-      border: ${style.vwSp(6)} solid ${style.colors.darkBlue};
+      border: ${style.vwSp(6)} solid ${style.colors.darkBrown};
       border-radius: ${style.vwSp(60)};
       background-color: white;
       z-index: -1;
@@ -74,10 +74,10 @@ const mixin = {
       &::before {
         top: 8px;
         border-radius: 60px;
-        border: 6px solid ${style.colors.darkBlue};
+        border: 6px solid ${style.colors.darkBrown};
       }
       &::after {
-        border: 6px solid ${style.colors.darkBlue};
+        border: 6px solid ${style.colors.darkBrown};
         border-radius: 60px;
       }
     `)}
@@ -95,8 +95,8 @@ const mixin = {
       width: 100%;
       height: 100%;
       border-radius: ${style.vwSp(24)};
-      border: ${style.vwSp(6)} solid ${style.colors.darkBlue};
-      background-color: ${style.colors.darkBlue};
+      border: ${style.vwSp(6)} solid ${style.colors.darkBrown};
+      background-color: ${style.colors.darkBrown};
       z-index: -1;
     }
     &::after {
@@ -106,7 +106,7 @@ const mixin = {
       left: 0;
       width: 100%;
       height: 100%;
-      border: ${style.vwSp(6)} solid ${style.colors.darkBlue};
+      border: ${style.vwSp(6)} solid ${style.colors.darkBrown};
       border-radius: ${style.vwSp(24)};
       background-color: white;
       z-index: -1;
@@ -125,10 +125,10 @@ const mixin = {
       &::before {
         top: 8px;
         border-radius: 24px;
-        border: 6px solid ${style.colors.darkBlue};
+        border: 6px solid ${style.colors.darkBrown};
       }
       &::after {
-        border: 6px solid ${style.colors.darkBlue};
+        border: 6px solid ${style.colors.darkBrown};
         border-radius: 24px;
       }
       span {
@@ -151,7 +151,7 @@ const mixin = {
       width: ${style.vwSp(72)};
       height: ${style.vwSp(4)};
       border-radius: 30px;
-      background-color: ${style.colors.darkBlue};
+      background-color: ${style.colors.darkBrown};
     }
     ${style.pc(css`
       padding-bottom: 20px;

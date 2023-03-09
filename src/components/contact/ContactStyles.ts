@@ -52,7 +52,7 @@ const intro = css`
   &.note {
     padding: ${style.vwSp(24)} 0 0;
     font-weight: ${style.config.weight.extraBold};
-    color: ${style.colors.darkBlue};
+    color: ${style.colors.darkBrown};
   }
   ${style.pc(css`
     font-size: 16px;
@@ -86,7 +86,7 @@ const formLabel = css`
   padding-bottom: ${style.vwSp(4)};
   &::after {
     content: '*';
-    color: ${style.colors.darkBlue};
+    color: ${style.colors.darkBrown};
   }
   &.elective {
     &::after {
@@ -196,7 +196,7 @@ const formAgree = css`
       left: 0;
       width: ${style.vwSp(22)};
       height: ${style.vwSp(22)};
-      border: 2px solid ${style.colors.darkBlue};
+      border: 2px solid ${style.colors.darkBrown};
       border-radius: ${style.vwSp(4)};
       transform: translateY(-50%);
     }
@@ -219,7 +219,7 @@ const formAgree = css`
   a {
     display: inline-block;
     position: relative;
-    color: ${style.colors.darkBlue};
+    color: ${style.colors.darkBrown};
 
     &::after {
       content: '';
@@ -228,13 +228,13 @@ const formAgree = css`
       left: 0;
       width: 100%;
       height: 1px;
-      background-color: ${style.colors.darkBlue};
+      background-color: ${style.colors.darkBrown};
     }
   }
   span {
     &::after {
       content: '*';
-      color: ${style.colors.darkBlue};
+      color: ${style.colors.darkBrown};
     }
   }
   .css-${formError.name} {
@@ -255,7 +255,7 @@ const formAgree = css`
       &::after {
         width: 22px;
         height: 22px;
-        border: 2px solid ${style.colors.darkBlue};
+        border: 2px solid ${style.colors.darkBrown};
         border-radius: 4px;
         transform: translateY(-50%);
       }
@@ -376,7 +376,7 @@ const result = css`
     font-size: ${style.vwSp(16)};
     line-height: 1.6;
     letter-spacing: 0.08em;
-    color: ${style.colors.darkBlue};
+    color: ${style.colors.darkBrown};
     &::before {
       content: '';
       position: absolute;
@@ -384,7 +384,7 @@ const result = css`
       left: 0;
       width: 100%;
       height: 1px;
-      background-color: ${style.colors.darkBlue};
+      background-color: ${style.colors.darkBrown};
     }
   }
   ${style.pc(css`

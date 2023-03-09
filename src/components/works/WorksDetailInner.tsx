@@ -370,7 +370,7 @@ const descAnchor = css`
   position: relative;
   font-size: ${style.vwSp(16)};
   line-height: 1.6;
-  color: ${style.colors.darkBlue};
+  color: ${style.colors.darkBrown};
   font-weight: ${style.config.weight.extraBold};
   &::before {
     content: '';
@@ -379,7 +379,7 @@ const descAnchor = css`
     left: 0;
     width: 100%;
     height: 1px;
-    background-color: ${style.colors.darkBlue};
+    background-color: ${style.colors.darkBrown};
   }
   ${style.pc(css`
     font-size: 16px;

@@ -27,7 +27,7 @@ const wrap = css`
   position: relative;
   width: 100%;
   min-height: 110vh;
-  background-color: ${style.colors.lightBlue};
+  background-color: ${style.colors.lightBrown};
   padding: 116px 0 0;
   transition: background-color 0.3s ease-in-out 0.5s;
   &.dark {

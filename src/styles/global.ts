@@ -149,7 +149,7 @@ const globalStyles = css`
   ${reset}
 
   html {
-    font-family: 'M PLUS Rounded 1c', 'Helvetica Neue', Arial,
+    font-family: 'Noto Sans JP', 'Helvetica Neue', Arial,
       'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
     font-weight: 500;
     font-size: 15px;

@@ -13,9 +13,11 @@ class CustomDocument extends Document {
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <link rel="icon" href="/favicon.ico" />
           <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          {/* @ts-ignore */}
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
           <link
-            href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800;900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap"
             rel="stylesheet"
           />
           <script src="/vendor/picturefill.min.js" async />

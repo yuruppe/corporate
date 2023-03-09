@@ -156,7 +156,7 @@ const logo = css`
 const top = css`
   width: 100%;
   height: 100%;
-  border: 4px solid ${style.colors.darkBlue};
+  border: 4px solid ${style.colors.darkBrown};
   border-radius: inherit;
   background-color: white;
   display: flex;
@@ -250,7 +250,7 @@ const bottom = css`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${style.colors.darkBlue};
+  background-color: ${style.colors.darkBrown};
   border-radius: inherit;
   z-index: -1;
   &.dark {

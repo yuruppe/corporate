@@ -327,7 +327,7 @@ const bg = css`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${style.colors.lightBlue};
+  background-color: ${style.colors.lightBrown};
   z-index: -1;
   &.dark {
     background-color: ${style.colors.blogBack};
@@ -431,7 +431,7 @@ const anchor = css`
   line-height: 1;
   font-weight: ${style.config.weight.extraBold};
   letter-spacing: 0.1em;
-  color: ${style.colors.midBlue};
+  color: ${style.colors.darkBrown};
   transition: opacity 0.2s ease;
   &.current {
     color: black;
