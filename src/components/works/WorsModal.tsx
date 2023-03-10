@@ -50,7 +50,7 @@ const WorksModal: React.FC<Props> = ({ work, reelText }) => {
     }
   }, [appState.isLoading])
 
-  const handleClick = (): void => {
+  const onClick = (): void => {
     appDispatch({ type: 'SET_WORK_MODAL_OPENED' })
   }
 
@@ -68,7 +68,7 @@ const WorksModal: React.FC<Props> = ({ work, reelText }) => {
                 <div css={inner}>
                   <div css={buttonWrap}>
                     <div css={button}>
-                      <div css={top} onClick={handleClick}>
+                      <div css={top} onClick={onClick}>
                         <div css={hamburger}>
                           <span />
                           <span />
@@ -203,7 +203,7 @@ const buttonWrap = css`
 const top = css`
   width: 100%;
   height: 100%;
-  border: 4px solid ${style.colors.darkBrown};
+  border: 4px solid ${style.colors.darkBlue};
   border-radius: inherit;
   background-color: white;
   display: flex;
@@ -262,7 +262,7 @@ const bottom = css`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${style.colors.darkBrown};
+  background-color: ${style.colors.darkBlue};
   border-radius: inherit;
   z-index: -1;
 `
