@@ -221,7 +221,7 @@ const main = css`
 const title = css`
   ${style.mixin.titleBottomBorder()}
   img {
-    width: ${style.vwSp(212)};
+    width: ${style.vwSp(221)};
   }
   a {
     display: inline-block;
@@ -229,7 +229,7 @@ const title = css`
   }
   ${style.pc(css`
     img {
-      width: 212px;
+      width: 221px;
     }
   `)}
 `

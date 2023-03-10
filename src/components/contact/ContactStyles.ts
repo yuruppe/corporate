@@ -13,20 +13,20 @@ const main = css`
 const title = css`
   ${style.mixin.titleBottomBorder()}
   img {
-    width: ${style.vwSp(212)};
+    width: ${style.vwSp(214)};
   }
   &.error {
     img {
-      width: ${style.vwSp(304)};
+      width: ${style.vwSp(310)};
     }
   }
   ${style.pc(css`
     img {
-      width: 212px;
+      width: 214px;
     }
     &.error {
       img {
-        width: 304px;
+        width: 310px;
       }
     }
   `)}

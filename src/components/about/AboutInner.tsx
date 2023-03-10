@@ -142,11 +142,11 @@ const main = css`
 const title = css`
   ${style.mixin.titleBottomBorder()}
   img {
-    width: ${style.vwSp(142)};
+    width: ${style.vwSp(154)};
   }
   ${style.pc(css`
     img {
-      width: 140px;
+      width: 154px;
     }
   `)}
 `

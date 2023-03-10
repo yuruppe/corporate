@@ -203,7 +203,7 @@ const main = css`
 const title = css`
   ${style.mixin.titleBottomBorder()}
   img {
-    width: ${style.vwSp(104)};
+    width: ${style.vwSp(118)};
   }
   &::before {
     background-color: ${style.colors.blogDark};
@@ -214,7 +214,7 @@ const title = css`
   }
   ${style.pc(css`
     img {
-      width: 104px;
+      width: 118px;
     }
   `)}
 `
