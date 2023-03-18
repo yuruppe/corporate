@@ -17,7 +17,7 @@ const Meta: React.FC<Props> = ({ id, dynamic }) => {
 
   let _title = data.title
   let _description = data.description
-  let _ogp = metaData.meta.domain + metaData.meta.ogpImagePath
+  let _ogp = metaData.meta.domain + metaData.meta.ogpImagePath + '?ver=1.1.0'
   let _path = data.path
 
   if (id === 'tsukutta_id' || id === 'urabanashi_id') {
