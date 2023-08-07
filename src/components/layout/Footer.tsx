@@ -172,6 +172,7 @@ const copyright = css`
   font-weight: ${style.config.weight.black};
   font-size: 10px;
   letter-spacing: 0.08em;
+  will-change: opacity;
   &.dark {
     color: white;
   }
