@@ -8,8 +8,7 @@
     "build": "next build",
     "start": "next build && next start",
     "export": "next build && next export -o htdocs/",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore .",
-    "postinstall": "typesync"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore ."
   },
   "dependencies": {
     "@emotion/react": "^11.1.1",
@@ -38,7 +37,6 @@
     "react-scrollbars-custom": "^4.0.25",
     "sanitize.css": "^11.0.0",
     "sass": "^1.26.3",
-    "typesync": "^0.8.0",
     "webp-loader": "^0.6.0"
   },
   "devDependencies": {
