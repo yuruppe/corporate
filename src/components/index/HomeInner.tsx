@@ -191,6 +191,9 @@ const desc = css`
   letter-spacing: 0.32em;
   font-weight: ${style.config.weight.extraBold};
   text-align: justify;
+  a {
+    text-decoration: underline;
+  }
   ${style.pc(css`
     padding: 32px 0 0;
     font-size: 16px;
