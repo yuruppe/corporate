@@ -6,6 +6,7 @@ class CustomDocument extends Document {
     return (
       <Html lang="ja-JP">
         <Head>
+          <meta name="robots" content="noindex">
           <meta name="theme-color" content="#333" />
           <meta property="og:type" content={metaData.meta.type} />
           <meta name="format-detection" content="telephone=no" />
